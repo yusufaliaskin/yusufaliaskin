@@ -1,13 +1,8 @@
-<table>
-  <tr>
-    <td width="52%">
-      <img src="https://github-readme-stats.vercel.app/api?username=yusufaliaskin&show_icons=true&theme=radical" />
-    </td>
-    <td width="60%">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yusufaliaskin&layout=compact&theme=radical" />
-    </td>
-  </tr>
-</table>
+
+
+<div align="center"> <p align="center"> <img align="center" src="https://github-readme-stats.vercel.app/api?username=yusufaliaskin&show_icons=true&hide_border=true&title_color=3fb950&icon_color=3fb950&text_color=ffffff&bg_color=0d1117&count_private=true&include_all_commits=true"/> <img align="center" height="195px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yusufaliaskin&text_color=ffffff&bg_color=0d1117&title_color=3fb950&langs_count=10&layout=compact&hide_border=true" /> </p> <a href="https://github.com/yusufaliaskin"> <img alt="Yusuf Ali's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph/?username=yusufaliaskin&bg_color=0d1117&color=3fb950&line=3fb950&point=ffffff&hide_border=true" /> </a> </div>
+
+<details open> <summary><h2>📘 Öne Çıkan Projelerim</h2></summary> <p align="left"> <a href="https://github.com/yusufaliaskin/network.py"> <img src="https://github-readme-stats.vercel.app/api/pin/?username=yusufaliaskin&repo=network.py&bg_color=0d1117&title_color=3fb950&text_color=ffffff&icon_color=3fb950&hide_border=true&show_owner=true" alt="network.py"> </a> <a href="https://github.com/yusufaliaskin/SwopyTroi"> <img src="https://github-readme-stats.vercel.app/api/pin/?username=yusufaliaskin&repo=SwopyTroi&bg_color=0d1117&title_color=3fb950&text_color=ffffff&icon_color=3fb950&hide_border=true&show_owner=true" alt="SwopyTroi"> </a> <a href="https://github.com/yusufaliaskin/SwopyTrader"> <img src="https://github-readme-stats.vercel.app/api/pin/?username=yusufaliaskin&repo=SwopyTrader&bg_color=0d1117&title_color=3fb950&text_color=ffffff&icon_color=3fb950&hide_border=true&show_owner=true" alt="SwopyTrader"> </a> </p> </details>
 
 # 💻 Tech Stack:
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
