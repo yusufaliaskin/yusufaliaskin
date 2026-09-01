@@ -1,0 +1,27 @@
+<svg viewBox="0 0 115 8" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated red profile footer">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#45070b"/>
+      <stop offset=".48" stop-color="#b91c1c"/>
+      <stop offset="1" stop-color="#45070b"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7f1d1d"/>
+      <stop offset=".5" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <path id="wave" d="M-120 3.2 C-100 1.8 -80 4.5 -60 3.1 C-40 1.9 -20 4.4 0 3.1 C20 1.8 40 4.5 60 3.1 C80 1.9 100 4.4 120 3.1 C140 1.8 160 4.5 180 3.1 C200 1.9 220 4.4 240 3.1 L240 8 L-120 8 Z"/>
+  </defs>
+  <style>
+    .w1{animation:flow 7s linear infinite}.w2{animation:back 10s linear infinite;opacity:.45}.pulse{animation:pulse 1.8s ease-in-out infinite alternate}
+    @keyframes flow{to{transform:translateX(-120px)}}@keyframes back{to{transform:translateX(120px)}}@keyframes pulse{to{opacity:.25}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+  <rect width="115" height="8" fill="#0d1117"/>
+  <use href="#wave" class="w2" fill="url(#g2)" transform="translate(0 1.15)"/>
+  <use href="#wave" class="w1" fill="url(#g1)"/>
+  <rect x="0" y=".15" width="115" height=".12" fill="#ef4444" opacity=".28"/>
+  <circle class="pulse" cx="38" cy="5.85" r=".32" fill="#ef4444"/>
+  <circle class="pulse" cx="77" cy="5.85" r=".32" fill="#ef4444" style="animation-delay:-.9s"/>
+  <text x="57.5" y="6.25" text-anchor="middle" font-family="Courier New,monospace" font-size=".7" letter-spacing=".22" fill="#c9d1d9">BUILD • SECURE • AUTOMATE</text>
+</svg>
