@@ -51,12 +51,61 @@
 
 </details>
 
+<details>
+  <summary><b>:triangular_ruler: &nbsp;Архитектура и инженерия</b></summary>
+  <br/>
+
+![Clean Architecture](https://img.shields.io/badge/Clean%20Architecture-2D333B?style=for-the-badge)&nbsp;![SOLID](https://img.shields.io/badge/SOLID-B91C1C?style=for-the-badge)&nbsp;![DDD](https://img.shields.io/badge/DDD-7F1D1D?style=for-the-badge)&nbsp;![TDD](https://img.shields.io/badge/TDD-C2410C?style=for-the-badge)&nbsp;![CI/CD](https://img.shields.io/badge/CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)&nbsp;![Microservices](https://img.shields.io/badge/Microservices-0EA5E9?style=for-the-badge)&nbsp;![Event Driven](https://img.shields.io/badge/Event%20Driven-8B5CF6?style=for-the-badge)&nbsp;![System Design](https://img.shields.io/badge/System%20Design-1F6FEB?style=for-the-badge)&nbsp;![API Design](https://img.shields.io/badge/API%20Design-009688?style=for-the-badge)&nbsp;![Secure SDLC](https://img.shields.io/badge/Secure%20SDLC-DC2626?style=for-the-badge)&nbsp;![Observability](https://img.shields.io/badge/Observability-F46800?style=for-the-badge&logo=grafana&logoColor=white)&nbsp;![Zero Trust](https://img.shields.io/badge/Zero%20Trust-111827?style=for-the-badge)&nbsp;![Async Processing](https://img.shields.io/badge/Async%20Processing-37814A?style=for-the-badge)&nbsp;![Design Patterns](https://img.shields.io/badge/Design%20Patterns-6D28D9?style=for-the-badge)
+
+</details>
+
+<details>
+  <summary><b>:rocket: &nbsp;Избранные проекты</b></summary>
+  <br/>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yusufaliaskin/ZKSessions">ZKSessions</a></h3>
+      <p>Платформа аналитики сессий на Django, коррелирующая события Windows/Wazuh и предоставляющая мониторинг для Security Operations.</p>
+      <p><img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" /> <img src="https://img.shields.io/badge/Wazuh-005571?style=flat-square" /></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yusufaliaskin/AIStudio">AIStudio</a></h3>
+      <p>Единый Flask-интерфейс для Gemini, OpenAI и Claude с мультимодальными сценариями и инструментами глубокого исследования.</p>
+      <p><img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" /> <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white" /></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI">F.R.I.D.A.Y-AI</a></h3>
+      <p>Локальный AI-ассистент для Windows на Python, где приватные runtime-данные не хранятся в публичном репозитории.</p>
+      <p><img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Windows-0078D4?style=flat-square&logo=windows11&logoColor=white" /> <img src="https://img.shields.io/badge/Local_AI-B91C1C?style=flat-square" /></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/yusufaliaskin/afetnet.com">AfetNet</a></h3>
+      <p>Мобильное приложение React Native для экстренной связи с данными о землетрясениях, отслеживанием семьи и кризисными уведомлениями.</p>
+      <p><img src="https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/JavaScript-323330?style=flat-square&logo=javascript&logoColor=F7DF1E" /> <img src="https://img.shields.io/badge/Mobile-0EA5E9?style=flat-square" /></p>
+    </td>
+  </tr>
+</table>
+
+</details>
+
 <details open>
   <summary><b>:gear: &nbsp;Статистика GitHub</b></summary>
   <br/>
 
   <p align="center">
     <img width="72%" src="https://streak-stats.demolab.com?user=yusufaliaskin&background=0D1117&border=30363D&stroke=30363D&ring=FF4D4D&fire=FF4D4D&currStreakNum=F0F6FC&sideNums=F0F6FC&currStreakLabel=FF4D4D&sideLabels=C9D1D9&dates=8B949E" alt="GitHub Streak" />
+  </p>
+
+  <p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
+      <img width="100%" alt="GitHub contribution snake" src="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
+    </picture>
   </p>
 </details>
 
@@ -72,3 +121,5 @@
 <img src="https://komarev.com/ghpvc/?username=yusufaliaskin&style=plastic&label=Views&color=red"><img>
 <img src="https://img.shields.io/github/followers/yusufaliaskin?style=plastic&logo=github&label=Followers&color=black" />
 </p>
+
+<img src="images/svg/footer.svg" width="100%" alt="Animated red footer" />
