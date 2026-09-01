@@ -1,103 +1,215 @@
-<img src="images/svg/header_en.svg"></img>
+<div align="center">
 
-<table align="right">
- <tr><td><a href="README.md">🇺🇸 English</a></td></tr>
- <tr><td><a href="README_TR.md">🇹🇷 Türkçe</a></td></tr>
-</table>
+<img src="images/svg/header_en.svg" width="100%" alt="Yusuf Ali Aşkın animated developer banner" />
 
-### :space_invader: &nbsp;About Me
+<br/>
 
-&nbsp;&nbsp;&nbsp; :technologist: &nbsp;Software Engineer focused on AI systems, cybersecurity, automation and modern software development. \
-&nbsp;&nbsp;&nbsp; :seedling: &nbsp;Love for science, artificial intelligence and continuous learning.\
-&nbsp;&nbsp;&nbsp; :heartbeat: &nbsp;Passionate about problem solving, security tooling and daily routine automation.\
-&nbsp;&nbsp;&nbsp; :writing_hand: &nbsp;Always studying software architecture, AI engineering, infrastructure and system design.\
-&nbsp;&nbsp;&nbsp; :hammer_and_wrench: &nbsp;Building full-stack applications, monitoring platforms, AI assistants and infrastructure tools.\
-&nbsp;&nbsp;&nbsp; :computer: &nbsp;Working with Linux, Wazuh, Active Directory, observability, networking and automation.
+<a href="README.md"><img src="https://img.shields.io/badge/English-0D1117?style=for-the-badge&logo=googletranslate&logoColor=58A6FF" alt="English"></a>
+<a href="README_TR.md"><img src="https://img.shields.io/badge/Türkçe-0D1117?style=for-the-badge&logo=googletranslate&logoColor=3FB950" alt="Türkçe"></a>
 
-<p align="center">
-  <a href="mailto:yusufaliaskin@gmail.com?subject=Hello%20Yusuf%20Ali"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://yusufaliaskin.com"><img src="https://img.shields.io/badge/portfolio-000000.svg?&style=for-the-badge&logo=vercel&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
+<br/><br/>
 
-<hr/>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=19&duration=2600&pause=800&color=58A6FF&center=true&vCenter=true&width=850&lines=AI+Systems+%7C+Software+Engineering+%7C+Cybersecurity;Automation+%7C+Infrastructure+%7C+Observability;Build+secure.+Automate+the+boring.+Ship+reliable+systems." alt="Typing introduction" />
+
+</div>
+
+---
+
+## 👾 About Me
+
+```text
+name        : Yusuf Ali Aşkın
+focus       : AI Systems · Software Engineering · Cybersecurity · Automation
+environment : Linux · Wazuh · Active Directory · Observability · Networking
+building    : Full-stack apps · Monitoring platforms · AI assistants · Infrastructure tools
+mindset     : Build → Measure → Secure → Automate → Improve
+```
+
+- 🤖 Designing and building **AI-powered systems, agents and automation workflows**.
+- 🛡️ Interested in **cybersecurity, detection engineering, monitoring and secure infrastructure**.
+- ⚙️ I like converting repetitive operational work into **reliable automation**.
+- 🧠 Continuously learning **system design, AI engineering, networking and modern software architecture**.
+- 🐧 Comfortable working close to the system layer with **Linux, Bash, PowerShell and observability tooling**.
+
+<div align="center">
+
+<a href="mailto:yusufaliaskin@gmail.com?subject=Hello%20Yusuf%20Ali"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"></a>
+<a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+<a href="https://yusufaliaskin.com"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"></a>
+
+</div>
+
+---
+
+<details open>
+<summary><b>🧬 Engineering DNA</b></summary>
+<br/>
+
+<div align="center">
+
+### Languages
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![C%23](https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+
+### Web & Backend
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+### Data & Storage
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+
+</div>
+</details>
 
 <details>
-  <summary><b>:computer: &nbsp;Main tech knowledge</b></summary>
-  <br/>
+<summary><b>🤖 AI & Intelligent Systems</b></summary>
+<br/>
 
-![Python](https://img.shields.io/badge/PYTHON-3776AB.svg?&style=flat&logo=python&logoColor=white)&nbsp;
-![JavaScript](https://img.shields.io/badge/JAVASCRIPT-323330.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)&nbsp;
-![TypeScript](https://img.shields.io/badge/TYPESCRIPT-%23007ACC.svg?&style=flat&logo=typescript&logoColor=white)&nbsp;
-![C++](https://img.shields.io/badge/C++-00599C.svg?&style=flat&logo=c%2B%2B&logoColor=white)&nbsp;
-![C#](https://img.shields.io/badge/C%23-512BD4.svg?&style=flat&logo=dotnet&logoColor=white)&nbsp;\
-![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?&style=flat&logo=html5&logoColor=white)&nbsp;
-![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?&style=flat&logo=css3&logoColor=white)&nbsp;
-![React](https://img.shields.io/badge/REACT-20232A.svg?&style=flat&logo=react&logoColor=61DAFB)&nbsp;
-![Next.js](https://img.shields.io/badge/NEXT.JS-000000.svg?&style=flat&logo=next.js&logoColor=white)&nbsp;
-![NodeJS](https://img.shields.io/badge/NODEJS-339933.svg?&style=flat&logo=node.js&logoColor=white)&nbsp;\
-![Django](https://img.shields.io/badge/DJANGO-092E20.svg?&style=flat&logo=django&logoColor=white)&nbsp;
-![Flask](https://img.shields.io/badge/FLASK-000000.svg?&style=flat&logo=flask&logoColor=white)&nbsp;
-![FastAPI](https://img.shields.io/badge/FASTAPI-009688.svg?&style=flat&logo=fastapi&logoColor=white)&nbsp;
-![Bootstrap](https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=flat&logo=bootstrap&logoColor=white)&nbsp;\
-![Git](https://img.shields.io/badge/GIT-%23F05033.svg?&style=flat&logo=git&logoColor=white)&nbsp;
-![GitHub](https://img.shields.io/badge/GITHUB-%23121011.svg?&style=flat&logo=github&logoColor=white)&nbsp;
-![Docker](https://img.shields.io/badge/DOCKER-2496ED.svg?&style=flat&logo=docker&logoColor=white)&nbsp;
-![Linux](https://img.shields.io/badge/LINUX-FCC624.svg?&style=flat&logo=linux&logoColor=black)&nbsp;
-![PowerShell](https://img.shields.io/badge/POWERSHELL-5391FE.svg?&style=flat&logo=powershell&logoColor=white)&nbsp;
-![Bash](https://img.shields.io/badge/BASH-121011.svg?&style=flat&logo=gnu-bash&logoColor=white)&nbsp;\
-![Wazuh](https://img.shields.io/badge/WAZUH-005571.svg?&style=flat&logoColor=white)&nbsp;
-![Grafana](https://img.shields.io/badge/GRAFANA-F46800.svg?&style=flat&logo=grafana&logoColor=white)&nbsp;
-![Prometheus](https://img.shields.io/badge/PROMETHEUS-E6522C.svg?&style=flat&logo=prometheus&logoColor=white)&nbsp;
-![Cloudflare](https://img.shields.io/badge/CLOUDFLARE-F38020.svg?&style=flat&logo=cloudflare&logoColor=white)&nbsp;
-![Azure](https://img.shields.io/badge/AZURE-0078D4.svg?&style=flat&logoColor=white)&nbsp;\
-![NumPy](https://img.shields.io/badge/NUMPY-013243.svg?&style=flat&logo=numpy&logoColor=white)&nbsp;
-![Pandas](https://img.shields.io/badge/PANDAS-150458.svg?&style=flat&logo=pandas&logoColor=white)&nbsp;
-![Jupyter](https://img.shields.io/badge/JUPYTER-F37626.svg?&style=flat&logo=jupyter&logoColor=white)&nbsp;
-![Apache Hive](https://img.shields.io/badge/APACHE%20HIVE-FDEE21.svg?&style=flat&logo=apache-hive&logoColor=black)&nbsp;\
-![REST API](https://img.shields.io/badge/REST-02569B.svg?&style=flat&logoColor=white)&nbsp;
-![Active Directory](https://img.shields.io/badge/ACTIVE%20DIRECTORY-0078D4.svg?&style=flat&logoColor=white)&nbsp;
-![AI Systems](https://img.shields.io/badge/AI%20SYSTEMS-412991.svg?&style=flat&logo=openai&logoColor=white)&nbsp;
-![Automation](https://img.shields.io/badge/AUTOMATION-6DB33F.svg?&style=flat&logoColor=white)&nbsp;
+<div align="center">
+
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+</div>
+
+```text
+AI Engineering
+├── Agents & tool-using workflows
+├── LLM application architecture
+├── Automation pipelines
+├── Data processing & evaluation
+└── Production integration
+```
 
 </details>
 
 <details>
-  <summary><b>:brain: &nbsp;Other knowledge, always learning</b></summary>
-  <br/>
+<summary><b>🛡️ Cybersecurity & Observability</b></summary>
+<br/>
 
-![OpenAI](https://img.shields.io/badge/OPENAI-412991.svg?&style=flat&logo=openai&logoColor=white)&nbsp;
-![TensorFlow](https://img.shields.io/badge/TENSORFLOW-FF6F00.svg?&style=flat&logo=tensorflow&logoColor=white)&nbsp;
-![PyTorch](https://img.shields.io/badge/PYTORCH-EE4C2C.svg?&style=flat&logo=pytorch&logoColor=white)&nbsp;
-![Kubernetes](https://img.shields.io/badge/KUBERNETES-326CE5.svg?&style=flat&logo=kubernetes&logoColor=white)&nbsp;\
-![Terraform](https://img.shields.io/badge/TERRAFORM-7B42BC.svg?&style=flat&logo=terraform&logoColor=white)&nbsp;
-![Ansible](https://img.shields.io/badge/ANSIBLE-%231A1918.svg?&style=flat&logo=ansible&logoColor=white)&nbsp;
-![Redis](https://img.shields.io/badge/REDIS-DC382D.svg?&style=flat&logo=redis&logoColor=white)&nbsp;
-![Nginx](https://img.shields.io/badge/NGINX-269539.svg?&style=flat&logo=nginx&logoColor=white)&nbsp;\
-![PostgreSQL](https://img.shields.io/badge/POSTGRESQL-%23316192.svg?&style=flat&logo=postgresql&logoColor=white)&nbsp;
-![MySQL](https://img.shields.io/badge/MYSQL-4479A1.svg?&style=flat&logo=mysql&logoColor=white)&nbsp;
-![SQLite](https://img.shields.io/badge/SQLITE-003B57.svg?&style=flat&logo=sqlite&logoColor=white)&nbsp;
-![MongoDB](https://img.shields.io/badge/MONGODB-47A248.svg?&style=flat&logo=mongodb&logoColor=white)&nbsp;\
-![Networking](https://img.shields.io/badge/NETWORKING-0078D4.svg?&style=flat&logoColor=white)&nbsp;
-![Cybersecurity](https://img.shields.io/badge/CYBERSECURITY-EE0000.svg?&style=flat&logoColor=white)&nbsp;
-![Observability](https://img.shields.io/badge/OBSERVABILITY-F46800.svg?&style=flat&logoColor=white)&nbsp;
-![System Design](https://img.shields.io/badge/SYSTEM%20DESIGN-6DB33F.svg?&style=flat&logoColor=white)&nbsp;
+<div align="center">
+
+![Wazuh](https://img.shields.io/badge/Wazuh-005571?style=for-the-badge&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+
+</div>
+
+```text
+Security & Operations
+├── Event monitoring / correlation
+├── Active Directory environments
+├── Detection-oriented telemetry
+├── Network & host visibility
+├── Audit workflows
+└── Secure automation
+```
 
 </details>
 
 <details>
-  <summary><b>:gear: &nbsp;GitHub Statistics</b></summary>
-  <br/>
-    <p align="center">
-        <img height="137px" src="https://github-readme-streak-stats.herokuapp.com/?user=yusufaliaskin&hide_border=true&theme=nightowl" />
-    </p>
-    <p align="center">
-        <img height="137px" src="https://github-readme-stats.vercel.app/api?username=yusufaliaskin&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&count_private=true&line_height=21&theme=nightowl" /> <img height="137px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yusufaliaskin&hide=html&hide_title=true&hide_border=true&layout=compact&langs_count=8&theme=nightowl" />
-    </p>
+<summary><b>☁️ Infrastructure, DevOps & Automation</b></summary>
+<br/>
+
+<div align="center">
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
+![Ansible](https://img.shields.io/badge/Ansible-1A1918?style=for-the-badge&logo=ansible&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-269539?style=for-the-badge&logo=nginx&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+</div>
 </details>
 
-<hr/>
+---
 
-<p align="right">
-<img src="https://komarev.com/ghpvc/?username=yusufaliaskin&style=plastic&label=Views"><img>
-</p>
+## 🌳 System Tree
+
+```text
+YUSUF_ALI_AŞKIN/
+│
+├── ai/
+│   ├── agents
+│   ├── llm-systems
+│   ├── automation
+│   └── evaluation
+│
+├── engineering/
+│   ├── backend
+│   ├── frontend
+│   ├── APIs
+│   └── system-design
+│
+├── security/
+│   ├── wazuh
+│   ├── monitoring
+│   ├── active-directory
+│   └── detection
+│
+├── infrastructure/
+│   ├── linux
+│   ├── containers
+│   ├── networking
+│   └── observability
+│
+└── philosophy/
+    └── "Make complex systems understandable, secure and automated."
+```
+
+---
+
+## 📊 GitHub Telemetry
+
+<div align="center">
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=yusufaliaskin&show_icons=true&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=3FB950&text_color=C9D1D9&ring_color=8B5CF6" alt="GitHub stats" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yusufaliaskin&layout=compact&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9&langs_count=8" alt="Top languages" />
+
+<br/>
+
+<img width="70%" src="https://streak-stats.demolab.com?user=yusufaliaskin&theme=github-dark-blue&hide_border=true&background=0D1117&ring=58A6FF&fire=3FB950&currStreakLabel=58A6FF" alt="GitHub streak" />
+
+<br/>
+
+<img width="96%" src="https://github-readme-activity-graph.vercel.app/graph?username=yusufaliaskin&bg_color=0d1117&color=8b949e&line=58a6ff&point=3fb950&area=true&area_color=58a6ff&hide_border=true" alt="Contribution activity graph" />
+
+</div>
+
+---
+
+<div align="center">
+
+### `root@future:~# keep_building_`
+
+<img src="https://komarev.com/ghpvc/?username=yusufaliaskin&style=for-the-badge&color=0D1117&label=PROFILE+VIEWS" alt="Profile views" />
+
+<sub>Designed as a living developer profile — code, security, AI and automation in one system.</sub>
+
+</div>
