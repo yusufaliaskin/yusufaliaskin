@@ -1,0 +1,57 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1117"/>
+      <stop offset="0.52" stop-color="#101923"/>
+      <stop offset="1" stop-color="#0D1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="110" y1="58" x2="1010" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3FB950"/>
+      <stop offset="0.48" stop-color="#58A6FF"/>
+      <stop offset="1" stop-color="#A371F7"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#30363D" stroke-width="1" opacity="0.22"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" rx="22" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1198" height="318" rx="21" stroke="#30363D" stroke-width="2"/>
+  <rect width="1200" height="320" rx="22" fill="url(#grid)"/>
+
+  <circle cx="1040" cy="48" r="145" fill="#238636" opacity="0.07"/>
+  <circle cx="1090" cy="275" r="190" fill="#1F6FEB" opacity="0.07"/>
+  <circle cx="900" cy="315" r="135" fill="#8957E5" opacity="0.06"/>
+
+  <g opacity="0.92">
+    <rect x="74" y="55" width="9" height="210" rx="4.5" fill="url(#accent)"/>
+    <circle cx="78.5" cy="67" r="14" stroke="#3FB950" stroke-width="2" opacity="0.38"/>
+  </g>
+
+  <text x="116" y="114" fill="#8B949E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" letter-spacing="4">HELLO, I'M</text>
+  <text x="112" y="173" fill="#F0F6FC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="56" font-weight="800" letter-spacing="1">YUSUF ALI AŞKIN</text>
+  <rect x="114" y="192" width="690" height="3" rx="1.5" fill="url(#accent)" opacity="0.9"/>
+  <text x="116" y="231" fill="#C9D1D9" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="500">AI Systems  •  Software Engineering  •  Cybersecurity  •  Automation</text>
+  <text x="116" y="265" fill="#8B949E" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="16">build → secure → automate → observe</text>
+
+  <g transform="translate(900 78)">
+    <rect width="225" height="155" rx="14" fill="#0D1117" stroke="#30363D" stroke-width="2"/>
+    <rect width="225" height="34" rx="14" fill="#161B22"/>
+    <path d="M0 34H225" stroke="#30363D"/>
+    <circle cx="20" cy="17" r="5" fill="#FF7B72"/>
+    <circle cx="38" cy="17" r="5" fill="#D29922"/>
+    <circle cx="56" cy="17" r="5" fill="#3FB950"/>
+    <text x="18" y="65" fill="#3FB950" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="14">$ whoami</text>
+    <text x="18" y="90" fill="#F0F6FC" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="14">yusufaliaskin</text>
+    <text x="18" y="116" fill="#58A6FF" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="14">$ focus</text>
+    <text x="18" y="140" fill="#C9D1D9" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="13">AI | Sec | Dev</text>
+  </g>
+
+  <circle cx="1115" cy="260" r="4" fill="#3FB950" filter="url(#glow)"/>
+  <circle cx="1088" cy="260" r="4" fill="#58A6FF" filter="url(#glow)"/>
+  <circle cx="1061" cy="260" r="4" fill="#A371F7" filter="url(#glow)"/>
+</svg>
