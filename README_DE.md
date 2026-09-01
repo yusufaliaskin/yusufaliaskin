@@ -22,6 +22,14 @@
   <a href="https://t.me/yusufaliaskin"><img src="https://img.shields.io/badge/telegram-%2326A5E4.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></a>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
+    <img width="100%" alt="GitHub contribution snake" src="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
+  </picture>
+</p>
+
 <hr/>
 
 <details>
@@ -92,7 +100,7 @@
 
 </details>
 
-<details open>
+<details>
   <summary><b>:gear: &nbsp;GitHub-Statistiken</b></summary>
   <br/>
 
@@ -100,13 +108,7 @@
     <img width="72%" src="https://streak-stats.demolab.com?user=yusufaliaskin&background=0D1117&border=30363D&stroke=30363D&ring=FF4D4D&fire=FF4D4D&currStreakNum=F0F6FC&sideNums=F0F6FC&currStreakLabel=FF4D4D&sideLabels=C9D1D9&dates=8B949E" alt="GitHub Streak" />
   </p>
 
-  <p align="center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
-      <img width="100%" alt="GitHub contribution snake" src="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
-    </picture>
-  </p>
+  
 </details>
 
 <hr/>
