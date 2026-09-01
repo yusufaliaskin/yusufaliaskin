@@ -53,20 +53,36 @@
 
 </details>
 
-<details>
+<details open>
   <summary><b>:gear: &nbsp;GitHub Statistics</b></summary>
   <br/>
-    <p align="center">
-        <img height="137px" src="https://streak-stats.demolab.com?user=yusufaliaskin&hide_border=true&background=0D1117&ring=EF4444&fire=EF4444&currStreakLabel=F87171&sideLabels=C9D1D9&dates=8B949E" />
-    </p>
-    <p align="center">
-        <img height="137px" src="https://github-readme-stats.vercel.app/api?username=yusufaliaskin&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&count_private=true&line_height=21&bg_color=0D1117&title_color=EF4444&text_color=C9D1D9&icon_color=EF4444" /> <img height="137px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yusufaliaskin&hide=html&hide_title=true&hide_border=true&layout=compact&langs_count=8&bg_color=0D1117&title_color=EF4444&text_color=C9D1D9" />
-    </p>
+
+  <p align="center">
+    <img width="72%" src="https://streak-stats.demolab.com?user=yusufaliaskin&background=0D1117&border=30363D&stroke=30363D&ring=FF4D4D&fire=FF4D4D&currStreakNum=F0F6FC&sideNums=F0F6FC&currStreakLabel=FF4D4D&sideLabels=C9D1D9&dates=8B949E" alt="GitHub Streak" />
+  </p>
+
+  <p align="center">
+    <img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=yusufaliaskin&theme=github_dark" alt="GitHub Profile Details" />
+  </p>
+
+  <p align="center">
+    <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=yusufaliaskin&theme=github_dark" alt="Top Languages by Repository" />
+    <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=yusufaliaskin&theme=github_dark" alt="GitHub Stats" />
+    <img height="165" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=yusufaliaskin&theme=github_dark&utcOffset=3" alt="Productive Time" />
+  </p>
+
+  <p align="center">
+    <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=yusufaliaskin&bg_color=0d1117&color=c9d1d9&line=ff4d4d&point=ffffff&area=true&hide_border=false&border_color=30363d&radius=8" alt="GitHub Activity Graph" />
+  </p>
 </details>
 
 <hr/>
 
-<p align="center"><a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile" /></a></p>
+<p align="center">
+  <a href="https://github.com/yusufaliaskin">
+    <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile" />
+  </a>
+</p>
 
 <p align="right">
 <img src="https://komarev.com/ghpvc/?username=yusufaliaskin&style=plastic&label=Views&color=red"><img>
