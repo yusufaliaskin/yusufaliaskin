@@ -1,0 +1,80 @@
+name: Fix main tech badge rendering
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-main-tech-badge-render.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Convert Markdown badges to HTML images in Main Tech
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          files = [
+              Path('README.md'),
+              Path('README_TR.md'),
+              Path('README_DE.md'),
+              Path('README_RU.md'),
+              Path('README_ZH.md'),
+          ]
+
+          badge_re = re.compile(r'!\[([^\]]*)\]\((https://img\.shields\.io/[^)]+)\)')
+
+          for path in files:
+              text = path.read_text(encoding='utf-8')
+
+              marker = '<summary><b>:computer:'
+              marker_pos = text.find(marker)
+              if marker_pos == -1:
+                  raise RuntimeError(f'Main tech section not found in {path}')
+
+              start = text.rfind('<details>', 0, marker_pos)
+              if start == -1:
+                  raise RuntimeError(f'Opening details tag not found in {path}')
+
+              end_tag = '</details>'
+              end = text.find(end_tag, marker_pos)
+              if end == -1:
+                  raise RuntimeError(f'Closing details tag not found in {path}')
+              end += len(end_tag)
+
+              block = text[start:end]
+
+              def repl(match):
+                  alt = match.group(1).replace('&', '&amp;').replace('"', '&quot;')
+                  url = match.group(2).replace('&', '&amp;')
+                  return f'<img src="{url}" alt="{alt}" />'
+
+              fixed = badge_re.sub(repl, block)
+
+              # Ensure no accidental Markdown image badges remain in this section.
+              if '![' in fixed and 'img.shields.io' in fixed:
+                  raise RuntimeError(f'Unconverted badge detected in {path}')
+
+              path.write_text(text[:start] + fixed + text[end:], encoding='utf-8')
+
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md README_TR.md README_DE.md README_RU.md README_ZH.md
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "fix: render main tech badges as images"
+            git push origin main
+          fi
