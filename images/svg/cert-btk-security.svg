@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="294" viewBox="0 0 1200 294">
+<rect width="1200" height="100%" rx="14" fill="#0d1117"/>
+<text x="24" y="36" fill="#ff4d4d" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700">BTK Akademi / Fortinet / Udemy · 6</text>
+<rect x="18" y="52" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="52" width="10" height="62" rx="5" fill="#C41230"/>
+<text x="43" y="79" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Microsoft Azure DevOps</text>
+<text x="43" y="100" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">BTK Akademi</text>
+<rect x="607" y="52" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="52" width="10" height="62" rx="5" fill="#C41230"/>
+<text x="632" y="79" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Siber Güvenliğe Giriş</text>
+<text x="632" y="100" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">BTK Akademi</text>
+<rect x="18" y="126" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="126" width="10" height="62" rx="5" fill="#C41230"/>
+<text x="43" y="153" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">İleri Ağ Teknolojileri</text>
+<text x="43" y="174" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">BTK Akademi</text>
+<rect x="607" y="126" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="126" width="10" height="62" rx="5" fill="#C41230"/>
+<text x="632" y="153" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">İleri Seviye Python Programlama Dili</text>
+<text x="632" y="174" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">BTK Akademi</text>
+<rect x="18" y="200" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="200" width="10" height="62" rx="5" fill="#EE3124"/>
+<text x="43" y="227" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">FCF - Introduction to the Threat Landscape 2.0 Self-Paced</text>
+<text x="43" y="248" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Fortinet</text>
+<rect x="607" y="200" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="200" width="10" height="62" rx="5" fill="#A435F0"/>
+<text x="632" y="227" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Kali Linux ile Sızma Testleri Eğitimi</text>
+<text x="632" y="248" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Udemy</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="664" viewBox="0 0 1200 664">
+<rect width="1200" height="100%" rx="14" fill="#0d1117"/>
+<text x="24" y="36" fill="#4285F4" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700">Google / Cloud / Android · 12</text>
+<rect x="18" y="52" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="52" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="79" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to Responsible Artificial Intelligence</text>
+<text x="43" y="100" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="607" y="52" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="52" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="79" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to Image Generation</text>
+<text x="632" y="100" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="126" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="126" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="153" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Encoder-Decoder Architecture</text>
+<text x="43" y="174" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="607" y="126" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="126" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="153" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="650">Modernize Infrastructure and Applications with Google Cloud</text>
+<text x="632" y="174" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="200" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="200" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="227" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Exploring Data Transformation with Google Cloud</text>
+<text x="43" y="248" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="607" y="200" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="200" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="227" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to Cloud Identity</text>
+<text x="632" y="248" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="274" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="274" width="10" height="62" rx="5" fill="#1A73E8"/>
+<text x="43" y="301" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to SQL</text>
+<text x="43" y="322" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google for Developers</text>
+<rect x="607" y="274" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="274" width="10" height="62" rx="5" fill="#3DDC84"/>
+<text x="632" y="301" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Build Apps with Flutter</text>
+<text x="632" y="322" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Android Studio Solutions</text>
+<rect x="18" y="348" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="348" width="10" height="62" rx="5" fill="#1A73E8"/>
+<text x="43" y="375" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Firebase Emulators</text>
+<text x="43" y="396" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google for Developers</text>
+<rect x="607" y="348" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="348" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="375" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="650">Preparing for Your Professional Cloud Security Engineer Journey</text>
+<text x="632" y="396" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="422" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="422" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="449" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to Generative AI</text>
+<text x="43" y="470" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="607" y="422" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="422" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="449" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Introduction to Large Language Models</text>
+<text x="632" y="470" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="496" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="496" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="523" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="650">Machine Learning Operations (MLOps) for Generative Artificial Intelligence</text>
+<text x="43" y="544" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="607" y="496" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="607" y="496" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="632" y="523" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="650">Machine Learning Operations (MLOps) with Vertex AI: Model Evaluation</text>
+<text x="632" y="544" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+<rect x="18" y="570" width="575" height="62" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="18" y="570" width="10" height="62" rx="5" fill="#4285F4"/>
+<text x="43" y="597" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="650">Gemini for Security Engineers</text>
+<text x="43" y="618" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">Google Cloud Security</text>
+</svg>
