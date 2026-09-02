@@ -1,0 +1,78 @@
+name: Expand main tech badges
+
+on:
+  push:
+    paths:
+      - '.github/workflows/expand-main-tech-20260902.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-readmes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild Main tech knowledge sections
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import re
+          from urllib.parse import quote
+
+          cats = {
+          'lang': [('Python','3776AB','python','white'),('JavaScript','323330','javascript','F7DF1E'),('TypeScript','3178C6','typescript','white'),('C++','00599C','cplusplus','white'),('C#','512BD4','dotnet','white'),('HTML5','E34F26','html5','white'),('CSS3','1572B6','css3','white'),('SQL','4479A1','mysql','white'),('Bash','4EAA25','gnubash','white'),('PowerShell','5391FE','powershell','white'),('Markdown','000000','markdown','white'),('YAML','CB171E','yaml','white'),('JSON','000000','json','white'),('Regex','111111',None,'white')],
+          'front': [('React','20232A','react','61DAFB'),('Next.js','000000','nextdotjs','white'),('Bootstrap','7952B3','bootstrap','white'),('Tailwind CSS','06B6D4','tailwindcss','white'),('Vite','646CFF','vite','white'),('npm','CB3837','npm','white'),('Responsive UI','0EA5E9',None,'white'),('REST UI','02569B',None,'white')],
+          'back': [('Node.js','339933','nodedotjs','white'),('Django','092E20','django','white'),('Django REST','A30000','django','white'),('Flask','000000','flask','white'),('FastAPI','009688','fastapi','white'),('SQLAlchemy','D71F00','sqlalchemy','white'),('Celery','37814A','celery','white'),('REST API','02569B',None,'white'),('WebSocket','010101','socketdotio','white'),('OpenAPI','6BA539','openapiinitiative','white'),('JWT','000000','jsonwebtokens','white'),('OAuth 2.0','EB5424','auth0','white'),('Gunicorn','499848','gunicorn','white'),('Uvicorn','4051B5',None,'white')],
+          'ai': [('OpenAI','412991','openai','white'),('Gemini','8E75B2','googlegemini','white'),('Claude','D97757','anthropic','white'),('NumPy','013243','numpy','white'),('Pandas','150458','pandas','white'),('Jupyter','F37626','jupyter','white'),('Apache Hive','FDEE21','apachehive','black'),('Supabase','3FCF8E','supabase','white'),('Prompt Engineering','7C3AED',None,'white'),('LLM APIs','B91C1C',None,'white')],
+          'sec': [('Wazuh','005571',None,'white'),('Kali Linux','557C94','kalilinux','white'),('Nmap','004170',None,'white'),('Wireshark','1679A7','wireshark','white'),('Burp Suite','FF6633','burpsuite','white'),('OWASP','000000','owasp','white'),('Active Directory','0078D4','windows11','white'),('OpenSSL','721412','openssl','white'),('SSH','4D4D4D','gnometerminal','white'),('SIEM','B91C1C',None,'white'),('SOC Monitoring','7F1D1D',None,'white'),('Security Auditing','991B1B',None,'white')],
+          'devops': [('Linux','FCC624','linux','black'),('Pardus','4B5563',None,'white'),('Docker','2496ED','docker','white'),('Nginx','009639','nginx','white'),('Git','F05032','git','white'),('GitHub','181717','github','white'),('GitHub Actions','2088FF','githubactions','white'),('GitLab','FC6D26','gitlab','white'),('SonarQube','4E9BCD','sonarqube','white'),('Cloudflare','F38020','cloudflare','white'),('Azure','0078D4','microsoftazure','white'),('Grafana','F46800','grafana','white'),('Prometheus','E6522C','prometheus','white'),('CI/CD','2088FF','githubactions','white')],
+          'db': [('PostgreSQL','4169E1','postgresql','white'),('MySQL','4479A1','mysql','white'),('SQLite','003B57','sqlite','white'),('MongoDB','47A248','mongodb','white'),('Redis','DC382D','redis','white'),('Supabase DB','3FCF8E','supabase','white'),('Database Design','1D4ED8',None,'white'),('SQL Optimization','0F766E',None,'white')],
+          'tools': [('VS Code','007ACC','visualstudiocode','white'),('Postman','FF6C37','postman','white'),('Swagger','85EA2D','swagger','black'),('GitHub Copilot','000000','githubcopilot','white'),('Chrome DevTools','4285F4','googlechrome','white'),('Pytest','0A9EDC','pytest','white'),('Selenium','43B02A','selenium','white'),('Playwright','2EAD33','playwright','white'),('VirtualBox','183A61','virtualbox','white'),('VMware','607078',None,'white'),('Networking','0F172A',None,'white'),('TCP/IP','1E3A8A',None,'white')]
+          }
+
+          tr = {
+          'README.md': ('Main tech knowledge', {'lang':'⌨️ Languages & Markup','front':'🎨 Frontend & UI','back':'⚙️ Backend & APIs','ai':'🤖 AI & Data','sec':'🛡️ Cybersecurity','devops':'☁️ DevOps, Cloud & Observability','db':'🗄️ Databases & Storage','tools':'🧰 Developer, Testing & Networking'}),
+          'README_TR.md': ('Ana teknoloji bilgim', {'lang':'⌨️ Diller & İşaretleme','front':'🎨 Frontend & UI','back':'⚙️ Backend & API','ai':'🤖 AI & Veri','sec':'🛡️ Siber Güvenlik','devops':'☁️ DevOps, Bulut & Gözlemlenebilirlik','db':'🗄️ Veritabanları & Depolama','tools':'🧰 Geliştirici, Test & Ağ Araçları'}),
+          'README_DE.md': ('Haupttechnologien', {'lang':'⌨️ Sprachen & Markup','front':'🎨 Frontend & UI','back':'⚙️ Backend & APIs','ai':'🤖 KI & Daten','sec':'🛡️ Cybersicherheit','devops':'☁️ DevOps, Cloud & Observability','db':'🗄️ Datenbanken & Speicher','tools':'🧰 Entwicklung, Tests & Netzwerk'}),
+          'README_RU.md': ('Основные технологии', {'lang':'⌨️ Языки & разметка','front':'🎨 Frontend & UI','back':'⚙️ Backend & API','ai':'🤖 ИИ & данные','sec':'🛡️ Кибербезопасность','devops':'☁️ DevOps, Cloud & Observability','db':'🗄️ Базы данных & хранилища','tools':'🧰 Разработка, тестирование & сети'}),
+          'README_ZH.md': ('主要技术知识', {'lang':'⌨️ 编程语言 & 标记','front':'🎨 前端 & UI','back':'⚙️ 后端 & API','ai':'🤖 AI & 数据','sec':'🛡️ 网络安全','devops':'☁️ DevOps、云 & 可观测性','db':'🗄️ 数据库 & 存储','tools':'🧰 开发、测试 & 网络'})
+          }
+
+          def badge(label, color, logo=None, logo_color='white'):
+              label_url = quote(label, safe='.-')
+              u = f'https://img.shields.io/badge/{label_url}-{color}.svg?&style=for-the-badge'
+              if logo:
+                  u += f'&logo={logo}&logoColor={logo_color}'
+              return f'![{label}]({u})'
+
+          def section(summary, labels):
+              out = ['<details>', f'  <summary><b>:computer: &nbsp;{summary}</b></summary>', '  <br/>', '']
+              for key in ('lang','front','back','ai','sec','devops','db','tools'):
+                  out += [f'<p><strong>{labels[key]}</strong></p>', '<p>', '&nbsp;&nbsp;'.join(badge(*x) for x in cats[key]), '</p>', '']
+              out.append('</details>')
+              return '\n'.join(out)
+
+          pattern = re.compile(r'<details>\s*\n\s*<summary><b>:computer:.*?</details>', re.S)
+          for fn, (summary, labels) in tr.items():
+              p = Path(fn)
+              text = p.read_text(encoding='utf-8')
+              text, n = pattern.subn(section(summary, labels), text, count=1)
+              if n != 1:
+                  raise SystemExit(f'Could not replace main tech section in {fn}: {n}')
+              p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit README updates and remove one-time workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/expand-main-tech-20260902.yml
+          git add README.md README_TR.md README_DE.md README_RU.md README_ZH.md
+          git commit -m "ui: expand and organize main tech badges"
+          git push
