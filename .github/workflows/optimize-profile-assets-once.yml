@@ -1,0 +1,282 @@
+name: Optimize profile assets once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/optimize-profile-assets-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build local badge sheets and certifications
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import html
+          import re
+          import urllib.request
+          import urllib.parse
+          import textwrap
+          import time
+
+          ROOT = Path('.')
+          SVG_DIR = ROOT / 'images' / 'svg'
+          SVG_DIR.mkdir(parents=True, exist_ok=True)
+
+          README_FILES = ['README.md','README_TR.md','README_DE.md','README_RU.md','README_ZH.md']
+
+          CERTS = [
+              ('Anthropic', 'Certificate of completion: Introduction to agent skills'),
+              ('Anthropic', "Claude with Google Cloud's Vertex AI"),
+              ('Anthropic', 'Certificate of completion: Claude 101'),
+              ('BTK Akademi', 'Microsoft Azure DevOps'),
+              ('BTK Akademi', 'Siber Güvenliğe Giriş'),
+              ('BTK Akademi', 'İleri Ağ Teknolojileri'),
+              ('BTK Akademi', 'İleri Seviye Python Programlama Dili'),
+              ('Google Cloud Security', 'Introduction to Responsible Artificial Intelligence'),
+              ('Google Cloud Security', 'Introduction to Image Generation'),
+              ('Google Cloud Security', 'Encoder-Decoder Architecture'),
+              ('Google Cloud Security', 'Modernize Infrastructure and Applications with Google Cloud'),
+              ('Google Cloud Security', 'Exploring Data Transformation with Google Cloud'),
+              ('Google Cloud Security', 'Introduction to Cloud Identity'),
+              ('Google for Developers', 'Introduction to SQL'),
+              ('Android Studio Solutions', 'Build Apps with Flutter'),
+              ('Google for Developers', 'Firebase Emulators'),
+              ('Google Cloud Security', 'Preparing for Your Professional Cloud Security Engineer Journey'),
+              ('Google Cloud Security', 'Introduction to Generative AI'),
+              ('Google Cloud Security', 'Introduction to Large Language Models'),
+              ('Google Cloud Security', 'Machine Learning Operations (MLOps) for Generative Artificial Intelligence'),
+              ('Google Cloud Security', 'Machine Learning Operations (MLOps) with Vertex AI: Model Evaluation'),
+              ('Google Cloud Security', 'Gemini for Security Engineers'),
+              ('Fortinet', 'FCF - Introduction to the Threat Landscape 2.0 Self-Paced'),
+              ('Udemy', 'Kali Linux ile Sızma Testleri Eğitimi'),
+              ('Cisco', 'CCNAv7: Introduction to Networks'),
+              ('Cisco Networking Academy', 'Introduction to Cybersecurity'),
+              ('Cisco Networking Academy', 'Partner: PCAP - Programming Essentials in Python'),
+              ('Cisco Networking Academy', 'Cybersecurity Essentials'),
+              ('Cisco Networking Academy', 'Partner: NDG Linux Unhatched'),
+              ('Cisco Networking Academy', 'Partner: NDG Linux Essentials'),
+              ('Cisco Networking Academy', 'CCNA: Switching, Routing, and Wireless Essentials'),
+          ]
+
+          BRAND = {
+              'Anthropic': ('#D97757', '#ffffff'),
+              'BTK Akademi': ('#C41230', '#ffffff'),
+              'Google Cloud Security': ('#4285F4', '#ffffff'),
+              'Google for Developers': ('#1A73E8', '#ffffff'),
+              'Android Studio Solutions': ('#3DDC84', '#06281d'),
+              'Fortinet': ('#EE3124', '#ffffff'),
+              'Udemy': ('#A435F0', '#ffffff'),
+              'Cisco': ('#049FD9', '#ffffff'),
+              'Cisco Networking Academy': ('#049FD9', '#ffffff'),
+          }
+
+          def esc(s):
+              return html.escape(s, quote=True)
+
+          def make_cert_sheet(path, title, items, accent):
+              W = 1200
+              pad = 18
+              col_gap = 14
+              row_gap = 12
+              cols = 2
+              card_w = (W - pad*2 - col_gap) // 2
+              card_h = 62
+              rows = (len(items)+1)//2
+              H = 62 + rows*(card_h+row_gap) + 10
+              parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="{H}" viewBox="0 0 1200 {H}">',
+                       '<rect width="1200" height="100%" rx="14" fill="#0d1117"/>',
+                       f'<text x="24" y="36" fill="{accent}" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="700">{esc(title)}</text>']
+              for i,(issuer,name) in enumerate(items):
+                  r, c = divmod(i, cols)
+                  x = pad + c*(card_w+col_gap)
+                  y = 52 + r*(card_h+row_gap)
+                  bg, fg = BRAND.get(issuer, ('#30363d','#ffffff'))
+                  parts.append(f'<rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="10" fill="#161b22" stroke="#30363d"/>')
+                  parts.append(f'<rect x="{x}" y="{y}" width="10" height="{card_h}" rx="5" fill="{bg}"/>')
+                  label = name
+                  fs = 15 if len(label) < 58 else 13
+                  if len(label) > 78:
+                      lines = textwrap.wrap(label, width=64)[:2]
+                  else:
+                      lines = [label]
+                  if len(lines)==1:
+                      parts.append(f'<text x="{x+25}" y="{y+27}" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="{fs}" font-weight="650">{esc(lines[0])}</text>')
+                      parts.append(f'<text x="{x+25}" y="{y+48}" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="12">{esc(issuer)}</text>')
+                  else:
+                      parts.append(f'<text x="{x+25}" y="{y+23}" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" font-weight="650">{esc(lines[0])}</text>')
+                      parts.append(f'<text x="{x+25}" y="{y+40}" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" font-weight="650">{esc(lines[1])}</text>')
+                      parts.append(f'<text x="{x+25}" y="{y+56}" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="10.5">{esc(issuer)}</text>')
+              parts.append('</svg>')
+              path.write_text('\n'.join(parts), encoding='utf-8')
+
+          anth = [x for x in CERTS if x[0]=='Anthropic']
+          google = [x for x in CERTS if x[0] in {'Google Cloud Security','Google for Developers','Android Studio Solutions'}]
+          btk = [x for x in CERTS if x[0] in {'BTK Akademi','Fortinet','Udemy'}]
+          cisco = [x for x in CERTS if x[0] in {'Cisco','Cisco Networking Academy'}]
+          make_cert_sheet(SVG_DIR/'cert-anthropic.svg', 'Anthropic · 3', anth, '#D97757')
+          make_cert_sheet(SVG_DIR/'cert-google.svg', 'Google / Cloud / Android · 12', google, '#4285F4')
+          make_cert_sheet(SVG_DIR/'cert-btk-security.svg', 'BTK Akademi / Fortinet / Udemy · 6', btk, '#ff4d4d')
+          make_cert_sheet(SVG_DIR/'cert-cisco.svg', 'Cisco / Networking Academy · 7', cisco, '#049FD9')
+
+          # Build a single local SVG from current Shields badges, preserving the rendered badge artwork.
+          badge_pat = re.compile(r'<img\b[^>]*?src="(https://img\.shields\.io/badge/[^\"]+)"[^>]*?(?:alt="([^\"]*)")?[^>]*/?>', re.I)
+          md_badge_pat = re.compile(r'!\[([^\]]*)\]\((https://img\.shields\.io/badge/[^\)]+)\)')
+
+          def download_badge(url):
+              url = html.unescape(url)
+              req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0 GitHubProfileAssetBuilder/1.0'})
+              with urllib.request.urlopen(req, timeout=20) as r:
+                  return r.read().decode('utf-8', 'replace')
+
+          def fallback_badge(label):
+              label = label or 'Badge'
+              w = max(80, min(260, 22 + len(label)*8))
+              svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="28"><rect width="{w}" height="28" rx="3" fill="#30363d"/><text x="{w/2}" y="19" text-anchor="middle" fill="#fff" font-family="Verdana,Arial" font-size="11" font-weight="700">{esc(label)}</text></svg>'
+              return svg
+
+          def parse_svg(svg, prefix):
+              wm = re.search(r'\bwidth="([0-9.]+)"', svg)
+              hm = re.search(r'\bheight="([0-9.]+)"', svg)
+              w = float(wm.group(1)) if wm else 120.0
+              h = float(hm.group(1)) if hm else 28.0
+              body = re.sub(r'^.*?<svg\b[^>]*>', '', svg, count=1, flags=re.S)
+              body = re.sub(r'</svg>\s*$', '', body, count=1, flags=re.S)
+              ids = re.findall(r'\bid="([^\"]+)"', body)
+              for old in sorted(set(ids), key=len, reverse=True):
+                  new = f'{prefix}_{old}'
+                  body = body.replace(f'id="{old}"', f'id="{new}"')
+                  body = body.replace(f'#{old}', f'#{new}')
+              return w,h,body
+
+          def build_badge_sheet(url_labels, out_path):
+              badges=[]
+              for idx,(url,label) in enumerate(url_labels):
+                  try:
+                      svg = download_badge(url)
+                  except Exception:
+                      svg = fallback_badge(label)
+                  try:
+                      w,h,body = parse_svg(svg, f'b{idx}')
+                  except Exception:
+                      w,h,body = parse_svg(fallback_badge(label), f'b{idx}')
+                  badges.append((w,h,body))
+                  time.sleep(0.02)
+              W=1200
+              margin=10
+              gapx=10
+              gapy=10
+              x=margin; y=margin; row_h=0
+              placed=[]
+              for w,h,body in badges:
+                  if x+w > W-margin and x>margin:
+                      y += row_h + gapy
+                      x=margin; row_h=0
+                  placed.append((x,y,w,h,body))
+                  x += w + gapx
+                  row_h=max(row_h,h)
+              H=int(y+row_h+margin)
+              parts=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">']
+              for x,y,w,h,body in placed:
+                  parts.append(f'<g transform="translate({x:.1f},{y:.1f})">{body}</g>')
+              parts.append('</svg>')
+              out_path.write_text('\n'.join(parts), encoding='utf-8')
+
+          def details_blocks(text):
+              return list(re.finditer(r'<details>.*?</details>', text, flags=re.S|re.I))
+
+          def extract_badges(block):
+              found=[]
+              for m in badge_pat.finditer(block):
+                  found.append((html.unescape(m.group(1)), html.unescape(m.group(2) or '')))
+              for m in md_badge_pat.finditer(block):
+                  found.append((html.unescape(m.group(2)), html.unescape(m.group(1))))
+              return found
+
+          # Build assets from current README.md only; language pages use the same badge sets.
+          en_text = Path('README.md').read_text(encoding='utf-8')
+          blocks = details_blocks(en_text)
+          shield_blocks=[(m, extract_badges(m.group(0))) for m in blocks if 'img.shields.io/badge/' in m.group(0)]
+          if len(shield_blocks) >= 2:
+              build_badge_sheet(shield_blocks[0][1], SVG_DIR/'main-tech.svg')
+              build_badge_sheet(shield_blocks[1][1], SVG_DIR/'other-knowledge.svg')
+
+          CERT_TITLES={
+              'README.md':'Certifications',
+              'README_TR.md':'Sertifikalar',
+              'README_DE.md':'Zertifikate',
+              'README_RU.md':'Сертификаты',
+              'README_ZH.md':'认证与证书',
+          }
+          LINK_LABEL={
+              'README.md':'View all certifications on LinkedIn',
+              'README_TR.md':'Tüm sertifikaları LinkedIn’de görüntüle',
+              'README_DE.md':'Alle Zertifikate auf LinkedIn ansehen',
+              'README_RU.md':'Посмотреть все сертификаты в LinkedIn',
+              'README_ZH.md':'在 LinkedIn 查看全部证书',
+          }
+
+          def replace_badge_block(block, asset):
+              # Keep summary/details and any user-authored non-badge text. Collapse only the dense badge markup.
+              matches=list(badge_pat.finditer(block)) + list(md_badge_pat.finditer(block))
+              if not matches:
+                  return block
+              starts=[m.start() for m in matches]; ends=[m.end() for m in matches]
+              start=min(starts); end=max(ends)
+              prefix=block[:start]
+              suffix=block[end:]
+              prefix=re.sub(r'(?:&nbsp;|\s|<br\s*/?>|<p>|</p>)*$', '\n', prefix, flags=re.I)
+              suffix=re.sub(r'^(?:&nbsp;|\s|<br\s*/?>|<p>|</p>)*', '\n', suffix, flags=re.I)
+              img=f'<img loading="lazy" decoding="async" width="100%" src="images/svg/{asset}" alt="{asset[:-4].replace("-"," ").title()}" />'
+              return prefix + img + suffix
+
+          for fn in README_FILES:
+              p=Path(fn)
+              if not p.exists():
+                  continue
+              text=p.read_text(encoding='utf-8')
+              original=text
+              bl=details_blocks(text)
+              target=[m for m in bl if 'img.shields.io/badge/' in m.group(0)]
+              # Replace the first two dense badge sections only: Main Tech and Other Knowledge.
+              if len(target)>=2:
+                  # Replace from end to start to preserve offsets.
+                  repl=[(target[0], 'main-tech.svg'), (target[1], 'other-knowledge.svg')]
+                  for m,asset in sorted(repl, key=lambda x:x[0].start(), reverse=True):
+                      new_block=replace_badge_block(m.group(0), asset)
+                      text=text[:m.start()] + new_block + text[m.end():]
+
+              if 'images/svg/cert-anthropic.svg' not in text:
+                  # Insert after Other Knowledge block (now second details block).
+                  current_blocks=details_blocks(text)
+                  insert_after=current_blocks[1].end() if len(current_blocks)>=2 else len(text)
+                  title=CERT_TITLES[fn]
+                  link_label=LINK_LABEL[fn]
+                  cert_section=f'''\n\n<details>\n  <summary><b>:mortar_board: &nbsp;{title} · 31</b></summary>\n  <br/>\n\n  <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img loading="lazy" decoding="async" width="100%" src="images/svg/cert-anthropic.svg" alt="Anthropic certifications" /></a>\n  <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img loading="lazy" decoding="async" width="100%" src="images/svg/cert-google.svg" alt="Google certifications" /></a>\n  <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img loading="lazy" decoding="async" width="100%" src="images/svg/cert-btk-security.svg" alt="BTK Fortinet Udemy certifications" /></a>\n  <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img loading="lazy" decoding="async" width="100%" src="images/svg/cert-cisco.svg" alt="Cisco certifications" /></a>\n\n  <p align="center"><a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><b>{link_label} →</b></a></p>\n</details>'''
+                  text=text[:insert_after] + cert_section + text[insert_after:]
+
+              if text != original:
+                  p.write_text(text, encoding='utf-8')
+
+          PY
+
+      - name: Commit optimized assets
+        run: |
+          rm -f .github/workflows/optimize-profile-assets-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README*.md images/svg .github/workflows/optimize-profile-assets-once.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "perf: localize badge assets and add 31 certifications"
+            git push
+          fi
