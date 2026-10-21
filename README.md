@@ -218,7 +218,7 @@
 
 <p align="center">
   <a href="https://github.com/yusufaliaskin">
-    <img src="https://img.shields.io/badge/GitHub-Visit%20My%20Profile-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="Visit GitHub profile" />
+    <img src="https://img.shields.io/badge/GitHub-Visit%20My%20Profile-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="Visit GitHub profile" loading="lazy" decoding="async" />
   </a>
 </p>
 
