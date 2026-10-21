@@ -1,94 +1,71 @@
 <img src="images/svg/header_zh.svg" width="100%" alt="Yusuf Ali Aşkın — 软件工程师" />
 
+
 <p align="right">
-  <a href="README.md"><img src="images/flags/us.svg" height="13" alt="English" /> English</a> ·
-  <a href="README_TR.md"><img src="images/flags/tr.svg" height="13" alt="Türkçe" /> Türkçe</a> ·
-  <a href="README_DE.md"><img src="images/flags/de.svg" height="13" alt="Deutsch" /> Deutsch</a> ·
-  <a href="README_RU.md"><img src="images/flags/ru.svg" height="13" alt="Русский" /> Русский</a> ·
-  <a href="README_ZH.md"><img src="images/flags/cn.svg" height="13" alt="中文" /> 中文</a>
+  <a href="README.md"><img src="images/flags/us.svg" width="16" height="11" alt="English" loading="lazy" /> English</a> ·
+  <a href="README_TR.md"><img src="images/flags/tr.svg" width="16" height="11" alt="Türkçe" loading="lazy" /> Türkçe</a> ·
+  <a href="README_DE.md"><img src="images/flags/de.svg" width="16" height="11" alt="Deutsch" loading="lazy" /> Deutsch</a> ·
+  <a href="README_RU.md"><img src="images/flags/ru.svg" width="16" height="11" alt="Русский" loading="lazy" /> Русский</a> ·
+  <a href="README_ZH.md"><img src="images/flags/cn.svg" width="16" height="11" alt="中文" loading="lazy" /> 中文</a>
 </p>
 
 <h2 align="center">👨‍💻 关于我</h2>
 
 <p align="center">
-  专注于人工智能、网络安全、自动化和现代软件系统的软件工程师。<br />我喜欢构建用于后端工程、基础设施、监控和智能应用的实用工具。<br />持续学习、自动化并不断改进系统。
+  专注于<strong>人工智能、网络安全、自动化和现代软件系统</strong>的软件工程师。<br />我构建用于后端工程、基础设施、监控和智能应用的实用工具。<br />持续学习、自动化并不断改进系统。
 </p>
 
-
 <p align="center">
-  <a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a>
-  <a href="https://www.linkedin.com/in/yusufaliaskin/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:yusufaliaskin@gmail.com?subject=Hello%20Yusuf%20Ali"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email" /></a>
-  <a href="https://yusufaliaskin.com"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&amp;logo=vercel&amp;logoColor=white" alt="Portfolio" /></a>
-  <a href="https://t.me/yusufaliaskin"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&amp;logo=telegram&amp;logoColor=white" alt="Telegram" /></a>
+  <a href="https://github.com/yusufaliaskin"><strong>GitHub</strong></a> ·
+  <a href="https://www.linkedin.com/in/yusufaliaskin/"><strong>LinkedIn</strong></a> ·
+  <a href="mailto:yusufaliaskin@gmail.com?subject=Hello%20Yusuf%20Ali"><strong>Email</strong></a> ·
+  <a href="https://yusufaliaskin.com"><strong>Portfolio</strong></a> ·
+  <a href="https://t.me/yusufaliaskin"><strong>Telegram</strong></a>
 </p>
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=yusufaliaskin&amp;style=flat-square&amp;label=Profile%20Views&amp;color=E74C3C" alt="Profile views" />
-  <img src="https://img.shields.io/github/followers/yusufaliaskin?style=flat-square&amp;label=Followers&amp;color=181717" alt="GitHub followers" />
-</p>
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" />
-    <img src="https://raw.githubusercontent.com/yusufaliaskin/yusufaliaskin/output/github-contribution-grid-snake.svg" width="100%" alt="GitHub contribution activity animation" />
-  </picture>
-</p>
-
 
 ---
 
 <details>
   <summary><strong>🧰 核心技术栈</strong></summary>
   <br />
-  <img src="images/svg/main-tech.svg" width="100%" alt="核心技术栈" loading="lazy" />
+  <p><strong>语言与脚本:</strong><br /><code>Python</code> <code>JavaScript</code> <code>TypeScript</code> <code>C++</code> <code>C#</code> <code>HTML5</code> <code>CSS3</code> <code>SQL</code> <code>Bash</code> <code>PowerShell</code> <code>Markdown</code> <code>YAML</code> <code>JSON</code> <code>RegEx</code></p>
+  <p><strong>前端:</strong><br /><code>React</code> <code>Next.js</code> <code>Bootstrap</code> <code>Tailwind CSS</code> <code>Vite</code> <code>NPM</code> <code>响应式 UI</code></p>
+  <p><strong>后端与 API:</strong><br /><code>Node.js</code> <code>Django</code> <code>Django REST Framework</code> <code>Flask</code> <code>FastAPI</code> <code>SQLAlchemy</code> <code>Celery</code> <code>REST API</code> <code>WebSocket</code> <code>OpenAPI</code> <code>JWT</code> <code>OAuth 2.0</code> <code>Gunicorn</code> <code>Uvicorn</code></p>
+  <p><strong>人工智能与数据:</strong><br /><code>OpenAI</code> <code>Gemini</code> <code>Claude</code> <code>NumPy</code> <code>Pandas</code> <code>Jupyter</code> <code>Apache Hive</code> <code>Supabase</code> <code>提示词工程</code> <code>LLM API</code></p>
+  <p><strong>安全与网络:</strong><br /><code>Wazuh</code> <code>Kali Linux</code> <code>Nmap</code> <code>Wireshark</code> <code>Burp Suite</code> <code>OWASP</code> <code>Active Directory</code> <code>OpenSSL</code> <code>SSH</code> <code>SIEM</code> <code>SOC 监控</code> <code>安全审计</code> <code>网络技术</code> <code>TCP/IP</code></p>
+  <p><strong>基础设施与 DevOps:</strong><br /><code>Linux</code> <code>Pardus</code> <code>Docker</code> <code>Nginx</code> <code>Git</code> <code>GitHub</code> <code>GitHub Actions</code> <code>GitLab</code> <code>SonarQube</code> <code>Cloudflare</code> <code>Azure</code> <code>Grafana</code> <code>Prometheus</code> <code>CI/CD</code></p>
+  <p><strong>数据库:</strong><br /><code>PostgreSQL</code> <code>MySQL</code> <code>SQLite</code> <code>MongoDB</code> <code>Redis</code> <code>Supabase DB</code> <code>数据库设计</code> <code>SQL 优化</code></p>
+  <p><strong>工具与测试:</strong><br /><code>VS Code</code> <code>Postman</code> <code>Swagger</code> <code>GitHub Copilot</code> <code>Chrome DevTools</code> <code>Pytest</code> <code>Selenium</code> <code>Playwright</code> <code>VirtualBox</code> <code>VMware</code></p>
 </details>
 
 <details>
   <summary><strong>🧠 其他知识与持续学习</strong></summary>
   <br />
-  <img src="images/svg/other-knowledge.svg" width="100%" alt="其他知识与持续学习" loading="lazy" />
+  <p><strong>人工智能与机器学习:</strong><br /><code>PyTorch</code> <code>TensorFlow</code> <code>scikit-learn</code> <code>Hugging Face</code> <code>LangChain</code> <code>Ollama</code></p>
+  <p><strong>云与平台工程:</strong><br /><code>Kubernetes</code> <code>Helm</code> <code>Terraform</code> <code>Ansible</code> <code>Jenkins</code> <code>GitLab CI</code> <code>AWS</code> <code>Google Cloud</code> <code>Kafka</code> <code>RabbitMQ</code></p>
+  <p><strong>API、安全与可观测性:</strong><br /><code>GraphQL</code> <code>gRPC</code> <code>OAuth 2.0</code> <code>JWT</code> <code>Burp Suite</code> <code>OWASP</code> <code>Elasticsearch</code> <code>Kibana</code> <code>Splunk</code> <code>OpenTelemetry</code></p>
+  <p><strong>语言与框架:</strong><br /><code>Java</code> <code>Go</code> <code>Rust</code> <code>C</code> <code>Arduino</code> <code>Firebase</code> <code>Sass</code> <code>Tailwind CSS</code> <code>Vue.js</code> <code>Angular</code> <code>NestJS</code> <code>Vite</code> <code>Prisma</code></p>
+  <p><strong>数据库、虚拟化与设计:</strong><br /><code>MariaDB</code> <code>Oracle</code> <code>VMware</code> <code>Proxmox</code> <code>Figma</code> <code>Photoshop</code> <code>Illustrator</code></p>
 </details>
 
 <details>
   <summary><strong>🎓 证书 · 31</strong></summary>
   <br />
   <p align="center">
-    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-anthropic.svg" width="100%" alt="Anthropic certifications" loading="lazy" /></a>
-    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-google.svg" width="100%" alt="Google certifications" loading="lazy" /></a>
-    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-btk-security.svg" width="100%" alt="BTK, Fortinet, and Udemy certifications" loading="lazy" /></a>
-    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-cisco.svg" width="100%" alt="Cisco certifications" loading="lazy" /></a>
+    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-anthropic.svg" width="100%" alt="Anthropic certifications" loading="lazy" decoding="async" /></a>
+    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-google.svg" width="100%" alt="Google certifications" loading="lazy" decoding="async" /></a>
+    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-btk-security.svg" width="100%" alt="BTK, Fortinet, and Udemy certifications" loading="lazy" decoding="async" /></a>
+    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><img src="images/svg/cert-cisco.svg" width="100%" alt="Cisco certifications" loading="lazy" decoding="async" /></a>
   </p>
-  <p align="center">
-    <a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><strong>在 LinkedIn 查看全部证书 →</strong></a>
-  </p>
+  <p align="center"><a href="https://www.linkedin.com/in/yusufaliaskin/details/certifications/"><strong>在 LinkedIn 查看全部证书 →</strong></a></p>
 </details>
 
 <details>
   <summary><strong>🏗️ 架构与工程</strong></summary>
   <br />
-  <p><strong>软件设计与架构</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/Clean%20Architecture-2D333B?style=for-the-badge" alt="Clean Architecture" />
-    <img src="https://img.shields.io/badge/SOLID-B91C1C?style=for-the-badge" alt="SOLID principles" />
-    <img src="https://img.shields.io/badge/DDD-7F1D1D?style=for-the-badge" alt="Domain-Driven Design" />
-    <img src="https://img.shields.io/badge/Design%20Patterns-6D28D9?style=for-the-badge" alt="Design Patterns" />
-    <img src="https://img.shields.io/badge/System%20Design-1F6FEB?style=for-the-badge" alt="System Design" />
-    <img src="https://img.shields.io/badge/API%20Design-009688?style=for-the-badge" alt="API Design" />
-  </p>
-  <p><strong>开发与交付</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/TDD-C2410C?style=for-the-badge" alt="Test-Driven Development" />
-    <img src="https://img.shields.io/badge/CI%2FCD-2088FF?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="CI/CD" />
-    <img src="https://img.shields.io/badge/Microservices-0EA5E9?style=for-the-badge" alt="Microservices" />
-    <img src="https://img.shields.io/badge/Event--Driven-8B5CF6?style=for-the-badge" alt="Event-driven architecture" />
-    <img src="https://img.shields.io/badge/Async%20Processing-37814A?style=for-the-badge" alt="Asynchronous processing" />
-  </p>
-  <p><strong>安全与可观测性</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/Secure%20SDLC-DC2626?style=for-the-badge" alt="Secure SDLC" />
-    <img src="https://img.shields.io/badge/Zero%20Trust-111827?style=for-the-badge" alt="Zero Trust" />
-    <img src="https://img.shields.io/badge/Observability-F46800?style=for-the-badge&amp;logo=grafana&amp;logoColor=white" alt="Observability" />
-  </p>
+  <p><strong>软件设计:</strong><br /><code>Clean Architecture</code> <code>SOLID</code> <code>领域驱动设计</code> <code>设计模式</code> <code>系统设计</code> <code>API 设计</code></p>
+  <p><strong>开发与交付:</strong><br /><code>TDD</code> <code>CI/CD</code> <code>微服务</code> <code>事件驱动架构</code> <code>异步处理</code></p>
+  <p><strong>安全与可观测性:</strong><br /><code>Secure SDLC</code> <code>Zero Trust</code> <code>Observability</code></p>
 </details>
 
 <details>
@@ -99,21 +76,13 @@
       <td width="50%" valign="top">
         <h3><a href="https://github.com/yusufaliaskin/ZKSessions">ZKSessions</a></h3>
         <p>基于 Django 的会话智能平台，用于关联 Windows 与 Wazuh 事件并支持安全运营监控。</p>
-        <p>
-          <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python" />
-          <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&amp;logo=django&amp;logoColor=white" alt="Django" />
-          <img src="https://img.shields.io/badge/Wazuh-005571?style=flat-square" alt="Wazuh" />
-        </p>
+        <p><code>Python</code> <code>Django</code> <code>Wazuh</code></p>
         <a href="https://github.com/yusufaliaskin/ZKSessions">查看代码仓库 →</a>
       </td>
       <td width="50%" valign="top">
         <h3><a href="https://github.com/yusufaliaskin/AIStudio">AIStudio</a></h3>
         <p>面向 Gemini、OpenAI 和 Claude 的统一 Flask 界面，支持多模态工作流与深度研究工具。</p>
-        <p>
-          <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&amp;logo=flask&amp;logoColor=white" alt="Flask" />
-          <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&amp;logo=openai&amp;logoColor=white" alt="OpenAI" />
-          <img src="https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&amp;logo=googlegemini&amp;logoColor=white" alt="Gemini" />
-        </p>
+        <p><code>Flask</code> <code>OpenAI</code> <code>Gemini</code> <code>Claude</code></p>
         <a href="https://github.com/yusufaliaskin/AIStudio">查看代码仓库 →</a>
       </td>
     </tr>
@@ -121,21 +90,13 @@
       <td width="50%" valign="top">
         <h3><a href="https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI">F.R.I.D.A.Y-AI</a></h3>
         <p>使用 Python 构建的本地 Windows AI 助手，私有运行时数据保存在公开仓库之外。</p>
-        <p>
-          <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python" />
-          <img src="https://img.shields.io/badge/Windows-0078D4?style=flat-square&amp;logo=windows11&amp;logoColor=white" alt="Windows" />
-          <img src="https://img.shields.io/badge/Local%20AI-B91C1C?style=flat-square" alt="Local AI" />
-        </p>
+        <p><code>Python</code> <code>Windows</code> <code>Local AI</code></p>
         <a href="https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI">查看代码仓库 →</a>
       </td>
       <td width="50%" valign="top">
         <h3><a href="https://github.com/yusufaliaskin/afetnet.com">AfetNet</a></h3>
         <p>基于 React Native 的应急通信应用，提供实时地震信息、家庭成员追踪和危机通知。</p>
-        <p>
-          <img src="https://img.shields.io/badge/React%20Native-20232A?style=flat-square&amp;logo=react&amp;logoColor=61DAFB" alt="React Native" />
-          <img src="https://img.shields.io/badge/JavaScript-323330?style=flat-square&amp;logo=javascript&amp;logoColor=F7DF1E" alt="JavaScript" />
-          <img src="https://img.shields.io/badge/Mobile-0EA5E9?style=flat-square" alt="Mobile" />
-        </p>
+        <p><code>React Native</code> <code>JavaScript</code> <code>Mobile</code></p>
         <a href="https://github.com/yusufaliaskin/afetnet.com">查看代码仓库 →</a>
       </td>
     </tr>
@@ -143,20 +104,18 @@
 </details>
 
 <details>
-  <summary><strong>📊 GitHub 统计</strong></summary>
+  <summary><strong>📂 GitHub 与代码仓库</strong></summary>
   <br />
-  <p align="center">
-    <img src="https://streak-stats.demolab.com?user=yusufaliaskin&amp;background=0D1117&amp;border=30363D&amp;stroke=30363D&amp;ring=FF4D4D&amp;fire=FF4D4D&amp;currStreakNum=F0F6FC&amp;sideNums=F0F6FC&amp;currStreakLabel=FF4D4D&amp;sideLabels=C9D1D9&amp;dates=8B949E" width="80%" alt="GitHub contribution streak" loading="lazy" />
-  </p>
-  <p align="center">
-    <a href="https://github.com/yusufaliaskin?tab=repositories"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="浏览我的 GitHub 仓库" /></a>
-  </p>
+  <p><a href="https://github.com/yusufaliaskin?tab=repositories"><strong>浏览我的代码仓库 →</strong></a></p>
+  <p><a href="https://github.com/yusufaliaskin?tab=overview"><strong>GitHub activity and contributions →</strong></a></p>
 </details>
 
 <hr />
 
 <p align="center">
-  <a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-Visit%20My%20Profile-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="浏览我的 GitHub 仓库" /></a>
+  <a href="https://github.com/yusufaliaskin"><strong>GitHub Profile</strong></a> ·
+  <a href="https://github.com/yusufaliaskin?tab=repositories"><strong>Repositories</strong></a> ·
+  <a href="https://www.linkedin.com/in/yusufaliaskin/"><strong>LinkedIn</strong></a>
 </p>
 
-<img src="images/svg/footer.svg" width="100%" alt="GitHub 贡献活动动画" loading="lazy" />
+<img src="images/svg/footer.svg" width="100%" alt="构建 • 安全 • 自动化" loading="lazy" decoding="async" />
