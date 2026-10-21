@@ -156,7 +156,7 @@
 <hr />
 
 <p align="center">
-  <a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-Visit%20My%20Profile-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="浏览我的 GitHub 仓库" /></a>
+  <a href="https://github.com/yusufaliaskin"><img src="https://img.shields.io/badge/GitHub-Visit%20My%20Profile-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="浏览我的 GitHub 仓库" loading="lazy" decoding="async" /></a>
 </p>
 
 <img src="images/svg/footer.svg" width="100%" alt="GitHub 贡献活动动画" loading="lazy" />
