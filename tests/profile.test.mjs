@@ -10,7 +10,7 @@ test("exactly three featured projects, not every repository",()=>{
  const a=assets();
  assert.equal(Object.keys(a).filter(k=>k.startsWith("cards/repo-")).length,6);
  assert.ok(!Object.keys(a).some(k=>k.startsWith("cards/project-")||k.startsWith("cards/repositories-")));
- assert.equal(Object.keys(a).length,42);
+ assert.equal(Object.keys(a).length,40);
 });
 test("repository total is accurate without listing them all",()=>{
  assert.equal(cfg.tiles.find(t=>t.id==="build").metric,"23");
@@ -36,7 +36,7 @@ test("language links appear as five slim animated options",()=>{
    assert.ok(svg.length<6000);
   }
  }
- assert.ok(a["cards/footer-heading-mobile.svg"].includes('viewBox="0 0 360 27"'));
+ assert.ok(!Object.keys(a).some(k=>k.includes("footer-heading")));
 });
 test("README translations preserve mobile sources, links, and three featured projects",()=>{
  for(const filename of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
@@ -70,4 +70,34 @@ test("featured project content is XML escaped",()=>{
  const copy=structuredClone(cfg);copy.projects[0].description='<script>unsafe</script>';
  const svg=buildCards(copy,null,null)["cards/repo-AIStudio.svg"];
  assert.ok(svg.includes("&lt;script&gt;"));assert.ok(!svg.includes("<script>"));
+});
+
+test("remove Find me online from all README translations and generation",()=>{
+ const a=assets();assert.equal(Object.keys(a).length,40);
+ assert.ok(!Object.keys(a).some(k=>k.includes("footer-heading")));
+ for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
+ const txt=readFileSync(new URL("../"+name,import.meta.url),"utf8");
+ assert.ok(!txt.includes("Find me online"));assert.ok(!txt.includes("footer-heading"));
+ }
+});
+test("staggered reveal and draw effect on four links and five languages",()=>{
+ const a=assets();
+ for(const id of ["portfolio","linkedin","projects","contact"]){
+  for(const suff of ["","-mobile"]){
+   const x=a["cards/footer-nav-"+id+suff+".svg"];
+   assert.ok(x.includes('class="draw"'));assert.ok(x.includes("animation-delay:"));
+   assert.ok(x.includes("@keyframes draw"));
+  }
+ }
+ for(const id of ["en","tr","de","ru","zh"]){
+  assert.ok(a["cards/footer-language-"+id+".svg"].includes('class="draw"'));
+ }
+});
+test("gentle finite animations and accessible reduced motion",()=>{
+ const a=assets();
+ assert.ok(a["cards/hero.svg"].includes('repeatCount="1"'));
+ assert.ok(!a["cards/hero.svg"].includes('repeatCount="indefinite"'));
+ assert.ok(a["cards/build.svg"].includes("translateY(17px) scale(.985)"));
+ assert.ok(a["cards/repo-AIStudio.svg"].includes("animation-delay:0.26s"));
+ assert.ok(a["cards/footer-nav-contact-mobile.svg"].includes("prefers-reduced-motion"));
 });
