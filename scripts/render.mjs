@@ -4,7 +4,7 @@ import {pathToFileURL} from "node:url";
 const CFG={"display_name":"Yusuf Ali Aşkın","first":"Yusuf","last":"Ali Aşkın","eyebrow":"SOFTWARE ENGINEER  /  AI & SECURITY","description":["I build intelligent software, automate complex tasks,","and engineer secure tools for real-world problems."],"url":"yusufaliaskin.com","url_href":"https://yusufaliaskin.com","tiles":[{"id":"build","tag":"BUILD","metric":"03","unit":"projects","text":"Building intelligent apps, AI tools and useful experiences.","href":"https://github.com/yusufaliaskin?tab=repositories"},{"id":"secure","tag":"SECURE","metric":"AI","unit":"+ security","text":"Practical security, automation and systems engineering.","href":"https://github.com/yusufaliaskin?tab=repositories"},{"id":"learn","tag":"LEARN","metric":"31","unit":"certifications","text":"Always learning: AI, cloud, networks and security.","href":"https://www.linkedin.com/in/yusufaliaskin/details/certifications/"}],"projects":[{"name":"AIStudio","description":"A unified workspace for AI models, research and multimodal tools.","lang":"Python","url":"https://github.com/yusufaliaskin/AIStudio","color":"#2F55FF"},{"name":"F.R.I.D.A.Y-AI","description":"A local Windows AI assistant for everyday workflows.","lang":"Python","url":"https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI","color":"#EF3B2D"},{"name":"afetnet.com","description":"Emergency communication and earthquake awareness for mobile.","lang":"JavaScript","url":"https://github.com/yusufaliaskin/afetnet.com","color":"#FFC81A"}],"links":[["portfolio","https://yusufaliaskin.com"],["linkedin","https://www.linkedin.com/in/yusufaliaskin/"],["projects","https://github.com/yusufaliaskin?tab=repositories"],["contact","mailto:yusufaliaskin@gmail.com"]]};
 const PAPER="#f3f3f1",INK="#111111",SOFT="#3a3a3c",MUTED="#6e6e73",BLUE="#2f55ff",RED="#ef3b2d",YELLOW="#ffc81a",W=880;
 const FONTS={"serif":"Georgia, 'Times New Roman', serif","sans":"Arial, Helvetica, sans-serif","mono":"Consolas, Menlo, monospace"};
-const BASE_CSS="\n@keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}\n@keyframes fade{0%{opacity:0}100%{opacity:1}}\n@keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-11px) scale(1.045) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}100%{opacity:1;transform:none}}\n@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}\n@keyframes pulse{0%,100%{opacity:1}50%{opacity:.22}}\n@keyframes nudge{0%,100%{transform:none}50%{transform:translateX(5px)}}\n@keyframes nudgeup{0%,100%{transform:none}50%{transform:translate(3px,-3px)}}\n@keyframes sheen{0%,10%{transform:translateX(-270px) skewX(-18deg)}48%,100%{transform:translateX(450px) skewX(-18deg)}}\n@keyframes ring{0%{opacity:.8;transform:scale(.25)}100%{opacity:0;transform:scale(2.25)}}\n@keyframes rotatein{0%{opacity:0;transform:translateX(-20px) rotate(-4deg)}100%{opacity:1;transform:none}}\n@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}\n@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}\n.r{opacity:0;animation:rise .82s cubic-bezier(.18,.8,.23,1) forwards}\n.f{opacity:0;animation:fade .72s ease forwards}\n.ti{opacity:0;animation:tilein 1.1s cubic-bezier(.19,.9,.23,1) forwards;transform-origin:center center}\n.ba{animation:barin .8s cubic-bezier(.18,.9,.27,1) both;transform-box:fill-box;transform-origin:center bottom}\n.nu{animation:nudge 1.8s ease-in-out infinite}\n.nup{animation:nudgeup 2s ease-in-out infinite}\n.li{animation:pulse 1.6s ease-in-out infinite}\n.sh{animation:sheen 5s cubic-bezier(.45,0,.55,1) 1.6s infinite}\n.rg{animation:ring 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}\n.fl{animation:float 4s ease-in-out infinite}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}\n";
+const BASE_CSS="\n@keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}\n@keyframes fade{0%{opacity:0}100%{opacity:1}}\n@keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-11px) scale(1.045) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}100%{opacity:1;transform:none}}\n@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}\n@keyframes pulse{0%,100%{opacity:1}50%{opacity:.22}}\n@keyframes nudge{0%,100%{transform:none}50%{transform:translateX(5px)}}\n@keyframes nudgeup{0%,100%{transform:none}50%{transform:translate(3px,-3px)}}\n@keyframes sheen{0%,10%{transform:translateX(-270px) skewX(-18deg)}48%,100%{transform:translateX(450px) skewX(-18deg)}}\n@keyframes ring{0%{opacity:.8;transform:scale(.25)}100%{opacity:0;transform:scale(2.25)}}\n@keyframes rotatein{0%{opacity:0;transform:translateX(-20px) rotate(-4deg)}100%{opacity:1;transform:none}}\n@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}\n@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}\n.r{opacity:0;animation:rise .82s cubic-bezier(.18,.8,.23,1) forwards}\n.f{opacity:0;animation:fade .72s ease forwards}\n.ti{opacity:0;animation:tilein 1.1s cubic-bezier(.19,.9,.23,1) forwards;transform-origin:center center}\n.ba{animation:barin .8s cubic-bezier(.18,.9,.27,1) both;transform-box:fill-box;transform-origin:center bottom}\n.nu{animation:nudge 1.2s ease-in-out 1}\n.nup{animation:nudgeup 1.2s ease-in-out 1}\n.li{animation:pulse 1.6s ease-in-out 2}\n.sh{animation:sheen 1.5s ease-out 1.2s 1}\n.rg{animation:ring 1.5s ease-out 1;transform-box:fill-box;transform-origin:center}\n.fl{animation:float 2.5s ease-in-out 2}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}\n";
 function esc(x){return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;")};
 function svg(w,h,body,label){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(label)}"><title>${esc(label)}</title><style><![CDATA[${BASE_CSS}]]></style>${body}</svg>`};
 function t(x,y,val,size,color=INK,family=FONTS.sans,extra=""){return `<text x="${x}" y="${y}" font-family="${esc(family)}" font-size="${size}" fill="${color}" ${extra}>${esc(val)}</text>`};
@@ -24,7 +24,7 @@ rows.slice(0,53).forEach((row,i)=>{b+=`<text x="0" y="${(i+1)*6.03}" font-size="
 return svg(W,432,b,cfg.display_name+" — software engineering, AI and security")};
 function calendar(days){let b=r(0,0,W,249,PAPER,14),gx=44,gy=99,step=15,cell=12;const map=new Map((days||[]).map(d=>[d.date,d.count]));let now=new Date(),today=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));let nextSat=new Date(today);nextSat.setUTCDate(today.getUTCDate()+(6-today.getUTCDay()+7)%7);let first=new Date(nextSat);first.setUTCDate(nextSat.getUTCDate()-370);let colors=["#e2e2de","#c8d3ff","#94a8ff","#6280ff",BLUE,"#1a3be0"];b+=t(42,61,"Every day,",34,INK,FONTS.serif,'class="r" style="animation-delay:.3s"');b+=t(217,61,"in blue",34,BLUE,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.43s"');b+=t(836,60,map.size?"REFRESHED DAILY":"AWAITING FIRST SYNC",11,MUTED,FONTS.mono,'text-anchor="end" letter-spacing=".6"');
 let seen=new Set();
-for(let col=0;col<53;col++){for(let row=0;row<7;row++){let d=new Date(first);d.setUTCDate(first.getUTCDate()+7*col+row);if(d>today)continue;const day=d.toISOString().slice(0,10);const n=map.get(day),i=n===undefined?0:n===0?0:n<=2?1:n<=5?2:n<=10?3:n<=20?4:5;const tag=n===undefined?"":`<title>${day}: ${n} contribution${n===1?"":"s"}</title>`;b+=`<rect x="${gx+col*step}" y="${gy+row*step}" width="${cell}" height="${cell}" rx="3" fill="${colors[i]}" class="f" style="animation-delay:${(.7+col*.026+row*.008).toFixed(3)}s">${tag}</rect>`}}
+for(let col=0;col<53;col++){for(let row=0;row<7;row++){let d=new Date(first);d.setUTCDate(first.getUTCDate()+7*col+row);if(d>today)continue;const day=d.toISOString().slice(0,10);const n=map.get(day),i=n===undefined?0:n===0?0:n<=2?1:n<=5?2:n<=10?3:n<=20?4:5;const tag=n===undefined?"":`<title>${day}: ${n} contribution${n===1?"":"s"}</title>`;b+=`<rect x="${gx+col*step}" y="${gy+row*step}" width="${cell}" height="${cell}" rx="3" fill="${colors[i]}" >${tag}</rect>`}}
 for(let col=0;col<53;col++){const d=new Date(first);d.setUTCDate(first.getUTCDate()+col*7);const key=d.getUTCFullYear()+"-"+d.getUTCMonth();if(d.getUTCDate()<=7&&!seen.has(key)){seen.add(key);b+=t(gx+col*step,224,d.toLocaleString("en-US",{month:"short",timeZone:"UTC"}),11,MUTED,FONTS.mono)}}
 b+=t(662,243,"less",10,MUTED,FONTS.mono);colors.forEach((c,i)=>b+=r(700+i*15,233,11,11,c,2));b+=t(798,243,"more",10,MUTED,FONTS.mono);
 return svg(W,261,b,"Real GitHub contribution calendar — daily refresh")};
@@ -49,63 +49,30 @@ wrapped(p.description,31).slice(0,4).forEach((s,j)=>b+=t(left+24,75+j*20,s,13,SO
 
 const FOOTER_FOCUS={"en":"Software engineering · AI · cybersecurity · automation","tr":"Yazılım mühendisliği · yapay zekâ · siber güvenlik · otomasyon","de":"Softwareentwicklung · KI · Cybersicherheit · Automatisierung","ru":"Разработка ПО · ИИ · кибербезопасность · автоматизация","zh":"软件工程 · 人工智能 · 网络安全 · 自动化"};
 const FOOTER_LANGUAGES=[{"key":"en","label":"English","file":"README.md"},{"key":"tr","label":"Türkçe","file":"README_TR.md"},{"key":"de","label":"Deutsch","file":"README_DE.md"},{"key":"ru","label":"Русский","file":"README_RU.md"},{"key":"zh","label":"中文","file":"README_ZH.md"}];
-function footerHeading(cfg){
-  const b=`
-    <rect width="880" height="126" rx="14" fill="${PAPER}"/>
-    <rect class="li" x="40" y="30" width="8" height="8" rx="2" fill="${BLUE}"/>
-    ${t(61,39,"CONNECT  /  "+cfg.display_name.toUpperCase(),12,MUTED,FONTS.mono,'class="f" style="animation-delay:.15s" letter-spacing="1.1"')}
-    ${t(37,96,"Let's connect.",56,INK,FONTS.serif,'class="r" style="animation-delay:.28s" font-style="italic" letter-spacing="-1.5"')}
-    <line x1="561" x2="561" y1="28" y2="103" stroke="#dcdcd7"/>
-    ${t(591,52,"WORK  /  IDEAS  /  CONTACT",12,MUTED,FONTS.mono,'class="f" style="animation-delay:.5s"')}
-    ${t(591,83,"Find me online",22,INK,FONTS.sans,'class="r" style="animation-delay:.62s" font-weight="600"')}
-    ${t(797,83,"↗",20,BLUE,FONTS.mono,'class="nup"')}
-  `;
-  return svg(W,139,b,"Connect with "+cfg.display_name);
-}
-function footerNav(link,i){
-  const [id,url]=link;
-  const titles={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"};
-  const details={portfolio:"Personal website",linkedin:"Professional profile",projects:"GitHub repositories",contact:"Send me an email"};
-  const colors={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#DBA700"};
-  const left=i%2===0?0:8, cardW=432;
-  const title=t(left+28,54,titles[id]||id,26,INK,FONTS.sans,'font-weight="600" class="r" style="animation-delay:'+(.2+(i%4)*.13)+'s"');
-  let b=`<defs><clipPath id="cut"><rect x="${left}" y="0" width="${cardW}" height="104" rx="14"/></clipPath>
-  <linearGradient id="gl"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>`;
-  b+=`<g clip-path="url(#cut)">${r(left,0,cardW,104,PAPER,14)}${r(left,0,cardW,4,colors[id]||BLUE,0)}`;
-  b+=r(left+28,26,10,10,colors[id]||BLUE,3,'class="li"');
-  b+=title.replace('x="'+(left+28)+'"','x="'+(left+50)+'"');
-  b+=t(left+50,81,details[id]||url,14,SOFT,FONTS.mono,'class="f" style="animation-delay:.7s"');
-  b+=`<circle cx="${left+382}" cy="52" r="27" fill="#e5e5e2"/>`;
-  b+=t(left+374,61,"↗",24,colors[id]||BLUE,FONTS.mono,'class="nup"');
-  b+=r(left-130,-18,85,141,'url(#gl)',0,'class="sh"');
-  b+='</g>';
-  return svg(440,116,b,(titles[id]||id)+": "+url);
-}
-function footerSpecialties(locale){
-  const sentence=FOOTER_FOCUS[locale]||FOOTER_FOCUS.en;
-  const fontSize=locale==="ru"||locale==="tr"||locale==="de"?21:locale==="zh"?26:23;
-  let b=r(0,0,W,125,PAPER,14);
-  b+=r(42,24,8,8,BLUE,2,'class="li"');
-  b+=t(61,33,"FIELDS OF INTEREST",12,MUTED,FONTS.mono,'letter-spacing="1.1" class="f" style="animation-delay:.2s"');
-  b+=t(43,80,sentence,fontSize,INK,FONTS.sans,'class="r" style="animation-delay:.4s" font-weight="600"');
-  b+=`<line x1="43" y1="98" x2="837" y2="98" stroke="#dcdcd7" stroke-width="1"/>`;
-  b+=t(44,116,"SELECT LANGUAGE",11,MUTED,FONTS.mono,'letter-spacing="1.2"');
-  b+=t(835,116,"05 AVAILABLE",11,BLUE,FONTS.mono,'text-anchor="end" letter-spacing=".8"');
-  return svg(W,137,b,sentence+"; choose your language");
-}
-function footerLanguage(lang,i){
-  const width=W/3,left=i%3*4,rectWidth=width-8;
-  let b=`<defs><clipPath id="cut"><rect x="${left}" y="0" width="${rectWidth}" height="77" rx="12"/></clipPath></defs>`;
-  b+=r(left,0,rectWidth,77,PAPER,12);
-  b+=`<rect x="${left+.6}" y=".6" width="${rectWidth-1.2}" height="75.8" rx="11.4" fill="none" stroke="#dcdcd7" stroke-width="1.2"/>`;
-  b+=r(left+23,26,29,26,BLUE,6,'class="f" style="animation-delay:.22s"');
-  b+=t(left+37.5,44,lang.key.toUpperCase(),12,"#ffffff",FONTS.mono,'text-anchor="middle" font-weight="600"');
-  b+=t(left+69,46,lang.label,23,INK,FONTS.sans,'class="r" style="animation-delay:.3s" font-weight="600"');
-  b+=t(left+259,46,"↗",17,BLUE,FONTS.mono,'class="nu"');
-  return svg(width,88,b,"Read profile in "+lang.label);
-}
+function footerHeading(cfg){let b=r(0,0,880,60,PAPER,10)+r(22,14,6,6,BLUE,2);b+=t(37,22,"CONNECT / "+cfg.display_name.toUpperCase(),10,MUTED,FONTS.mono);b+=t(22,50,"Let's connect.",31,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.15s"');b+=t(845,43,"WORK / IDEAS / CONTACT",12,SOFT,FONTS.mono,'text-anchor="end"');return svg(880,65,b,"Connect with "+cfg.display_name)};
 
-function buildCards(cfg,data,portrait){const a={"cards/hero.svg":hero(cfg,portrait),"cards/heatmap.svg":calendar(data?.days),"cards/activity.svg":activity(data),"cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true)};cfg.tiles.forEach((p,i)=>a["cards/"+p.id+".svg"]=tile(p,i));cfg.projects.forEach((p,i)=>a["cards/repo-"+p.name+".svg"]=repo(p,i));const aFooter={"cards/footer-heading.svg":footerHeading(cfg.display_name?cfg:{display_name:"Yusuf Ali Aşkın"})};cfg.links.forEach((link,i)=>aFooter["cards/footer-nav-"+link[0]+".svg"]=footerNav(link,i));for(const loc of Object.keys(FOOTER_FOCUS))aFooter["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);FOOTER_LANGUAGES.forEach((lang,i)=>aFooter["cards/footer-language-"+lang.key+".svg"]=footerLanguage(lang,i));Object.assign(a,aFooter);return a};
+function footerNav(link,i,mobile=false){const [id,url]=link,names={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"},c={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#B58A00"}[id]||BLUE;
+if(mobile){let b=r(0,0,86,39,PAPER,7)+r(0,0,86,2,c);b+=t(7,24,names[id]||id,11,INK,FONTS.sans,'font-weight="600"');b+=t(81,24,"↗",10,c,FONTS.mono,'text-anchor="end"');return svg(90,43,b,"Mobile "+id+": "+url)}
+let b=r(0,0,214,54,PAPER,9)+r(0,0,214,3,c);b+=r(12,13,6,6,c,2)+t(27,29,names[id]||id,17,INK,FONTS.sans,'font-weight="600"');b+=t(27,45,{portfolio:"Website",linkedin:"Professional",projects:"Repositories",contact:"Email"}[id],11,MUTED,FONTS.mono)+t(196,31,"↗",16,c,FONTS.mono,'text-anchor="end"');return svg(220,59,b,(names[id]||id)+": "+url)};
+
+function footerSpecialties(locale,mobile=false){let sentence=FOOTER_FOCUS[locale]||FOOTER_FOCUS.en;if(mobile){const l={en:["Software engineering · AI","Cybersecurity · Automation"],tr:["Yazılım mühendisliği · Yapay zekâ","Siber güvenlik · Otomasyon"],de:["Softwareentwicklung · KI","Cybersicherheit · Automatisierung"],ru:["Разработка ПО · ИИ","Кибербезопасность · Автоматизация"],zh:["软件工程 · 人工智能","网络安全 · 自动化"]}[locale];let b=r(0,0,360,56,PAPER,8)+r(12,10,5,5,BLUE,2);b+=t(25,17,"FOCUS",10,MUTED,FONTS.mono)+t(12,34,l[0],locale==="ru"?11.5:13,INK,FONTS.sans,'font-weight="600"')+t(12,50,l[1],locale==="ru"?11.5:13,SOFT,FONTS.sans);return svg(360,60,b,sentence)}
+let b=r(0,0,880,62,PAPER,10)+r(22,12,6,6,BLUE,2);b+=t(38,19,"FOCUS",11,MUTED,FONTS.mono)+t(22,46,sentence,locale==="zh"?23:locale==="ru"?19:20,INK,FONTS.sans,'font-weight="600"')+t(844,20,"05 LANGUAGES",10,BLUE,FONTS.mono,'text-anchor="end"');return svg(880,67,b,sentence)};
+
+function footerLanguage(lang,i,mobile=false){if(mobile){let b=r(0,0,68,33,PAPER,7)+r(5,4,58,1.5,BLUE);b+=t(34,23,lang.label,lang.key==="ru"?10:11,INK,FONTS.sans,'text-anchor="middle" font-weight="600"');return svg(72,38,b,"Mobile "+lang.label)}
+let b=r(0,0,171,45,PAPER,8)+r(9,13,27,20,BLUE,5);b+=t(22.5,27,lang.key.toUpperCase(),9.5,"#fff",FONTS.mono,'text-anchor="middle" font-weight="600"')+t(47,29,lang.label,lang.key==="ru"?14:16,INK,FONTS.sans,'font-weight="600"');return svg(176,50,b,"Choose "+lang.label)};
+
+function mobileFooterHeading(cfg){let b=r(0,0,360,43,PAPER,8)+r(12,9,5,5,BLUE,2);b+=t(25,16,"CONNECT",9,MUTED,FONTS.mono)+t(12,35,"Let's connect.",25,INK,FONTS.serif,'font-style="italic"')+t(347,34,cfg.first.toUpperCase(),10,BLUE,FONTS.mono,'text-anchor="end"');return svg(360,47,b,"Compact contact header")};
+function buildCards(cfg,data,portrait){
+const a={"cards/hero.svg":hero(cfg,portrait),"cards/heatmap.svg":calendar(data?.days),"cards/activity.svg":activity(data),"cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true)};
+cfg.tiles.forEach((p,i)=>a["cards/"+p.id+".svg"]=tile(p,i));
+cfg.projects.forEach((p,i)=>a["cards/repo-"+p.name+".svg"]=repo(p,i));
+a["cards/footer-heading.svg"]=footerHeading(cfg);a["cards/footer-heading-mobile.svg"]=mobileFooterHeading(cfg);
+cfg.links.forEach((p,i)=>{a["cards/footer-nav-"+p[0]+".svg"]=footerNav(p,i);a["cards/footer-nav-"+p[0]+"-mobile.svg"]=footerNav(p,i,true)});
+for(const loc of Object.keys(FOOTER_FOCUS)){a["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);a["cards/footer-focus-"+loc+"-mobile.svg"]=footerSpecialties(loc,true)}
+FOOTER_LANGUAGES.forEach((p,i)=>{a["cards/footer-language-"+p.key+".svg"]=footerLanguage(p,i);a["cards/footer-language-"+p.key+"-mobile.svg"]=footerLanguage(p,i,true)});
+return a;
+};
+
 function summarize(days){if(!days?.length)throw new Error("Empty contribution series");days=[...days].map(d=>({date:d.date,count:Number(d.count)})).sort((a,b)=>a.date.localeCompare(b.date));if(days.some(d=>!Number.isFinite(d.count)||d.count<0))throw new Error("Invalid contributions");let monthly=new Map(),max={date:"",count:-1},run=0,longest=0;for(const d of days){const m=d.date.slice(0,7);monthly.set(m,(monthly.get(m)||0)+d.count);if(d.count>max.count)max=d;run=d.count>0?run+1:0;longest=Math.max(longest,run)}let idx=days.length-1;const today=new Date().toISOString().slice(0,10);if(days[idx].count===0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))idx--;let current=0;if(idx>=0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))for(let i=idx;i>=0&&days[i].count>0;i--)current++;return{days,monthly:[...monthly].map(([month,total])=>({month,total})),total_contributions:days.reduce((a,b)=>a+b.count,0),best_day:max,current_streak:{length:current},longest_streak:{length:longest},updated_at:new Date().toISOString()}};
 export {buildCards,summarize};
 async function fetchContributions(){
