@@ -1,0 +1,13 @@
+{
+  "name": "yusuf-animated-github-profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "refresh": "node scripts/render.mjs --live",
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.34.4"
+  }
+}

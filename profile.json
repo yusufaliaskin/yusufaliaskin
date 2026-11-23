@@ -1,0 +1,79 @@
+{
+  "display_name": "Yusuf Ali Aşkın",
+  "first": "Yusuf",
+  "last": "Ali Aşkın",
+  "eyebrow": "SOFTWARE ENGINEER  /  AI & SECURITY",
+  "description": [
+    "I build intelligent software, automate complex tasks,",
+    "and engineer secure tools for real-world problems."
+  ],
+  "url": "yusufaliaskin.com",
+  "url_href": "https://yusufaliaskin.com",
+  "tiles": [
+    {
+      "id": "build",
+      "tag": "BUILD",
+      "metric": "03",
+      "unit": "projects",
+      "text": "Building intelligent apps, AI tools and useful experiences.",
+      "href": "https://github.com/yusufaliaskin?tab=repositories"
+    },
+    {
+      "id": "secure",
+      "tag": "SECURE",
+      "metric": "AI",
+      "unit": "+ security",
+      "text": "Practical security, automation and systems engineering.",
+      "href": "https://github.com/yusufaliaskin?tab=repositories"
+    },
+    {
+      "id": "learn",
+      "tag": "LEARN",
+      "metric": "31",
+      "unit": "certifications",
+      "text": "Always learning: AI, cloud, networks and security.",
+      "href": "https://www.linkedin.com/in/yusufaliaskin/details/certifications/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "AIStudio",
+      "description": "A unified workspace for AI models, research and multimodal tools.",
+      "lang": "Python",
+      "url": "https://github.com/yusufaliaskin/AIStudio",
+      "color": "#2F55FF"
+    },
+    {
+      "name": "F.R.I.D.A.Y-AI",
+      "description": "A local Windows AI assistant for everyday workflows.",
+      "lang": "Python",
+      "url": "https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI",
+      "color": "#EF3B2D"
+    },
+    {
+      "name": "afetnet.com",
+      "description": "Emergency communication and earthquake awareness for mobile.",
+      "lang": "JavaScript",
+      "url": "https://github.com/yusufaliaskin/afetnet.com",
+      "color": "#FFC81A"
+    }
+  ],
+  "links": [
+    [
+      "portfolio",
+      "https://yusufaliaskin.com"
+    ],
+    [
+      "linkedin",
+      "https://www.linkedin.com/in/yusufaliaskin/"
+    ],
+    [
+      "projects",
+      "https://github.com/yusufaliaskin?tab=repositories"
+    ],
+    [
+      "contact",
+      "mailto:yusufaliaskin@gmail.com"
+    ]
+  ]
+}
