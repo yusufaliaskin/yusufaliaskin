@@ -46,7 +46,7 @@ test("tiles launch at 3.1 3.35 and 3.6 seconds with layered effects",()=>{
   assert.ok(s.includes('class="ti" style="animation-delay:'+d+'s"'),name);
   for(const cls of ["sl","ai","ro","sh","rg"])assert.ok(s.includes('class="'+cls+'"'),name+" "+cls);
   assert.ok(s.includes('clip-path="url(#slot)"'));
-  if(/^\\d/.test(cfg.tiles[i].metric)){
+  if(/^\d/.test(cfg.tiles[i].metric)){
    assert.ok(s.includes("<set attributeName="),name);
    assert.ok((s.match(/<set attributeName="opacity" to="1"/g)||[]).length>=19,name);
   }else{
