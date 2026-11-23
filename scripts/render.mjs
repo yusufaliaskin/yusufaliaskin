@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync} from "node:fs";
 import {resolve} from "node:path";
 import {pathToFileURL} from "node:url";
-const CFG={"display_name":"Yusuf Ali Aşkın","first":"Yusuf","last":"Ali Aşkın","eyebrow":"SOFTWARE ENGINEER  /  AI & SECURITY","description":["I build intelligent software, automate complex tasks,","and engineer secure tools for real-world problems."],"url":"yusufaliaskin.com","url_href":"https://yusufaliaskin.com","tiles":[{"id":"build","tag":"BUILD","metric":"03","unit":"projects","text":"Building intelligent apps, AI tools and useful experiences.","href":"https://github.com/yusufaliaskin?tab=repositories"},{"id":"secure","tag":"SECURE","metric":"AI","unit":"+ security","text":"Practical security, automation and systems engineering.","href":"https://github.com/yusufaliaskin?tab=repositories"},{"id":"learn","tag":"LEARN","metric":"31","unit":"certifications","text":"Always learning: AI, cloud, networks and security.","href":"https://www.linkedin.com/in/yusufaliaskin/details/certifications/"}],"projects":[{"name":"AIStudio","description":"A unified workspace for AI models, research and multimodal tools.","lang":"Python","url":"https://github.com/yusufaliaskin/AIStudio","color":"#2F55FF"},{"name":"F.R.I.D.A.Y-AI","description":"A local Windows AI assistant for everyday workflows.","lang":"Python","url":"https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI","color":"#EF3B2D"},{"name":"afetnet.com","description":"Emergency communication and earthquake awareness for mobile.","lang":"JavaScript","url":"https://github.com/yusufaliaskin/afetnet.com","color":"#FFC81A"}],"links":[["portfolio","https://yusufaliaskin.com"],["linkedin","https://www.linkedin.com/in/yusufaliaskin/"],["projects","https://github.com/yusufaliaskin?tab=repositories"],["contact","mailto:yusufaliaskin@gmail.com"]]};
+const CFG=JSON.parse(readFileSync(new URL("../profile.json",import.meta.url),"utf8"));
 const PAPER="#f3f3f1",INK="#111111",SOFT="#3a3a3c",MUTED="#6e6e73",BLUE="#2f55ff",RED="#ef3b2d",YELLOW="#ffc81a",W=880;
 const FONTS={"serif":"Georgia, 'Times New Roman', serif","sans":"Arial, Helvetica, sans-serif","mono":"Consolas, Menlo, monospace"};
 const BASE_CSS="\n@keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}\n@keyframes fade{0%{opacity:0}100%{opacity:1}}\n@keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-11px) scale(1.045) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}100%{opacity:1;transform:none}}\n@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}\n@keyframes pulse{0%,100%{opacity:1}50%{opacity:.22}}\n@keyframes nudge{0%,100%{transform:none}50%{transform:translateX(5px)}}\n@keyframes nudgeup{0%,100%{transform:none}50%{transform:translate(3px,-3px)}}\n@keyframes sheen{0%,10%{transform:translateX(-270px) skewX(-18deg)}48%,100%{transform:translateX(450px) skewX(-18deg)}}\n@keyframes ring{0%{opacity:.8;transform:scale(.25)}100%{opacity:0;transform:scale(2.25)}}\n@keyframes rotatein{0%{opacity:0;transform:translateX(-20px) rotate(-4deg)}100%{opacity:1;transform:none}}\n@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}\n@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}\n.r{opacity:0;animation:rise .82s cubic-bezier(.18,.8,.23,1) forwards}\n.f{opacity:0;animation:fade .72s ease forwards}\n.ti{opacity:0;animation:tilein 1.1s cubic-bezier(.19,.9,.23,1) forwards;transform-origin:center center}\n.ba{animation:barin .8s cubic-bezier(.18,.9,.27,1) both;transform-box:fill-box;transform-origin:center bottom}\n.nu{animation:nudge 1.2s ease-in-out 1}\n.nup{animation:nudgeup 1.2s ease-in-out 1}\n.li{animation:pulse 1.6s ease-in-out 2}\n.sh{animation:sheen 1.5s ease-out 1.2s 1}\n.rg{animation:ring 1.5s ease-out 1;transform-box:fill-box;transform-origin:center}\n.fl{animation:float 2.5s ease-in-out 2}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}\n";
@@ -36,7 +36,7 @@ months.forEach((m,i)=>{let h=Math.max(2,140*m.n/peak),x=42+i*46;b+=r(x,base-h,28
 b+=t(649,137,data.current_streak.length+" days",41,INK,FONTS.serif,'class="r" style="animation-delay:1.4s"');b+=t(649,164,"current streak",13,MUTED);
 b+=t(649,226,String(data.best_day.count),41,INK,FONTS.serif,'class="r" style="animation-delay:1.55s"');b+=t(649,252,"busiest day · "+data.best_day.date.slice(5),13,MUTED);
 return svg(W,352,b,`${total} contributions in the last 12 months`)};
-function countUp(x,y,metric,unit,color,delay){const m=/^(\d+(?:\.\d+)?)(.*)$/.exec(metric);const base=`font-family="${esc(FONTS.serif)}" font-size="${metric.length>4?37:46}" font-style="italic" fill="${color}"`;const suffix=unit?` <tspan font-size="18">${esc(unit)}</tspan>`:"";if(!m)return `<text x="${x}" y="${y}" ${base} class="r" style="animation-delay:${delay}s">${esc(metric)}${suffix}</text>`;let out="",val=Number(m[1]),dec=(m[1].split(".")[1]||"").length;for(let i=0;i<=16;i++){let n=i===16?metric:(val*(1-Math.pow(1-i/16,3))).toFixed(dec)+m[2],start=delay+i*.067,end=delay+(i+1)*.067;out+=`<text x="${x}" y="${y}" ${base} opacity="0">${esc(n)}${suffix}<set attributeName="opacity" to="1" begin="${start.toFixed(3)}s"/>${i===16?"":`<set attributeName="opacity" to="0" begin="${end.toFixed(3)}s"/>`}</text>`}return out};
+function countUp(x,y,metric,unit,color,delay){const m=/^(\d+(?:\.\d+)?)(.*)$/.exec(metric);const base=`font-family="${esc(FONTS.serif)}" font-size="${metric.length>4?37:46}" font-style="italic" fill="${color}"`;const suffix=unit?` <tspan font-size="18">${esc(unit)}</tspan>`:"";if(!m)return `<text x="${x}" y="${y}" ${base} class="r" style="animation-delay:${delay}s">${esc(metric)}${suffix}</text>`;let out="",val=Number(m[1]),dec=(m[1].split(".")[1]||"").length;for(let i=0;i<=8;i++{let n=i===8?metric:(val*(1-Math.pow(1-i/8,3))).toFixed(dec)+m[2],start=delay+i*.115,end=delay+(i+1)*.115;out+=`<text x="${x}" y="${y}" ${base} opacity="0">${esc(n)}${suffix}<set attributeName="opacity" to="1" begin="${start.toFixed(3)}s"/>${i===8?"":`<set attributeName="opacity" to="0" begin="${end.toFixed(3)}s"/>`}</text>`}return out};
 function tile(world,i){const span=W/3,gutter=i*4,cardw=span-8,col=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff";let b=`<defs><clipPath id="card"><rect x="${gutter}" y="0" width="${cardw}" height="210" rx="14"/></clipPath><linearGradient id="gl"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
 b+=`<g class="ti" style="animation-delay:${(2.2+i*.23).toFixed(2)}s"><g clip-path="url(#card)">`+r(gutter,0,cardw,210,col,14)+`<circle class="rg" cx="${gutter+243}" cy="165" r="63" fill="none" stroke="${ink}" stroke-opacity=".55" stroke-width="1.5"/>`+r(gutter-250,-20,85,260,"url(#gl)",0,'class="sh"')+"</g>";
 b+=t(gutter+23,37,world.tag,12,ink,FONTS.mono,'letter-spacing="1.15" class="f" style="animation-delay:2.7s"');b+=t(gutter+255,37,"→",16,ink,FONTS.mono,'class="nu"');
@@ -49,17 +49,37 @@ wrapped(p.description,31).slice(0,4).forEach((s,j)=>b+=t(left+24,75+j*20,s,13,SO
 
 const FOOTER_FOCUS={"en":"Software engineering · AI · cybersecurity · automation","tr":"Yazılım mühendisliği · yapay zekâ · siber güvenlik · otomasyon","de":"Softwareentwicklung · KI · Cybersicherheit · Automatisierung","ru":"Разработка ПО · ИИ · кибербезопасность · автоматизация","zh":"软件工程 · 人工智能 · 网络安全 · 自动化"};
 const FOOTER_LANGUAGES=[{"key":"en","label":"English","file":"README.md"},{"key":"tr","label":"Türkçe","file":"README_TR.md"},{"key":"de","label":"Deutsch","file":"README_DE.md"},{"key":"ru","label":"Русский","file":"README_RU.md"},{"key":"zh","label":"中文","file":"README_ZH.md"}];
-function footerHeading(cfg){let b=r(0,0,880,60,PAPER,10)+r(22,14,6,6,BLUE,2);b+=t(37,22,"CONNECT / "+cfg.display_name.toUpperCase(),10,MUTED,FONTS.mono);b+=t(22,50,"Let's connect.",31,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.15s"');b+=t(845,43,"WORK / IDEAS / CONTACT",12,SOFT,FONTS.mono,'text-anchor="end"');return svg(880,65,b,"Connect with "+cfg.display_name)};
+function footerHeading(cfg,mobile=false){
+ const w=mobile?360:880,h=mobile?63:80;
+ let b=r(0,0,w,h-5,PAPER,mobile?9:12);
+ b+=r(mobile?12:23,mobile?12:16,6,6,BLUE,2);
+ b+=t(mobile?26:39,mobile?19:24,"OUTSIDE GITHUB  /  "+cfg.first.toUpperCase(),mobile?10:11,MUTED,FONTS.mono,'letter-spacing=".8"');
+ b+=t(mobile?13:25,mobile?46:62,"Elsewhere on the web.",mobile?23:37,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.18s"');
+ if(!mobile)b+=t(834,61,"LINKS  ↗",12,BLUE,FONTS.mono,'text-anchor="end"');
+ return svg(w,h,b,"Personal links for "+cfg.display_name);
+};
 
-function footerNav(link,i,mobile=false){const [id,url]=link,names={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"},c={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#B58A00"}[id]||BLUE;
-if(mobile){let b=r(0,0,86,39,PAPER,7)+r(0,0,86,2,c);b+=t(7,24,names[id]||id,11,INK,FONTS.sans,'font-weight="600"');b+=t(81,24,"↗",10,c,FONTS.mono,'text-anchor="end"');return svg(90,43,b,"Mobile "+id+": "+url)}
-let b=r(0,0,214,54,PAPER,9)+r(0,0,214,3,c);b+=r(12,13,6,6,c,2)+t(27,29,names[id]||id,17,INK,FONTS.sans,'font-weight="600"');b+=t(27,45,{portfolio:"Website",linkedin:"Professional",projects:"Repositories",contact:"Email"}[id],11,MUTED,FONTS.mono)+t(196,31,"↗",16,c,FONTS.mono,'text-anchor="end"');return svg(220,59,b,(names[id]||id)+": "+url)};
+function footerNav(link,i,mobile=false){
+ const [id,url]=link,names={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Email"};
+ const cols={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#B58A00"},accent=cols[id]||BLUE;
+ const w=mobile?90:220,h=mobile?41:49,innerW=mobile?86:214;
+ let b=r(0,0,innerW,h-4,PAPER,mobile?7:9);
+ b+=r(0,0,innerW,mobile?2:3,accent);
+ b+=t(mobile?8:15,mobile?26:29,names[id]||id,mobile?11:16,INK,FONTS.sans,'font-weight="600" class="r" style="animation-delay:.16s"');
+ b+=t(mobile?80:201,mobile?26:29,"↗",mobile?12:16,accent,FONTS.mono,'text-anchor="end"');
+ return svg(w,h,b,(names[id]||id)+" link "+url);
+};
 
 function footerSpecialties(locale,mobile=false){let sentence=FOOTER_FOCUS[locale]||FOOTER_FOCUS.en;if(mobile){const l={en:["Software engineering · AI","Cybersecurity · Automation"],tr:["Yazılım mühendisliği · Yapay zekâ","Siber güvenlik · Otomasyon"],de:["Softwareentwicklung · KI","Cybersicherheit · Automatisierung"],ru:["Разработка ПО · ИИ","Кибербезопасность · Автоматизация"],zh:["软件工程 · 人工智能","网络安全 · 自动化"]}[locale];let b=r(0,0,360,56,PAPER,8)+r(12,10,5,5,BLUE,2);b+=t(25,17,"FOCUS",10,MUTED,FONTS.mono)+t(12,34,l[0],locale==="ru"?11.5:13,INK,FONTS.sans,'font-weight="600"')+t(12,50,l[1],locale==="ru"?11.5:13,SOFT,FONTS.sans);return svg(360,60,b,sentence)}
 let b=r(0,0,880,62,PAPER,10)+r(22,12,6,6,BLUE,2);b+=t(38,19,"FOCUS",11,MUTED,FONTS.mono)+t(22,46,sentence,locale==="zh"?23:locale==="ru"?19:20,INK,FONTS.sans,'font-weight="600"')+t(844,20,"05 LANGUAGES",10,BLUE,FONTS.mono,'text-anchor="end"');return svg(880,67,b,sentence)};
 
-function footerLanguage(lang,i,mobile=false){if(mobile){let b=r(0,0,68,33,PAPER,7)+r(5,4,58,1.5,BLUE);b+=t(34,23,lang.label,lang.key==="ru"?10:11,INK,FONTS.sans,'text-anchor="middle" font-weight="600"');return svg(72,38,b,"Mobile "+lang.label)}
-let b=r(0,0,171,45,PAPER,8)+r(9,13,27,20,BLUE,5);b+=t(22.5,27,lang.key.toUpperCase(),9.5,"#fff",FONTS.mono,'text-anchor="middle" font-weight="600"')+t(47,29,lang.label,lang.key==="ru"?14:16,INK,FONTS.sans,'font-weight="600"');return svg(176,50,b,"Choose "+lang.label)};
+function footerLanguage(lang,i,mobile=false){
+ const w=mobile?72:176,h=mobile?36:43,innerW=mobile?68:171;
+ let b=r(0,0,innerW,h-4,PAPER,mobile?7:8);
+ b+=r(7,4,innerW-14,1.5,BLUE);
+ b+=t(innerW/2,mobile?23:27,lang.label,mobile?(lang.key==="ru"?10:11):(lang.key==="ru"?14:16),INK,FONTS.sans,'text-anchor="middle" font-weight="600" class="f" style="animation-delay:.2s"');
+ return svg(w,h,b,"Read profile in "+lang.label);
+};
 
 function mobileFooterHeading(cfg){let b=r(0,0,360,43,PAPER,8)+r(12,9,5,5,BLUE,2);b+=t(25,16,"CONNECT",9,MUTED,FONTS.mono)+t(12,35,"Let's connect.",25,INK,FONTS.serif,'font-style="italic"')+t(347,34,cfg.first.toUpperCase(),10,BLUE,FONTS.mono,'text-anchor="end"');return svg(360,47,b,"Compact contact header")};
 function mobileHero(cfg,portrait){
@@ -121,19 +141,83 @@ function mobileTitle(dark){
  const ink=dark?"#e6edf3":INK;
  return svg(360,38,t(9,29,"What I'm",23,ink,FONTS.serif)+t(122,29,"coding",23,ink,FONTS.serif,'font-style="italic"'),"Mobile coding section");
 };
+function repoDirectoryTitle(cfg,mobile=false){
+ const total=cfg.repositories.length,open=cfg.repositories.filter(p=>p.visibility==="public").length,privateCount=total-open;
+ const w=mobile?360:880,h=mobile?96:133,x=mobile?14:42;
+ let b=r(0,0,w,h-(mobile?5:10),PAPER,mobile?9:14);
+ b+=r(x,mobile?13:22,mobile?6:8,mobile?6:8,BLUE,2,'class="li"');
+ b+=t(x+(mobile?14:20),mobile?20:30,"REPOSITORY DIRECTORY",mobile?10:12,MUTED,FONTS.mono,'letter-spacing="1"');
+ b+=t(x,mobile?66:96,String(total),mobile?53:83,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.22s"');
+ b+=t(x+(mobile?70:126),mobile?65:94,"repositories",mobile?28:53,INK,FONTS.serif,'class="r" style="animation-delay:.36s"');
+ b+=t(w-x,mobile?86:121,open+" PUBLIC  ·  "+privateCount+" PRIVATE",mobile?10:12,BLUE,FONTS.mono,'text-anchor="end"');
+ return svg(w,h,b,`${total} GitHub repositories: ${open} public, ${privateCount} private`);
+};
+function repoDirectorySection(kind,count,mobile=false){
+ const w=mobile?360:880,h=mobile?34:54,accent=kind==="public"?BLUE:RED;
+ let b=r(0,0,w,h-3,PAPER,mobile?7:10);
+ b+=r(mobile?13:25,mobile?11:17,mobile?5:7,mobile?5:7,accent,2);
+ b+=t(mobile?27:44,mobile?19:29,kind==="public"?"PUBLIC REPOSITORIES":"PRIVATE PROJECTS",mobile?10.5:14,INK,FONTS.mono,'font-weight="600" letter-spacing=".75"');
+ b+=t(w-(mobile?14:30),mobile?20:30,String(count).padStart(2,"0"),mobile?12:17,accent,FONTS.mono,'text-anchor="end"');
+ return svg(w,h,b,`${kind}: ${count} repositories`);
+};
+function repoDirectoryCard(p,i,mobile=false){
+ const w=mobile?360:880,h=mobile?66:79,cardH=mobile?62:73;
+ const priv=p.visibility!=="public";
+ const theme={AI:BLUE,Security:RED,Network:"#23839b",Web:"#ad8418",App:"#8170c1",Tools:"#238b60",Mobile:"#bc5e72",Desktop:"#555d92",IT:"#6565a9",Systems:"#555d92",Campus:"#a98c30",Automation:"#5e85ac",Media:"#a45ca2",Profile:BLUE,Utilities:"#707078"};
+ const accent=priv?"#7e8188":(theme[p.category]||BLUE);
+ let b=r(0,0,w,cardH,PAPER,mobile?9:12);
+ b+=`<defs><clipPath id="line"><rect x="0" y="0" width="${w}" height="${cardH}" rx="${mobile?9:12}"/></clipPath></defs>`;
+ b+=`<g clip-path="url(#line)">`+r(0,0,mobile?3:4,cardH,accent);
+ b+=`<rect x="${mobile?3:4}" y="0" width="${mobile?28:51}" height="2" fill="${accent}" class="f" style="animation-delay:.12s"/>`;
+ b+="</g>";
+ // Each SVG animates one content group, not hundreds of child nodes.
+ b+=`<g class="r" style="animation-delay:${(0.10+i%6*.065).toFixed(2)}s">`;
+ if(mobile){
+  b+=t(12,18,String(i+1).padStart(2,"0"),9,MUTED,FONTS.mono);
+  b+=t(38,26,p.name,p.name.length>19?15:p.name.length>14?17:20,INK,FONTS.sans,'font-weight="600"');
+  b+=t(39,47,p.language||"Other",10,MUTED,FONTS.mono);
+  b+=t(344,15,priv?"PRIVATE":"PUBLIC",9,priv?MUTED:BLUE,FONTS.mono,'text-anchor="end" font-weight="600"');
+  b+=t(344,49,priv?"●":"↗",17,priv?MUTED:accent,FONTS.mono,'text-anchor="end"');
+ }else{
+  b+=t(20,45,String(i+1).padStart(2,"0"),13,MUTED,FONTS.mono);
+  b+=r(59,21,7,7,accent,2);
+  b+=t(79,38,p.name,p.name.length>23?20:24,INK,FONTS.sans,'font-weight="600"');
+  b+=t(79,59,priv?"Private repository  ·  source not public":(p.description||"Public repository"),12,SOFT,FONTS.sans);
+  b+=t(800,25,(p.language||"OTHER").toUpperCase()+"  /  "+(priv?"PRIVATE":"PUBLIC"),10,priv?MUTED:BLUE,FONTS.mono,'text-anchor="end"');
+  b+=t(826,51,priv?"●":"↗",22,priv?MUTED:accent,FONTS.mono,'text-anchor="end"');
+ }
+ b+="</g>";
+ return svg(w,h,b,p.name+" — "+(priv?"private, not publicly accessible":"public")+(p.language?", "+p.language:""));
+};
+function footerLanguageBar(mobile=false){
+ const w=mobile?360:880,h=mobile?31:40;
+ let b=r(0,0,w,h-3,PAPER,mobile?7:9);
+ b+=r(mobile?12:22,mobile?9:12,5,5,BLUE,2);
+ b+=t(mobile?25:37,mobile?17:23,"LANGUAGE / SPRACHE / ЯЗЫК",mobile?9:11,MUTED,FONTS.mono);
+ b+=t(w-(mobile?12:24),mobile?18:24,"05",mobile?11:13,BLUE,FONTS.mono,'text-anchor="end"');
+ return svg(w,h,b,"Choose README language");
+};
 function buildCards(cfg,data,portrait){
- const a={"cards/hero.svg":hero(cfg,portrait),"cards/hero-mobile.svg":mobileHero(cfg,portrait),
- "cards/heatmap.svg":calendar(data?.days),"cards/heatmap-mobile.svg":mobileHeatmap(data?.days),
- "cards/activity.svg":activity(data),"cards/activity-mobile.svg":mobileActivity(data),
- "cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true),
- "cards/title-coding-light-mobile.svg":mobileTitle(false),"cards/title-coding-dark-mobile.svg":mobileTitle(true),
- "cards/footer-heading.svg":footerHeading(cfg),"cards/footer-heading-mobile.svg":mobileFooterHeading(cfg)};
- cfg.tiles.forEach((p,i)=>{a["cards/"+p.id+".svg"]=tile(p,i);a["cards/"+p.id+"-mobile.svg"]=mobileTile(p,i)});
- cfg.projects.forEach((p,i)=>{a["cards/repo-"+p.name+".svg"]=repo(p,i);a["cards/repo-"+p.name+"-mobile.svg"]=mobileRepo(p)});
- cfg.links.forEach((p,i)=>{a["cards/footer-nav-"+p[0]+".svg"]=footerNav(p,i);a["cards/footer-nav-"+p[0]+"-mobile.svg"]=footerNav(p,i,true)});
- for(const loc of Object.keys(FOOTER_FOCUS)){a["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);a["cards/footer-focus-"+loc+"-mobile.svg"]=footerSpecialties(loc,true)}
- FOOTER_LANGUAGES.forEach((p,i)=>{a["cards/footer-language-"+p.key+".svg"]=footerLanguage(p,i);a["cards/footer-language-"+p.key+"-mobile.svg"]=footerLanguage(p,i,true)});
- return a;
+ const all=cfg.repositories||[];
+ const open=all.filter(x=>x.visibility==="public");
+ const closed=all.filter(x=>x.visibility==="private");
+ const assets={
+  "cards/hero.svg":hero(cfg,portrait),"cards/hero-mobile.svg":mobileHero(cfg,portrait),
+  "cards/heatmap.svg":calendar(data?.days),"cards/heatmap-mobile.svg":mobileHeatmap(data?.days),
+  "cards/activity.svg":activity(data),"cards/activity-mobile.svg":mobileActivity(data),
+  "cards/repositories-title.svg":repoDirectoryTitle(cfg),"cards/repositories-title-mobile.svg":repoDirectoryTitle(cfg,true),
+  "cards/repositories-public.svg":repoDirectorySection("public",open.length),
+  "cards/repositories-public-mobile.svg":repoDirectorySection("public",open.length,true),
+  "cards/repositories-private.svg":repoDirectorySection("private",closed.length),
+  "cards/repositories-private-mobile.svg":repoDirectorySection("private",closed.length,true),
+  "cards/footer-heading.svg":footerHeading(cfg),"cards/footer-heading-mobile.svg":footerHeading(cfg,true),
+  "cards/footer-languages.svg":footerLanguageBar(),"cards/footer-languages-mobile.svg":footerLanguageBar(true)
+ };
+ cfg.tiles.forEach((p,i)=>{assets["cards/"+p.id+".svg"]=tile(p,i);assets["cards/"+p.id+"-mobile.svg"]=mobileTile(p,i)});
+ all.forEach((p,i)=>{assets["cards/project-"+p.name+".svg"]=repoDirectoryCard(p,i);assets["cards/project-"+p.name+"-mobile.svg"]=repoDirectoryCard(p,i,true)});
+ cfg.links.forEach((p,i)=>{assets["cards/footer-nav-"+p[0]+".svg"]=footerNav(p,i);assets["cards/footer-nav-"+p[0]+"-mobile.svg"]=footerNav(p,i,true)});
+ FOOTER_LANGUAGES.forEach((p,i)=>{assets["cards/footer-language-"+p.key+".svg"]=footerLanguage(p,i);assets["cards/footer-language-"+p.key+"-mobile.svg"]=footerLanguage(p,i,true)});
+ return assets;
 };
 
 function summarize(days){if(!days?.length)throw new Error("Empty contribution series");days=[...days].map(d=>({date:d.date,count:Number(d.count)})).sort((a,b)=>a.date.localeCompare(b.date));if(days.some(d=>!Number.isFinite(d.count)||d.count<0))throw new Error("Invalid contributions");let monthly=new Map(),max={date:"",count:-1},run=0,longest=0;for(const d of days){const m=d.date.slice(0,7);monthly.set(m,(monthly.get(m)||0)+d.count);if(d.count>max.count)max=d;run=d.count>0?run+1:0;longest=Math.max(longest,run)}let idx=days.length-1;const today=new Date().toISOString().slice(0,10);if(days[idx].count===0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))idx--;let current=0;if(idx>=0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))for(let i=idx;i>=0&&days[i].count>0;i--)current++;return{days,monthly:[...monthly].map(([month,total])=>({month,total})),total_contributions:days.reduce((a,b)=>a+b.count,0),best_day:max,current_streak:{length:current},longest_streak:{length:longest},updated_at:new Date().toISOString()}};

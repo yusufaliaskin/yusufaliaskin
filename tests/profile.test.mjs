@@ -1,29 +1,62 @@
-import test from "node:test";import assert from "node:assert/strict";import {buildCards,summarize} from "../scripts/render.mjs";import {readFileSync} from "node:fs";
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {buildCards,summarize} from "../scripts/render.mjs";
 const cfg=JSON.parse(readFileSync(new URL("../profile.json",import.meta.url),"utf8"));
-test("all self-contained animated SVGs including responsive footer",()=>{const cards=buildCards(cfg,null,null);assert.equal(Object.keys(cards).length,52);for(const svg of Object.values(cards)){assert.ok(svg.includes("<svg "));assert.ok(svg.includes("viewBox="));assert.ok(svg.includes("@keyframes"));assert.ok(!svg.includes("<script"));assert.ok(svg.endsWith("</svg>"))}});
-test("no invented GitHub numbers without data",()=>{const c=buildCards(cfg,null,null);assert.ok(c["cards/activity.svg"].includes("Syncing real activity"));assert.ok(c["cards/heatmap.svg"].includes("AWAITING FIRST SYNC"))});
-test("counts and streaks use supplied real days",()=>{const x=summarize([{date:"2026-11-20",count:4},{date:"2026-11-21",count:0},{date:"2026-11-22",count:2}]);assert.equal(x.total_contributions,6);assert.equal(x.best_day.count,4);assert.equal(x.longest_streak.length,1)});
-test("escape untrusted project descriptions",()=>{const copy=JSON.parse(JSON.stringify(cfg));copy.projects[0].description='<script>alert("bad")</script>';const s=buildCards(copy,null,null)["cards/repo-AIStudio.svg"];assert.ok(!s.includes("<script>"));assert.ok(s.includes("&lt;script&gt;"))});
-
-test("footer shows real user links and five languages",()=>{
- const cards=buildCards(cfg,null,null);
- const ids=["portfolio","linkedin","projects","contact"];
- for(const id of ids){const p="cards/footer-nav-"+id+".svg";assert.ok(cards[p]?.includes('<svg '),p);assert.ok(cards[p].includes("@keyframes"),p)}
- const langs=["en","tr","de","ru","zh"];
- for(const id of langs){assert.ok(cards["cards/footer-focus-"+id+".svg"],id);assert.ok(cards["cards/footer-language-"+id+".svg"],id)}
- assert.ok(cards["cards/footer-heading.svg"].includes("YUSUF ALI AŞKIN"));
+const assets=()=>buildCards(cfg,null,null);
+test("exactly 23 projects are displayed, including all user-listed repositories",()=>{
+ assert.equal(cfg.repositories.length,23);
+ assert.equal(cfg.repositories.filter(r=>r.visibility==="public").length,12);
+ assert.equal(cfg.repositories.filter(r=>r.visibility==="private").length,11);
+ assert.equal(new Set(cfg.repositories.map(r=>r.name)).size,23);
+ for(const repo of cfg.repositories){assert.ok(assets()["cards/project-"+repo.name+".svg"]);assert.ok(assets()["cards/project-"+repo.name+"-mobile.svg"])}
 });
-test("every translated README has clickable personal footer links and language links",()=>{
- for(const filename of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
-  const s=readFileSync(new URL("../"+filename,import.meta.url),"utf8");
-  for(const [id,url] of cfg.links){assert.ok(s.includes('href="'+url+'"'),filename+" "+id);assert.ok(s.includes("./cards/footer-nav-"+id+".svg"),filename+" "+id)}
-  for(const path of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"])assert.ok(s.includes('href="'+path+'"'),filename+" "+path);
-  assert.ok(s.includes("./cards/footer-focus-"),filename);
-  assert.ok(!s.includes('<p align="center"><sub>'),filename);
+test("header counts real public/private split and build tile no longer says three",()=>{
+ const a=assets();
+ assert.ok(a["cards/repositories-title.svg"].includes("23"));
+ assert.ok(a["cards/repositories-title.svg"].includes("12 PUBLIC"));
+ assert.ok(a["cards/repositories-title.svg"].includes("11 PRIVATE"));
+ assert.equal(cfg.tiles.find(t=>t.id==="build").metric,"23");
+ assert.ok(a["cards/build.svg"].includes("23"));
+});
+test("private projects do not contain undisclosed details",()=>{
+ const a=assets();
+ for(const p of cfg.repositories.filter(r=>r.visibility==="private")){
+  const body=a["cards/project-"+p.name+".svg"];
+  assert.ok(body.includes("Private repository"));
+  assert.ok(!body.includes("https://github.com/yusufaliaskin/"+p.name));
  }
 });
-
-test("mobile footer uses compact SVGs and preserves real links",()=>{const c=buildCards(cfg,null,null);assert.equal(Object.keys(c).length,52);assert.equal(Object.keys(c).filter(k=>k.endsWith("-mobile.svg")).length,26);for(const f of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){const s=readFileSync(new URL("../"+f,import.meta.url),"utf8");assert.ok(s.includes('media="(max-width: 600px)"'));for(const [id,url] of cfg.links){assert.ok(s.includes('href="'+url+'"'));assert.ok(s.includes('footer-nav-'+id+'-mobile.svg'))}for(const lang of ["en","tr","de","ru","zh"])assert.ok(s.includes('footer-language-'+lang+'-mobile.svg'))}});
-test("compact sizes and static heatmap cells",()=>{const c=buildCards(cfg,null,null);assert.ok(c["cards/footer-heading.svg"].includes('viewBox="0 0 880 65"'));assert.ok(c["cards/footer-heading-mobile.svg"].includes('viewBox="0 0 360 47"'));assert.equal((c["cards/heatmap.svg"].match(/class="f" style="animation-delay:/g)||[]).length,0)});
-
-test("all main profile sections have lightweight mobile variants",()=>{const c=buildCards(cfg,null,null);assert.equal(Object.keys(c).length,52);assert.equal(Object.keys(c).filter(x=>x.endsWith("-mobile.svg")).length,26);for(const file of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){const s=readFileSync(new URL("../"+file,import.meta.url),"utf8");for(const id of ["hero","heatmap","activity","build","secure","learn","repo-AIStudio","repo-F.R.I.D.A.Y-AI","repo-afetnet.com"]){assert.ok(s.includes('srcset="./cards/'+id+'-mobile.svg"'),file+" "+id)}}assert.ok(c["cards/hero-mobile.svg"].includes('viewBox="0 0 360 163"'));assert.ok(c["cards/heatmap-mobile.svg"].length<45000)});
+test("generated SVGs are accessible, complete and optimized",()=>{
+ const a=assets();
+ assert.equal(Object.keys(a).length,86);
+ for(const [path,svg] of Object.entries(a)){
+  assert.ok(svg.startsWith("<svg "),path);
+  assert.ok(svg.endsWith("</svg>"),path);
+  assert.ok(svg.includes("viewBox="),path);
+  assert.ok(svg.includes("role=\"img\""),path);
+  assert.ok(!svg.includes("<script"),path);
+  assert.ok(!svg.includes("NaN"),path);
+  assert.ok(!svg.includes("undefined"),path);
+ }
+});
+test("all 23 project rows have reduced mobile variants and escaped input",()=>{
+ const copy=structuredClone(cfg);
+ copy.repositories[0].description='<script>alert("x")</script>';
+ const a=buildCards(copy,null,null);
+ assert.ok(a["cards/project-yusufaliaskin.svg"].includes("&lt;script&gt;"));
+ assert.ok(!a["cards/project-yusufaliaskin.svg"].includes("<script>"));
+ for(const p of cfg.repositories)assert.ok(a["cards/project-"+p.name+"-mobile.svg"].includes('viewBox="0 0 360 66"'));
+});
+test("no fake contribution counts; daily totals are derived from real days",()=>{
+ const a=assets();
+ assert.ok(a["cards/activity.svg"].includes("Syncing real activity"));
+ const data=summarize([{date:"2026-11-20",count:2},{date:"2026-11-21",count:0},{date:"2026-11-22",count:3}]);
+ assert.equal(data.total_contributions,5);
+ assert.equal(data.best_day.count,3);
+});
+test("every footer link remains the user's real URL",()=>{
+ const a=assets();
+ for(const [id,url] of cfg.links){assert.ok(a["cards/footer-nav-"+id+".svg"].includes(url));assert.ok(a["cards/footer-nav-"+id+"-mobile.svg"].includes(url))}
+ assert.ok(!Object.keys(a).some(s=>s.includes("footer-focus")));
+});
