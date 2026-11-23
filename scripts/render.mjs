@@ -46,7 +46,66 @@ b+="</g>";return svg(span,222,b,world.tag+" — "+world.text)};
 function titleCard(dark){const fg=dark?"#e6edf3":INK;const b=t(2,47,"What I'm",35,fg,FONTS.serif,'class="r" style="animation-delay:4.15s"')+t(184,47,"coding",35,fg,FONTS.serif,'font-style="italic" class="r" style="animation-delay:4.32s"');return svg(W,64,b,"What I'm coding")};
 function repo(p,i){const span=W/3,left=i*4,w=span-8;let b=r(left,0,w,190,PAPER,14);b+=`<g class="r" style="animation-delay:${(4.65+i*.16).toFixed(2)}s">`+r(left+24,29,8,8,p.color,2)+t(left+39,39,p.name,17,INK,FONTS.sans,'font-weight="bold"');
 wrapped(p.description,31).slice(0,4).forEach((s,j)=>b+=t(left+24,75+j*20,s,13,SOFT,FONTS.sans));b+=t(left+24,167,p.lang+"   ·   OPEN SOURCE",11,MUTED,FONTS.mono)+"</g>";return svg(span,202,b,p.name+" — "+p.description)};
-function buildCards(cfg,data,portrait){const a={"cards/hero.svg":hero(cfg,portrait),"cards/heatmap.svg":calendar(data?.days),"cards/activity.svg":activity(data),"cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true)};cfg.tiles.forEach((p,i)=>a["cards/"+p.id+".svg"]=tile(p,i));cfg.projects.forEach((p,i)=>a["cards/repo-"+p.name+".svg"]=repo(p,i));return a};
+
+const FOOTER_FOCUS={"en":"Software engineering · AI · cybersecurity · automation","tr":"Yazılım mühendisliği · yapay zekâ · siber güvenlik · otomasyon","de":"Softwareentwicklung · KI · Cybersicherheit · Automatisierung","ru":"Разработка ПО · ИИ · кибербезопасность · автоматизация","zh":"软件工程 · 人工智能 · 网络安全 · 自动化"};
+const FOOTER_LANGUAGES=[{"key":"en","label":"English","file":"README.md"},{"key":"tr","label":"Türkçe","file":"README_TR.md"},{"key":"de","label":"Deutsch","file":"README_DE.md"},{"key":"ru","label":"Русский","file":"README_RU.md"},{"key":"zh","label":"中文","file":"README_ZH.md"}];
+function footerHeading(cfg){
+  const b=`
+    <rect width="880" height="126" rx="14" fill="${PAPER}"/>
+    <rect class="li" x="40" y="30" width="8" height="8" rx="2" fill="${BLUE}"/>
+    ${t(61,39,"CONNECT  /  "+cfg.display_name.toUpperCase(),12,MUTED,FONTS.mono,'class="f" style="animation-delay:.15s" letter-spacing="1.1"')}
+    ${t(37,96,"Let's connect.",56,INK,FONTS.serif,'class="r" style="animation-delay:.28s" font-style="italic" letter-spacing="-1.5"')}
+    <line x1="561" x2="561" y1="28" y2="103" stroke="#dcdcd7"/>
+    ${t(591,52,"WORK  /  IDEAS  /  CONTACT",12,MUTED,FONTS.mono,'class="f" style="animation-delay:.5s"')}
+    ${t(591,83,"Find me online",22,INK,FONTS.sans,'class="r" style="animation-delay:.62s" font-weight="600"')}
+    ${t(797,83,"↗",20,BLUE,FONTS.mono,'class="nup"')}
+  `;
+  return svg(W,139,b,"Connect with "+cfg.display_name);
+}
+function footerNav(link,i){
+  const [id,url]=link;
+  const titles={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"};
+  const details={portfolio:"Personal website",linkedin:"Professional profile",projects:"GitHub repositories",contact:"Send me an email"};
+  const colors={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#DBA700"};
+  const left=i%2===0?0:8, cardW=432;
+  const title=t(left+28,54,titles[id]||id,26,INK,FONTS.sans,'font-weight="600" class="r" style="animation-delay:'+(.2+(i%4)*.13)+'s"');
+  let b=`<defs><clipPath id="cut"><rect x="${left}" y="0" width="${cardW}" height="104" rx="14"/></clipPath>
+  <linearGradient id="gl"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient></defs>`;
+  b+=`<g clip-path="url(#cut)">${r(left,0,cardW,104,PAPER,14)}${r(left,0,cardW,4,colors[id]||BLUE,0)}`;
+  b+=r(left+28,26,10,10,colors[id]||BLUE,3,'class="li"');
+  b+=title.replace('x="'+(left+28)+'"','x="'+(left+50)+'"');
+  b+=t(left+50,81,details[id]||url,14,SOFT,FONTS.mono,'class="f" style="animation-delay:.7s"');
+  b+=`<circle cx="${left+382}" cy="52" r="27" fill="#e5e5e2"/>`;
+  b+=t(left+374,61,"↗",24,colors[id]||BLUE,FONTS.mono,'class="nup"');
+  b+=r(left-130,-18,85,141,'url(#gl)',0,'class="sh"');
+  b+='</g>';
+  return svg(440,116,b,(titles[id]||id)+": "+url);
+}
+function footerSpecialties(locale){
+  const sentence=FOOTER_FOCUS[locale]||FOOTER_FOCUS.en;
+  const fontSize=locale==="ru"||locale==="tr"||locale==="de"?21:locale==="zh"?26:23;
+  let b=r(0,0,W,125,PAPER,14);
+  b+=r(42,24,8,8,BLUE,2,'class="li"');
+  b+=t(61,33,"FIELDS OF INTEREST",12,MUTED,FONTS.mono,'letter-spacing="1.1" class="f" style="animation-delay:.2s"');
+  b+=t(43,80,sentence,fontSize,INK,FONTS.sans,'class="r" style="animation-delay:.4s" font-weight="600"');
+  b+=`<line x1="43" y1="98" x2="837" y2="98" stroke="#dcdcd7" stroke-width="1"/>`;
+  b+=t(44,116,"SELECT LANGUAGE",11,MUTED,FONTS.mono,'letter-spacing="1.2"');
+  b+=t(835,116,"05 AVAILABLE",11,BLUE,FONTS.mono,'text-anchor="end" letter-spacing=".8"');
+  return svg(W,137,b,sentence+"; choose your language");
+}
+function footerLanguage(lang,i){
+  const width=W/3,left=i%3*4,rectWidth=width-8;
+  let b=`<defs><clipPath id="cut"><rect x="${left}" y="0" width="${rectWidth}" height="77" rx="12"/></clipPath></defs>`;
+  b+=r(left,0,rectWidth,77,PAPER,12);
+  b+=`<rect x="${left+.6}" y=".6" width="${rectWidth-1.2}" height="75.8" rx="11.4" fill="none" stroke="#dcdcd7" stroke-width="1.2"/>`;
+  b+=r(left+23,26,29,26,BLUE,6,'class="f" style="animation-delay:.22s"');
+  b+=t(left+37.5,44,lang.key.toUpperCase(),12,"#ffffff",FONTS.mono,'text-anchor="middle" font-weight="600"');
+  b+=t(left+69,46,lang.label,23,INK,FONTS.sans,'class="r" style="animation-delay:.3s" font-weight="600"');
+  b+=t(left+259,46,"↗",17,BLUE,FONTS.mono,'class="nu"');
+  return svg(width,88,b,"Read profile in "+lang.label);
+}
+
+function buildCards(cfg,data,portrait){const a={"cards/hero.svg":hero(cfg,portrait),"cards/heatmap.svg":calendar(data?.days),"cards/activity.svg":activity(data),"cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true)};cfg.tiles.forEach((p,i)=>a["cards/"+p.id+".svg"]=tile(p,i));cfg.projects.forEach((p,i)=>a["cards/repo-"+p.name+".svg"]=repo(p,i));const aFooter={"cards/footer-heading.svg":footerHeading(cfg.display_name?cfg:{display_name:"Yusuf Ali Aşkın"})};cfg.links.forEach((link,i)=>aFooter["cards/footer-nav-"+link[0]+".svg"]=footerNav(link,i));for(const loc of Object.keys(FOOTER_FOCUS))aFooter["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);FOOTER_LANGUAGES.forEach((lang,i)=>aFooter["cards/footer-language-"+lang.key+".svg"]=footerLanguage(lang,i));Object.assign(a,aFooter);return a};
 function summarize(days){if(!days?.length)throw new Error("Empty contribution series");days=[...days].map(d=>({date:d.date,count:Number(d.count)})).sort((a,b)=>a.date.localeCompare(b.date));if(days.some(d=>!Number.isFinite(d.count)||d.count<0))throw new Error("Invalid contributions");let monthly=new Map(),max={date:"",count:-1},run=0,longest=0;for(const d of days){const m=d.date.slice(0,7);monthly.set(m,(monthly.get(m)||0)+d.count);if(d.count>max.count)max=d;run=d.count>0?run+1:0;longest=Math.max(longest,run)}let idx=days.length-1;const today=new Date().toISOString().slice(0,10);if(days[idx].count===0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))idx--;let current=0;if(idx>=0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))for(let i=idx;i>=0&&days[i].count>0;i--)current++;return{days,monthly:[...monthly].map(([month,total])=>({month,total})),total_contributions:days.reduce((a,b)=>a+b.count,0),best_day:max,current_streak:{length:current},longest_streak:{length:longest},updated_at:new Date().toISOString()}};
 export {buildCards,summarize};
 async function fetchContributions(){
