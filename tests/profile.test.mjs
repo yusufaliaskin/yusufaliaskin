@@ -126,7 +126,7 @@ test("mobile activity matches reference graph and right stat timing",()=>{
  assert.ok(a["cards/title-coding-light-mobile.svg"].includes("animation-delay:4.4s"));
 });
 test("entire contact buttons bounce instead of just their labels",()=>{
- const a=assets();
+ const a=cards();
  for(const id of ["portfolio","linkedin","projects","contact"]){
   const x=a["cards/footer-nav-"+id+".svg"];
   const p=x.indexOf('class="ti"'),background=x.indexOf('fill="#f3f3f1"');
