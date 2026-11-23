@@ -46,8 +46,12 @@ test("tiles launch at 3.1 3.35 and 3.6 seconds with layered effects",()=>{
   assert.ok(s.includes('class="ti" style="animation-delay:'+d+'s"'),name);
   for(const cls of ["sl","ai","ro","sh","rg"])assert.ok(s.includes('class="'+cls+'"'),name+" "+cls);
   assert.ok(s.includes('clip-path="url(#slot)"'));
-  assert.ok(s.includes("<set attributeName="));
-  assert.ok((s.match(/<set attributeName="opacity" to="1"/g)||[]).length>=19);
+  if(/^\\d/.test(cfg.tiles[i].metric)){
+   assert.ok(s.includes("<set attributeName="),name);
+   assert.ok((s.match(/<set attributeName="opacity" to="1"/g)||[]).length>=19,name);
+  }else{
+   assert.ok(s.includes('class="sl"'),name+" text-only value slides in");
+  }
  }
 });
 test("activity chart grows 12 monthly bars and unveils three stats",()=>{
