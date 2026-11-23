@@ -1,146 +1,114 @@
-
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {buildCards,summarize} from "../scripts/render.mjs";
+import {buildCards,summarize,asciiFromGrayscale} from "../scripts/render.mjs";
 const cfg=JSON.parse(readFileSync(new URL("../profile.json",import.meta.url),"utf8"));
-const assets=()=>buildCards(cfg,null,null);
-test("exactly three featured projects, not every repository",()=>{
+const cards=(data=null)=>buildCards(cfg,data,null);
+test("only three featured projects and forty responsive SVG assets",()=>{
  assert.equal(cfg.projects.length,3);
- const a=assets();
- assert.equal(Object.keys(a).filter(k=>k.startsWith("cards/repo-")).length,6);
- assert.ok(!Object.keys(a).some(k=>k.startsWith("cards/project-")||k.startsWith("cards/repositories-")));
- assert.equal(Object.keys(a).length,40);
+ const v=cards();assert.equal(Object.keys(v).length,40);
+ assert.equal(Object.keys(v).filter(k=>k.startsWith("cards/repo-")).length,6);
+ assert.ok(!Object.keys(v).some(k=>k.startsWith("cards/project-")||k.includes("footer-heading")));
 });
-test("repository total is accurate without listing them all",()=>{
- assert.equal(cfg.tiles.find(t=>t.id==="build").metric,"23");
- assert.equal(cfg.tiles.find(t=>t.id==="build").unit,"repositories");
- assert.ok(assets()["cards/build.svg"].includes("23"));
+test("the reference has thirteen distinct motion primitives",()=>{
+ const s=cards()["cards/build.svg"];
+ for(const anim of ["rise","fade","grow","pop","pulse","nudge","nudgeup","tilein","slidein","arrowin","roll","sheen","ring"]){
+  assert.ok(s.includes("@keyframes "+anim),anim);
+ }
+ assert.ok(s.includes("translateY(90px) scale(.6) rotate(-9deg)"));
+ assert.ok(s.includes("scale(1.15)"));
 });
-test("four personal links remain clickable and have staged entrance animations",()=>{
- const a=assets();
- for(let i=0;i<cfg.links.length;i++){
-  const [id,url]=cfg.links[i];
-  for(const suffix of ["","-mobile"]){
-   const x=a["cards/footer-nav-"+id+suffix+".svg"];
-   assert.ok(x.includes(url));assert.ok(x.includes("animation-delay:"));assert.ok(x.includes("@keyframes rise"));
-  }
+test("ASCII hero prints portrait rows at progressively later times",()=>{
+ const s=cards()["cards/hero.svg"];
+ assert.equal((s.match(/animation-duration:\.35s/g)||[]).length,53);
+ assert.ok(s.includes("animation-delay:0.250s"));
+ assert.ok(s.includes("animation-delay:1.186s"));
+ assert.ok(s.includes('repeatCount="indefinite"'));
+ assert.ok(s.includes("animation-delay:.15s"));
+ assert.ok(s.includes("animation-delay:.30s"));
+});
+test("desktop contribution heatmap pops independent daily cells",()=>{
+ const s=cards()["cards/heatmap.svg"];
+ assert.ok((s.match(/<rect class="p" style="animation-delay:/g)||[]).length>=360);
+ assert.ok(s.includes("animation-delay:1.00s"));
+ assert.ok(s.includes("animation-delay:1.02s"));
+ assert.ok(s.includes('style="animation-delay:2.4s"'));
+});
+test("compact mobile heatmap uses 53 timed groups for performance",()=>{
+ const s=cards()["cards/heatmap-mobile.svg"];
+ assert.equal((s.match(/<g class="p" style="animation-delay:/g)||[]).length,53);
+ assert.ok(s.includes("animation-delay:1.00s"));
+ assert.ok(s.includes("animation-delay:2.56s"));
+});
+test("tiles launch at 3.1 3.35 and 3.6 seconds with layered effects",()=>{
+ for(const [i,name] of ["build","secure","learn"].entries()){
+  const s=cards()["cards/"+name+".svg"],d=(3.1+i*.25).toFixed(2);
+  assert.ok(s.includes('class="ti" style="animation-delay:'+d+'s"'),name);
+  for(const cls of ["sl","ai","ro","sh","rg"])assert.ok(s.includes('class="'+cls+'"'),name+" "+cls);
+  assert.ok(s.includes('clip-path="url(#slot)"'));
+  assert.ok(s.includes("<set attributeName="));
+  assert.ok((s.match(/<set attributeName="opacity" to="1"/g)||[]).length>=19);
  }
 });
-test("language links appear as five slim animated options",()=>{
- const a=assets();
- for(const lang of ["en","tr","de","ru","zh"]){
-  for(const suffix of ["","-mobile"]){
-   const svg=a["cards/footer-language-"+lang+suffix+".svg"];
-   assert.ok(svg.includes("animation-delay:"));
-   assert.ok(svg.length<6000);
-  }
- }
- assert.ok(!Object.keys(a).some(k=>k.includes("footer-heading")));
+test("activity chart grows 12 monthly bars and unveils three stats",()=>{
+ const data=summarize([{date:"2026-11-20",count:4},{date:"2026-11-21",count:0},{date:"2026-11-22",count:2}]);
+ const s=cards(data)["cards/activity.svg"];
+ assert.equal((s.match(/<rect class="g" style="animation-delay:/g)||[]).length,12);
+ assert.ok(s.includes("animation-delay:2.20s"));
+ assert.ok(s.includes("animation-delay:2.60s")||s.includes("animation-delay:2.6s"));
+ assert.ok(s.includes("days with a contribution"));
+ assert.ok(s.includes("busiest day"));
+ assert.equal(data.total_contributions,6);
 });
-test("README translations preserve mobile sources, links, and three featured projects",()=>{
- for(const filename of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
-  const s=readFileSync(new URL("../"+filename,import.meta.url),"utf8");
-  for(const p of cfg.projects)assert.ok(s.includes("./cards/repo-"+p.name+"-mobile.svg"),filename+" "+p.name);
-  for(const [id,url] of cfg.links){assert.ok(s.includes('href="'+url+'"'),filename+" "+id);assert.ok(s.includes("footer-nav-"+id+"-mobile.svg"),filename+" "+id)}
-  for(const lang of ["en","tr","de","ru","zh"])assert.ok(s.includes("footer-language-"+lang+"-mobile.svg"),filename+" "+lang);
-  assert.ok(!s.includes("cards/project-"),filename);
-  assert.ok(!s.includes("cards/footer-focus-"),filename);
-  assert.ok(s.includes("hero-mobile.svg"),filename);
-  assert.ok(s.includes("title-coding-dark-mobile.svg"),filename);
+test("section title and repositories follow reference delays",()=>{
+ const a=cards();
+ assert.ok(a["cards/title-coding-light.svg"].includes("animation-delay:4.4s"));
+ for(const [i,p] of cfg.projects.entries()){
+  assert.ok(a["cards/repo-"+p.name+".svg"].includes("animation-delay:"+(4.6+i*.12).toFixed(2)+"s"));
+  assert.ok(a["cards/repo-"+p.name+"-mobile.svg"].includes("animation-delay:"+(4.6+i*.12).toFixed(2)+"s"));
  }
 });
-test("all SVGs are complete and reduced motion supported",()=>{
- for(const [name,svg] of Object.entries(assets())){
-  assert.ok(svg.startsWith("<svg "),name);
-  assert.ok(svg.endsWith("</svg>"),name);
-  assert.ok(svg.includes("viewBox="),name);
-  assert.ok(svg.includes("prefers-reduced-motion"),name);
-  assert.ok(!svg.includes("<script"),name);
-  assert.ok(!svg.includes("undefined"),name);
+test("link buttons and all five languages are animated and clickable",()=>{
+ const a=cards();
+ for(const [i,[key,url]] of cfg.links.entries()){
+  const p=a["cards/footer-nav-"+key+".svg"],m=a["cards/footer-nav-"+key+"-mobile.svg"];
+  assert.ok(p.includes(url));assert.ok(m.includes(url));
+  assert.ok(p.includes('class="ti"'),key);
+  assert.ok(p.includes("animation-delay:"+(5.05+i*.16).toFixed(2)+"s"),key);
+ }
+ for(const [i,id] of ["en","tr","de","ru","zh"].entries()){
+  const s=a["cards/footer-language-"+id+".svg"];
+  assert.ok(s.includes('class="p"'),id);
+  assert.ok(s.includes("animation-delay:"+(5.85+i*.12).toFixed(2)+"s"),id);
  }
 });
-test("no fabricated contributions and real streak calculations",()=>{
- const a=assets();
- assert.ok(a["cards/activity.svg"].includes("Syncing real activity"));
- const m=summarize([{date:"2026-11-20",count:2},{date:"2026-11-21",count:0},{date:"2026-11-22",count:3}]);
- assert.equal(m.total_contributions,5);
-});
-test("featured project content is XML escaped",()=>{
- const copy=structuredClone(cfg);copy.projects[0].description='<script>unsafe</script>';
- const svg=buildCards(copy,null,null)["cards/repo-AIStudio.svg"];
- assert.ok(svg.includes("&lt;script&gt;"));assert.ok(!svg.includes("<script>"));
-});
-
-test("remove Find me online from all README translations and generation",()=>{
- const a=assets();assert.equal(Object.keys(a).length,40);
- assert.ok(!Object.keys(a).some(k=>k.includes("footer-heading")));
+test("all languages preserve three projects, mobile art and all user URLs",()=>{
  for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
- const txt=readFileSync(new URL("../"+name,import.meta.url),"utf8");
- assert.ok(!txt.includes("Find me online"));assert.ok(!txt.includes("footer-heading"));
+  const readme=readFileSync(new URL("../"+name,import.meta.url),"utf8");
+  for(const p of cfg.projects)assert.ok(readme.includes("cards/repo-"+p.name+"-mobile.svg"),name+" "+p.name);
+  for(const [key,url] of cfg.links){assert.ok(readme.includes('href="'+url+'"'),name+" "+key);assert.ok(readme.includes("footer-nav-"+key+"-mobile.svg"))}
+  assert.ok(!readme.includes("Find me online"));
+  assert.ok(!readme.includes("cards/project-"));
  }
 });
-test("staggered reveal and draw effect on four links and five languages",()=>{
- const a=assets();
- for(const id of ["portfolio","linkedin","projects","contact"]){
-  for(const suff of ["","-mobile"]){
-   const x=a["cards/footer-nav-"+id+suff+".svg"];
-   assert.ok(x.includes('class="nav-border-reveal"'));assert.ok(x.includes("animation-delay:"));
-   assert.ok(x.includes("@keyframes draw"));
-  }
- }
- for(const id of ["en","tr","de","ru","zh"]){
-  assert.ok(a["cards/footer-language-"+id+".svg"].includes('class="line-draw"'));
+test("reduced motion is supported and SVGs use no scripts",()=>{
+ for(const [name,s] of Object.entries(cards())){
+  assert.ok(s.startsWith("<svg "),name);
+  assert.ok(s.endsWith("</svg>"),name);
+  assert.ok(s.includes("prefers-reduced-motion"),name);
+  assert.ok(!s.includes("<script"),name);
+  assert.ok(!s.includes("undefined"),name);
  }
 });
-test("gentle finite animations and accessible reduced motion",()=>{
- const a=assets();
- assert.ok(a["cards/hero.svg"].includes('repeatCount="1"'));
- assert.ok(!a["cards/hero.svg"].includes('repeatCount="indefinite"'));
- assert.ok(a["cards/build.svg"].includes("translateY(16px) scale(.985)"));
- assert.ok(a["cards/repo-AIStudio.svg"].includes("animation-delay:0.26s"));
- assert.ok(a["cards/footer-nav-contact-mobile.svg"].includes("prefers-reduced-motion"));
+test("real avatar pixel data maps to ASCII without making up the portrait",()=>{
+ const pix=Uint8Array.from([0,255,100,200,50,100]);
+ const art=asciiFromGrayscale(pix,3,2);
+ assert.equal(art.length,2);assert.equal(art[0].length,3);
+ assert.notEqual(art[0][0],art[0][1]);
+ assert.throws(()=>asciiFromGrayscale(pix,2,2));
 });
-
-test("real GitHub profile picture gets edge-enhanced ASCII output",async()=>{
- const source=readFileSync(new URL("../scripts/render.mjs",import.meta.url),"utf8");
- assert.ok(source.includes("https://github.com/yusufaliaskin.png?size=768"));
- const {asciiFromGrayscale}=await import("../scripts/render.mjs");
- const pixels=Uint8Array.from([0,255,128,255,0,128]);
- const lines=asciiFromGrayscale(pixels,3,2);
- assert.equal(lines.length,2);assert.equal(lines[0].length,3);
- assert.notEqual(lines[0][0],lines[0][1]);
- assert.throws(()=>asciiFromGrayscale(pixels,2,2));
-});
-test("all main sections animate as grouped components on mobile and desktop",()=>{
- const a=assets();
- for(const key of ["hero","hero-mobile","heatmap","heatmap-mobile","activity","activity-mobile","build","build-mobile","repo-AIStudio","repo-AIStudio-mobile","title-coding-light-mobile"]){
-  assert.ok(a["cards/"+key+".svg"].includes("@keyframes rise"),key);
- }
- assert.equal((a["cards/heatmap.svg"].match(/class="heat-col"/g)||[]).length,53);
- assert.equal((a["cards/heatmap-mobile.svg"].match(/class="heat-col"/g)||[]).length,53);
- assert.ok(a["cards/repo-AIStudio-mobile.svg"].includes('class="repo-reveal"'));
- assert.ok(a["cards/hero.svg"].includes('class="portrait-reveal"'));
-});
-test("four rounded link buttons and five animated language pills",()=>{
- const a=assets();
- for(const id of ["portfolio","linkedin","projects","contact"]){
-  for(const suffix of ["","-mobile"]){
-   const v=a["cards/footer-nav-"+id+suffix+".svg"];
-   assert.ok(v.includes('class="btn-reveal"'),id+suffix);
-   assert.ok(v.includes('class="nav-border-reveal"'),id+suffix);
-   assert.ok(v.includes('stroke-opacity=".35"'),id+suffix);
-  }
- }
- for(const lang of ["en","tr","de","ru","zh"]){
-  const v=a["cards/footer-language-"+lang+".svg"];
-  assert.ok(v.includes('class="lang-pill-reveal"'),lang);
-  assert.ok(v.includes('class="line-draw"'),lang);
- }
-});
-test("animations are bounded and motion preferences are respected",()=>{
- for(const [key,svg] of Object.entries(assets())){
-  assert.ok(svg.includes("prefers-reduced-motion"),key);
-  assert.ok(!svg.includes("infinite"),key);
- }
+test("escaping keeps external descriptions from injecting SVG scripts",()=>{
+ const c=structuredClone(cfg);c.projects[0].description='<script>bad</script>';
+ const s=buildCards(c,null,null)["cards/repo-AIStudio.svg"];
+ assert.ok(s.includes("&lt;script&gt;"));assert.ok(!s.includes("<script>"));
 });

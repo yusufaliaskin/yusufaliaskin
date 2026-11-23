@@ -4,7 +4,7 @@ import {pathToFileURL} from "node:url";
 const CFG=JSON.parse(readFileSync(new URL("../profile.json",import.meta.url),"utf8"));
 const PAPER="#f3f3f1",INK="#111111",SOFT="#3a3a3c",MUTED="#6e6e73",BLUE="#2f55ff",RED="#ef3b2d",YELLOW="#ffc81a",W=880;
 const FONTS={"serif":"Georgia, 'Times New Roman', serif","sans":"Arial, Helvetica, sans-serif","mono":"Consolas, Menlo, monospace"};
-const BASE_CSS="\n@keyframes rise{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:none}}\n@keyframes fade{0%{opacity:0}100%{opacity:1}}\n@keyframes tilein{0%{opacity:0;transform:translateY(16px) scale(.985)}100%{opacity:1;transform:none}}\n@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}\n@keyframes linein{0%{opacity:.25;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}\n@keyframes shine{0%{transform:translateX(-220px) skewX(-18deg)}100%{transform:translateX(270px) skewX(-18deg)}}\n@keyframes glow{0%{opacity:0}35%{opacity:.55}100%{opacity:0}}\n@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}\n@keyframes nudge{0%{opacity:0;transform:translateX(-5px)}100%{opacity:1;transform:none}}\n@keyframes nudgeup{0%{opacity:0;transform:translate(-3px,4px)}100%{opacity:1;transform:none}}\n@keyframes sheen{0%{transform:translateX(-270px) skewX(-18deg)}100%{transform:translateX(460px) skewX(-18deg)}}\n@keyframes ring{0%{opacity:.5;transform:scale(.65)}100%{opacity:0;transform:scale(1.35)}}\n@keyframes draw{0%{transform:scaleX(0);opacity:.3}100%{transform:scaleX(1);opacity:1}}\n.r,.btn-reveal,.repo-reveal,.lang-pill-reveal,.portrait-reveal{opacity:0;animation:rise .72s cubic-bezier(.22,1,.36,1) forwards}\n.f{opacity:0;animation:fade .58s ease-out forwards}\n.ti{opacity:0;animation:tilein .83s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}\n.ba{animation:barin .77s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}\n.heat-col{opacity:0;animation:rise .46s cubic-bezier(.22,1,.36,1) forwards}\n.nav-border-reveal,.line-draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:linein .66s cubic-bezier(.22,1,.36,1) forwards}\n.shine{animation:shine 1.25s ease-in-out 1 forwards}\n.soft-glow{animation:glow 1.2s ease-out 1 forwards}\n.nu{animation:nudge .66s ease-out both}\n.nup{animation:nudgeup .66s ease-out both}\n.li{animation:pulse 1.6s ease-in-out 2}\n.sh{animation:sheen 1.25s ease-out .8s 1 forwards}\n.rg{animation:ring 1.25s ease-out .8s 1 forwards;transform-box:fill-box;transform-origin:center}\n.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .55s cubic-bezier(.22,1,.36,1) forwards}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}\n";
+const BASE_CSS="@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}\n@keyframes fade{from{opacity:0}to{opacity:1}}\n@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}\n@keyframes pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:none}}\n@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}\n@keyframes nudge{0%,100%{transform:none}50%{transform:translateX(4px)}}\n@keyframes nudgeup{0%,100%{transform:none}50%{transform:translate(3px,-3px)}}\n@keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-10px) scale(1.05) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}90%{transform:translateY(-1px) scale(1.01) rotate(.2deg)}100%{opacity:1;transform:none}}\n@keyframes slidein{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}\n@keyframes arrowin{0%{opacity:0;transform:translateX(-30px)}60%{opacity:1;transform:translateX(6px)}100%{opacity:1;transform:none}}\n@keyframes roll{from{transform:translateY(60px)}to{transform:none}}\n@keyframes sheen{0%{transform:translateX(-260px) skewX(-20deg)}22%,100%{transform:translateX(420px) skewX(-20deg)}}\n@keyframes ring{0%{opacity:.7;transform:scale(.2)}100%{opacity:0;transform:scale(2.4)}}\n.r{opacity:0;animation:rise .8s cubic-bezier(.2,.7,.2,1) both;transform-box:fill-box}\n.f{opacity:0;animation:fade .9s ease-out both}\n.g{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);animation:grow .8s cubic-bezier(.2,.7,.2,1) both}\n.p{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s ease-out both}\n.live{animation:pulse 1.6s ease-in-out infinite}\n.n{transform-box:fill-box;animation:nudge 1.8s ease-in-out infinite}\n.nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}\n.ti{opacity:0;transform-box:fill-box;transform-origin:50% 60%;animation:tilein 1.1s cubic-bezier(.2,.8,.2,1) both}\n.sl{opacity:0;transform-box:fill-box;animation:slidein .6s cubic-bezier(.2,.7,.2,1) both}\n.ai{opacity:0;transform-box:fill-box;animation:arrowin .7s cubic-bezier(.2,.7,.2,1) both}\n.ro{transform-box:fill-box;animation:roll .8s cubic-bezier(.15,.8,.2,1) both}\n.sh{animation:sheen 5s ease-in-out infinite}\n.rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}\n@media(prefers-reduced-motion:reduce){.r,.f,.g,.p,.live,.n,.nu,.ti,.sl,.ai,.ro,.sh,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none!important}}\n";
 function esc(x){return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;")};
 function svg(w,h,body,label){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(label)}"><title>${esc(label)}</title><style><![CDATA[${BASE_CSS}]]></style>${body}</svg>`};
 function t(x,y,val,size,color=INK,family=FONTS.sans,extra=""){return `<text x="${x}" y="${y}" font-family="${esc(family)}" font-size="${size}" fill="${color}" ${extra}>${esc(val)}</text>`};
@@ -13,94 +13,74 @@ function wrapped(str,max=34){const words=String(str).split(" "),rows=[];let line
 function asciiFallback(){const out=[];for(let y=0;y<53;y++){let row="";for(let x=0;x<65;x++){let ax=(x-32)/21.5,ay=(y-23)/21,head=ax*ax+ay*ay<1,shoulder=y>39&&((x-32)/31)**2+((y-57)/18)**2<1;row+=head||shoulder?"@#*+=-:"[(x*11+y*5+x*y)%7]:" "}out.push(row)}return out};
 function hero(cfg,lines){
  const rows=lines?.length?lines:asciiFallback();
- let b=`<defs><linearGradient id="title-shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="540" y2="0"><stop offset="0" stop-color="${INK}"/><stop offset=".39" stop-color="${INK}"/><stop offset=".50" stop-color="${BLUE}"/><stop offset=".61" stop-color="${INK}"/><stop offset="1" stop-color="${INK}"/><animateTransform attributeName="gradientTransform" type="translate" values="-530 0;530 0" dur="3.5s" begin="1.05s" repeatCount="1"/></linearGradient><clipPath id="portrait-window"><rect x="0" y="0" width="362" height="338"/></clipPath></defs>`;
+ let b=`<defs><linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="0"><stop offset="0" stop-color="${INK}"/><stop offset=".42" stop-color="${INK}"/><stop offset=".5" stop-color="${BLUE}"/><stop offset=".58" stop-color="${INK}"/><stop offset="1" stop-color="${INK}"/><animateTransform attributeName="gradientTransform" type="translate" values="-600 0;600 0;600 0" keyTimes="0;.45;1" dur="7s" begin="1.6s" repeatCount="indefinite"/></linearGradient></defs>`;
  b+=r(0,0,W,420,PAPER,14);
- b+=r(48,49,8,8,BLUE,2,'class="li"');
- b+=t(66,57,cfg.eyebrow,12,MUTED,FONTS.mono,'class="f" style="animation-delay:.08s" letter-spacing=".65"');
- b+=t(44,190,cfg.first,116,INK,FONTS.serif,'class="r" style="animation-delay:.24s" letter-spacing="-2.3"');
- b+=t(44,288,cfg.last,100,"url(#title-shine)",FONTS.serif,'class="r" style="animation-delay:.43s" font-style="italic" letter-spacing="-3.2"');
- cfg.description.slice(0,2).forEach((text,i)=>b+=t(48,337+i*27,text,17,SOFT,FONTS.sans,`class="r" style="animation-delay:${(.70+i*.14).toFixed(2)}s"`));
- b+=t(48,396,cfg.url,13,INK,FONTS.mono,'class="f" style="animation-delay:1.05s"');
- b+=t(213,397,"↗",16,BLUE,FONTS.mono,'class="nup" style="animation-delay:1.10s"');
- b+='<g transform="translate(529 43) scale(.96 .99)" clip-path="url(#portrait-window)"><g class="portrait-reveal" style="animation-delay:.52s" font-family="'+FONTS.mono+'">';
- rows.slice(0,53).forEach((row,i)=>b+=`<text x="0" y="${(i+1)*6.03}" font-size="8.6" textLength="350" lengthAdjust="spacing" xml:space="preserve" fill="${INK}">${esc(row)}</text>`);
- b+='</g></g>';
- b+=`<path d="M 525 40 L 858 40" fill="none" stroke="${BLUE}" stroke-opacity=".65" stroke-width="2" class="line-draw" style="animation-delay:.75s"/>`;
- return svg(W,432,b,cfg.display_name+" — AI, cybersecurity and engineering");
+ b+=`<g class="f" style="animation-delay:0s">${r(48,49,8,8,BLUE,2,'class="live"')}${t(66,57,cfg.eyebrow,12,MUTED,FONTS.mono,'letter-spacing="1"')}</g>`;
+ b+=t(44,190,cfg.first,116,INK,FONTS.serif,'class="r" style="animation-delay:.15s" letter-spacing="-2.5"');
+ b+=t(44,288,cfg.last,100,"url(#shine)",FONTS.serif,'class="r" style="animation-delay:.30s" font-style="italic" letter-spacing="-2.5"');
+ b+='<g class="r" style="animation-delay:.55s">';
+ cfg.description.slice(0,2).forEach((line,i)=>b+=t(48,338+i*27,line,17,SOFT,FONTS.sans));
+ b+='</g><g class="f" style="animation-delay:.8s">';
+ b+=t(48,396,cfg.url,13,INK,FONTS.mono)+t(213,396,"↗",15,BLUE,FONTS.mono,'class="nu"')+'</g>';
+ b+=`<g transform="translate(529 43) scale(.96 .99)" font-family="${FONTS.mono}">`;
+ rows.slice(0,53).forEach((row,i)=>b+=`<text class="f" style="animation-delay:${(.25+i*.018).toFixed(3)}s;animation-duration:.35s" x="0" y="${(i+1)*6.03}" font-size="8.6" textLength="350" lengthAdjust="spacing" xml:space="preserve" fill="${INK}">${esc(row)}</text>`);
+ b+='</g>';return svg(W,432,b,cfg.display_name+" animated hero");
 };
 
 function calendar(days){
- const map=new Map((days||[]).map(d=>[d.date,d.count]));
- const today0=new Date(),today=new Date(Date.UTC(today0.getUTCFullYear(),today0.getUTCMonth(),today0.getUTCDate()));
- const last=new Date(today);last.setUTCDate(today.getUTCDate()+(6-today.getUTCDay()+7)%7);
- const first=new Date(last);first.setUTCDate(last.getUTCDate()-370);
- const gx=44,gy=99,step=15,colors=["#e2e2de","#c8d3ff","#94a8ff","#6280ff",BLUE,"#1a3be0"];
+ const map=new Map((days||[]).map(d=>[d.date,d.count])),now=new Date(),today=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));
+ const end=new Date(today);end.setUTCDate(today.getUTCDate()+(6-today.getUTCDay()+7)%7);
+ const first=new Date(end);first.setUTCDate(end.getUTCDate()-370);
+ const colors=["#e2e2de","#c8d3ff","#94a8ff","#6280ff",BLUE,"#1a3be0"],gx=44,gy=99;
  let b=r(0,0,W,249,PAPER,14);
- b+=t(42,61,"Every day,",34,INK,FONTS.serif,'class="r" style="animation-delay:.12s"');
- b+=t(217,61,"in blue",34,BLUE,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.32s"');
- b+=t(836,60,map.size?"REFRESHED DAILY":"AWAITING FIRST SYNC",11,MUTED,FONTS.mono,'text-anchor="end"');
- let seen=new Set();
+ b+=`<g class="r" style="animation-delay:.8s">${t(42,61,"Every day,",34,INK,FONTS.serif)}${t(217,61,"in blue",34,BLUE,FONTS.serif,'font-style="italic"')}</g>`;
+ b+=t(836,60,map.size?"REFRESHED DAILY":"AWAITING FIRST SYNC",11,MUTED,FONTS.mono,'class="f" style="animation-delay:.8s" text-anchor="end"');
+ const seen=new Set(),months=[];
  for(let col=0;col<53;col++){
-  let cells="";
   for(let row=0;row<7;row++){
-   const d=new Date(first);d.setUTCDate(first.getUTCDate()+7*col+row);
-   if(d>today)continue;
-   const key=d.toISOString().slice(0,10),num=map.get(key);
-   const level=num===undefined||num===0?0:num<=2?1:num<=5?2:num<=10?3:num<=20?4:5;
-   cells+=`<rect x="${gx+col*step}" y="${gy+row*step}" width="12" height="12" rx="3" fill="${colors[level]}">${num===undefined?"":`<title>${key}: ${num} contribution(s)</title>`}</rect>`;
+   const d=new Date(first);d.setUTCDate(first.getUTCDate()+7*col+row);if(d>today)continue;
+   const date=d.toISOString().slice(0,10),n=map.get(date),level=n===undefined||n===0?0:n<=5?1:n<=15?2:n<=30?3:n<=50?4:5;
+   b+=`<rect class="p" style="animation-delay:${(1+col*.03+row*.02).toFixed(2)}s" x="${gx+col*15}" y="${gy+row*15}" width="12" height="12" rx="3" fill="${colors[level]}">${n===undefined?"":`<title>${date}: ${n} contribution(s)</title>`}</rect>`;
   }
-  b+=`<g class="heat-col" style="animation-delay:${(.32+col*.014).toFixed(3)}s">${cells}</g>`;
+  const d=new Date(first);d.setUTCDate(first.getUTCDate()+col*7);const key=d.getUTCFullYear()+"-"+d.getUTCMonth();
+  if(d.getUTCDate()<=7&&!seen.has(key)){seen.add(key);months.push({col,label:d.toLocaleString("en-US",{month:"short",timeZone:"UTC"})})}
  }
- for(let col=0;col<53;col++){
-  const d=new Date(first);d.setUTCDate(first.getUTCDate()+col*7);
-  const key=d.getUTCFullYear()+"-"+d.getUTCMonth();
-  if(d.getUTCDate()<=7&&!seen.has(key)){
-   seen.add(key);
-   b+=t(gx+col*step,224,d.toLocaleString("en-US",{month:"short",timeZone:"UTC"}),11,MUTED,FONTS.mono,'class="f" style="animation-delay:.8s"');
-  }
- }
- b+=t(662,243,"less",10,MUTED,FONTS.mono);
- colors.forEach((c,i)=>b+=r(700+i*15,233,11,11,c,2));
- b+=t(798,243,"more",10,MUTED,FONTS.mono);
- return svg(W,261,b,"Real GitHub contribution graph with flowing columns");
+ b+='<g class="f" style="animation-delay:2.4s">';
+ months.forEach(m=>b+=t(gx+m.col*15,224,m.label,11,MUTED,FONTS.mono));
+ b+=t(662,243,"less",10,MUTED,FONTS.mono);colors.forEach((c,i)=>b+=r(700+i*15,233,11,11,c,2));b+=t(798,243,"more",10,MUTED,FONTS.mono);
+ b+='</g>';return svg(W,261,b,"GitHub contribution cells pop in order");
 };
 
 function activity(data){
- let b=r(0,0,W,340,PAPER,14);
- b+=t(42,57,"THE LAST 12 MONTHS ON GITHUB",12,MUTED,FONTS.mono,'class="f" style="animation-delay:.12s" letter-spacing="1"');
- if(!data?.days?.length){
-  b+=t(42,122,"Syncing real activity",48,INK,FONTS.serif,'class="r" style="animation-delay:.25s" font-style="italic"');
-  b+=t(42,165,"Real numbers appear after the first refresh.",15,SOFT,FONTS.sans);
-  return svg(W,352,b,"Live GitHub activity awaiting refresh");
- }
+ let b=r(0,0,W,340,PAPER,14)+t(40,58,"THE LAST 12 MONTHS ON GITHUB",12,MUTED,FONTS.mono,'class="f" style="animation-delay:1.9s"');
+ if(!data?.days?.length){b+=t(38,114,"Syncing real activity",52,INK,FONTS.serif,'class="r" style="animation-delay:2.0s"');return svg(W,352,b,"Pending contribution data")}
  const monthly=new Map((data.monthly||[]).map(x=>[x.month,x.total])),now=new Date(),months=[];
- for(let i=11;i>=0;i--){const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()-i,1));months.push({n:monthly.get(d.toISOString().slice(0,7))||0,label:d.toLocaleString("en-US",{month:"short",timeZone:"UTC"})})}
- const total=String(data.total_contributions);
- b+=countUp(40,115,total,"",INK,.38);
- b+=t(40+Math.min(200,total.length*31),115,"contributions",46,INK,FONTS.serif,'class="r" style="animation-delay:.42s" font-style="italic"');
- const peak=Math.max(1,...months.map(x=>x.n)),base=284;
- months.forEach((m,i)=>{
-  const height=Math.max(2,140*m.n/peak),x=42+i*46;
-  b+=r(x,base-height,28,height,BLUE,3,`class="ba" style="animation-delay:${(.4+i*.065).toFixed(3)}s"`);
-  b+=t(x+14,309,m.label,10,MUTED,FONTS.mono,'text-anchor="middle"');
-  if(m.n)b+=t(x+14,base-height-10,m.n,10,BLUE,FONTS.mono,`text-anchor="middle" class="f" style="animation-delay:${(.72+i*.065).toFixed(3)}s"`);
- });
- b+=t(649,137,data.current_streak.length+" days",40,INK,FONTS.serif,'class="r" style="animation-delay:.65s"');
- b+=t(649,164,"current streak",13,MUTED,FONTS.sans,'class="f" style="animation-delay:.84s"');
- b+=t(649,226,String(data.best_day.count),40,INK,FONTS.serif,'class="r" style="animation-delay:.83s"');
- b+=t(649,252,"busiest day · "+data.best_day.date.slice(5),13,MUTED,FONTS.sans,'class="f" style="animation-delay:1.04s"');
- return svg(W,352,b,total+" contributions in last 12 months");
+ for(let i=11;i>=0;i--){const dt=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()-i,1));months.push({n:monthly.get(dt.toISOString().slice(0,7))||0,label:dt.toLocaleString("en-US",{month:"short",timeZone:"UTC"})})}
+ const total=Number(data.total_contributions||0),max=Math.max(1,...months.slice(0,11).map(x=>x.n));
+ b+=`<g class="r" style="animation-delay:2.0s">${t(38,114,total.toLocaleString("en-US"),52,INK,FONTS.serif)}${t(38+Math.min(180,String(total).length*31),114,"contributions",52,INK,FONTS.serif,'font-style="italic"')}</g>`;
+ months.forEach((m,i)=>{const x=40+i*47,height=Math.max(4,Math.round(m.n/max*140)),highlight=i<11&&m.n===max;
+ b+=`<rect class="g" style="animation-delay:${(2.2+i*.07).toFixed(2)}s" x="${x}" y="${292-height}" width="37" height="${height}" rx="4" fill="${highlight?BLUE:i===11?"#c9c9c4":INK}"><title>${m.label}: ${m.n}</title></rect>`;
+ b+=t(x+18,314,m.label,11,MUTED,FONTS.mono,`text-anchor="middle" class="f" style="animation-delay:${(2.2+i*.07).toFixed(2)}s"`);
+ if(highlight)b+=t(x+18,292-height-10,m.n,11,BLUE,FONTS.mono,'text-anchor="middle" class="p" style="animation-delay:3.2s"');});
+ const active=data.days.filter(d=>d.count>0).length,stats=[[data.current_streak?.length||0,"current streak"],[active+" / "+data.days.length,"days with a contribution"],[data.best_day?.count||0,"busiest day"]];
+ stats.forEach(([val,label],i)=>{const y=104+i*92;b+=`<g class="r" style="animation-delay:${(2.6+i*.15).toFixed(2)}s">${t(650,y,val,40,INK,FONTS.serif)}${t(650,y+24,label,13,MUTED,FONTS.sans)}</g>`;if(i<2)b+=r(650,y+44,190,1,"#dcdcd7",0,'class="f" style="animation-delay:2.6s"')});
+ return svg(W,352,b,total+" contributions");
 };
 
-function countUp(x,y,metric,unit,color,delay){const m=/^(\d+(?:\.\d+)?)(.*)$/.exec(metric);const base=`font-family="${esc(FONTS.serif)}" font-size="${metric.length>4?37:46}" font-style="italic" fill="${color}"`;const suffix=unit?` <tspan font-size="18">${esc(unit)}</tspan>`:"";if(!m)return `<text x="${x}" y="${y}" ${base} class="r" style="animation-delay:${delay}s">${esc(metric)}${suffix}</text>`;let out="",val=Number(m[1]),dec=(m[1].split(".")[1]||"").length;for(let i=0;i<=8;i++){let n=i===8?metric:(val*(1-Math.pow(1-i/8,3))).toFixed(dec)+m[2],start=delay+i*.11,end=delay+(i+1)*.11;out+=`<text x="${x}" y="${y}" ${base} opacity="0">${esc(n)}${suffix}<set attributeName="opacity" to="1" begin="${start.toFixed(3)}s"/>${i===8?"":`<set attributeName="opacity" to="0" begin="${end.toFixed(3)}s"/>`}</text>`}return out};
-function tile(world,i){const span=W/3,gutter=i*4,cardw=span-8,col=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff";let b=`<defs><clipPath id="card"><rect x="${gutter}" y="0" width="${cardw}" height="210" rx="14"/></clipPath><linearGradient id="gl"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
-b+=`<g class="ti" style="animation-delay:${(.24+i*.15).toFixed(2)}s"><g clip-path="url(#card)">`+r(gutter,0,cardw,210,col,14)+`<circle class="rg" cx="${gutter+243}" cy="165" r="63" fill="none" stroke="${ink}" stroke-opacity=".55" stroke-width="1.5"/>`+r(gutter-250,-20,85,260,"url(#gl)",0,'class="sh"')+"</g>";
-b+=t(gutter+23,37,world.tag,12,ink,FONTS.mono,'letter-spacing="1.15" class="f" style="animation-delay:.54s"');b+=t(gutter+255,37,"→",16,ink,FONTS.mono,'class="nu"');
-b+=countUp(gutter+22,112,world.metric,world.unit,ink,(.68+i*.15));
-wrapped(world.text,34).slice(0,3).forEach((x,j)=>b+=t(gutter+23,153+j*20,x,13,ink,FONTS.sans,`class="r" style="animation-delay:${(1.11+i*.15+j*.09).toFixed(2)}s"`));
-b+="</g>";return svg(span,222,b,world.tag+" — "+world.text)};
-function titleCard(dark){const fg=dark?"#e6edf3":INK;const b=t(2,47,"What I'm",35,fg,FONTS.serif,'class="r" style="animation-delay:.16s"')+t(184,47,"coding",35,fg,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.34s"');return svg(W,64,b,"What I'm coding")};
-function repo(p,i){const span=W/3,left=i*4,w=span-8;let b=r(left,0,w,190,PAPER,14);b+=`<g class="r" style="animation-delay:${((.26+i*.16)).toFixed(2)}s">`+r(left+24,29,8,8,p.color,2)+t(left+39,39,p.name,17,INK,FONTS.sans,'font-weight="bold"');
+function countUp(x,y,metric,unit,color,delay){const m=/^(\d+(?:\.\d+)?)(.*)$/.exec(metric);const base=`font-family="${esc(FONTS.serif)}" font-size="${metric.length>4?37:46}" font-style="italic" fill="${color}"`;const suffix=unit?` <tspan font-size="18">${esc(unit)}</tspan>`:"";if(!m)return `<text x="${x}" y="${y}" ${base} class="r" style="animation-delay:${delay}s">${esc(metric)}${suffix}</text>`;let out="",val=Number(m[1]),dec=(m[1].split(".")[1]||"").length;for(let i=0;i<=18;i++){let n=i===18?metric:(val*(1-Math.pow(1-i/18,3))).toFixed(dec)+m[2],start=delay+i*1.1/18,end=delay+(i+1)*1.1/18;out+=`<text x="${x}" y="${y}" ${base} opacity="0">${esc(n)}${suffix}<set attributeName="opacity" to="1" begin="${start.toFixed(3)}s"/>${i===18?"":`<set attributeName="opacity" to="0" begin="${end.toFixed(3)}s"/>`}</text>`}return out};
+function tile(item,i){
+ const span=W/3,left=i*4,w=span-8,bg=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff",delay=3.1+i*.25;
+ let b=`<defs><clipPath id="card">${r(left,0,w,210,"#fff",14)}</clipPath><clipPath id="slot">${r(left,62,w,62,"#fff")}</clipPath><linearGradient id="gl"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
+ b+=`<g class="ti" style="animation-delay:${delay.toFixed(2)}s"><g clip-path="url(#card)">${r(left,0,w,210,bg,14)}<circle class="rg" style="animation-delay:${(delay+.5).toFixed(2)}s" cx="${left+w-40}" cy="170" r="60" fill="none" stroke="${ink}" stroke-opacity=".5" stroke-width="2"/>${r(left,-20,90,250,"url(#gl)",0,`class="sh" style="animation-delay:${(delay+1.4).toFixed(2)}s"`)}</g>`;
+ b+=t(left+24,38,item.tag,12,ink,FONTS.mono,`class="sl" style="animation-delay:${(delay+.35).toFixed(2)}s"`);
+ b+=`<g class="ai" style="animation-delay:${(delay+.5).toFixed(2)}s">${t(left+251,38,"→",14,ink,FONTS.mono,'class="n"')}</g>`;
+ b+=`<g clip-path="url(#slot)"><g class="ro" style="animation-delay:${(delay+.45).toFixed(2)}s">${countUp(left+22,112,String(item.metric),item.unit,ink,delay+.45)}</g></g>`;
+ wrapped(item.text,34).slice(0,3).forEach((line,j)=>b+=t(left+24,150+j*20,line,13,ink,FONTS.sans,`class="r" style="animation-delay:${(delay+.75+j*.1).toFixed(2)}s"`));
+ return svg(span,222,b+'</g>',item.tag+" "+item.metric);
+};
+
+function titleCard(dark){const fg=dark?"#e6edf3":INK;const b=t(2,47,"What I'm",35,fg,FONTS.serif,'class="r" style="animation-delay:4.4s"')+t(184,47,"coding",35,fg,FONTS.serif,'font-style="italic" class="r" style="animation-delay:4.4s"');return svg(W,64,b,"What I'm coding")};
+function repo(p,i){const span=W/3,left=i*4,w=span-8;let b=r(left,0,w,190,PAPER,14);b+=`<g class="r" style="animation-delay:${((4.6+i*.12)).toFixed(2)}s">`+r(left+24,29,8,8,p.color,2)+t(left+39,39,p.name,17,INK,FONTS.sans,'font-weight="bold"');
 wrapped(p.description,31).slice(0,4).forEach((s,j)=>b+=t(left+24,75+j*20,s,13,SOFT,FONTS.sans));b+=t(left+24,167,p.lang+"   ·   OPEN SOURCE",11,MUTED,FONTS.mono)+"</g>";return svg(span,202,b,p.name+" — "+p.description)};
 
 const FOOTER_FOCUS={"en":"Software engineering · AI · cybersecurity · automation","tr":"Yazılım mühendisliği · yapay zekâ · siber güvenlik · otomasyon","de":"Softwareentwicklung · KI · Cybersicherheit · Automatisierung","ru":"Разработка ПО · ИИ · кибербезопасность · автоматизация","zh":"软件工程 · 人工智能 · 网络安全 · 自动化"};
@@ -110,18 +90,18 @@ function footerNav(link,i,mobile=false){
  const label={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"}[id]||id;
  const accent={portfolio:BLUE,linkedin:"#1b1b1c",projects:RED,contact:"#bd9200"}[id]||BLUE;
  const w=mobile?90:220,h=mobile?53:67,inner=mobile?86:215,cardH=mobile?47:60;
- const delay=(.26+i*.15).toFixed(2);
+ const delay=(5.05+i*.16).toFixed(2);
  const arrowX=mobile?73:190,arrowY=mobile?31:38;
  let b=`<defs><clipPath id="clip"><rect width="${inner}" height="${cardH}" rx="${mobile?8:11}"/></clipPath><linearGradient id="shimmer"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
  b+=r(0,0,inner,cardH,PAPER,mobile?8:11);
  b+=`<rect x=".6" y=".6" width="${inner-1.2}" height="${cardH-1.2}" rx="${mobile?7.4:10.4}" fill="none" stroke="${accent}" stroke-opacity=".35" stroke-width="1.2"/>`;
- b+=r(0,0,inner,3,accent,0,`class="nav-border-reveal" style="animation-delay:${(.20+i*.15).toFixed(2)}s"`);
- b+=`<g class="btn-reveal" style="animation-delay:${delay}s">`;
+ b+=r(0,0,inner,3,accent,0,`class="sl" style="animation-delay:${(5.05+i*.16).toFixed(2)}s"`);
+ b+=`<g class="ti" style="animation-delay:${delay}s">`;
  b+=t(mobile?8:15,mobile?29:38,label,mobile?11.6:19,INK,FONTS.sans,'font-weight="600"');
  b+=`<circle cx="${arrowX}" cy="${arrowY-(mobile?5:7)}" r="${mobile?8:12}" fill="${accent}" fill-opacity=".10"/>`;
  b+=t(arrowX,arrowY,"↗",mobile?10:16,accent,FONTS.mono,'text-anchor="middle"');
  b+='</g>';
- b+=`<g clip-path="url(#clip)">${r(-220,-4,42,cardH+8,"url(#shimmer)",0,`class="shine" style="animation-delay:${(.85+i*.15).toFixed(2)}s"`)}</g>`;
+ b+=`<g clip-path="url(#clip)">${r(-220,-4,42,cardH+8,"url(#shimmer)",0,`class="sh" style="animation-delay:${(6.45+i*.16).toFixed(2)}s"`)}</g>`;
  return svg(w,h,b,label+" button — "+url);
 };
 
@@ -132,10 +112,10 @@ function footerLanguage(lang,i,mobile=false){
  const w=mobile?72:176,h=mobile?39:50,inner=w-(mobile?3:5);
  let b=r(0,0,inner,h-4,PAPER,mobile?7:9);
  b+=`<rect x=".7" y=".7" width="${inner-1.4}" height="${h-5.4}" rx="${mobile?6.3:8.3}" fill="none" stroke="#d1d2d4" stroke-width="1"/>`;
- b+=`<g class="lang-pill-reveal" style="animation-delay:${(.45+i*.11).toFixed(2)}s">`;
+ b+=`<g class="p" style="animation-delay:${(5.85+i*.12).toFixed(2)}s">`;
  b+=t(inner/2,mobile?24:31,lang.label,mobile?(lang.key==="ru"?10:11.7):(lang.key==="ru"?14:16),INK,FONTS.sans,'text-anchor="middle" font-weight="600"');
  b+='</g>';
- b+=r(mobile?11:24,h-7,inner-(mobile?22:48),2,BLUE,1,`class="line-draw" style="animation-delay:${(.63+i*.11).toFixed(2)}s"`);
+ b+=r(mobile?11:24,h-7,inner-(mobile?22:48),2,BLUE,1,`class="sl" style="animation-delay:${(6.04+i*.12).toFixed(2)}s"`);
  return svg(w,h,b,"Language button "+lang.label);
 };
 
@@ -143,13 +123,13 @@ function mobileHero(cfg,portrait){
  const rows=portrait?.length?portrait:asciiFallback();
  let b=r(0,0,360,157,PAPER,8)+r(12,12,5,5,BLUE,2);
  b+=t(24,20,cfg.eyebrow,9,MUTED,FONTS.mono,'class="f" style="animation-delay:.08s"');
- b+=t(12,69,cfg.first,53,INK,FONTS.serif,'class="r" style="animation-delay:.23s"');
- b+=t(12,108,cfg.last,39,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.42s"');
+ b+=t(12,69,cfg.first,53,INK,FONTS.serif,'class="r" style="animation-delay:.15s"');
+ b+=t(12,108,cfg.last,39,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.30s"');
  b+=t(12,131,"AI  ·  CYBERSECURITY  ·  AUTOMATION",9,SOFT,FONTS.mono,'class="r" style="animation-delay:.69s"');
  b+=t(12,147,cfg.url,10,BLUE,FONTS.mono,'class="f" style="animation-delay:.87s"');
  b+='<defs><clipPath id="mobileportrait"><rect x="0" y="0" width="115" height="130"/></clipPath></defs>';
- b+='<g transform="translate(242 18)" clip-path="url(#mobileportrait)"><g class="portrait-reveal" style="animation-delay:.48s" font-family="'+FONTS.mono+'">';
- rows.slice(6,49).forEach((row,i)=>b+=`<text x="0" y="${(i+1)*3.02}" font-size="3.6" textLength="114" lengthAdjust="spacing" fill="${INK}" opacity=".78" xml:space="preserve">${esc(row)}</text>`);
+ b+='<g transform="translate(242 18)" clip-path="url(#mobileportrait)"><g  font-family="'+FONTS.mono+'">';
+ rows.slice(6,49).forEach((row,i)=>b+=`<text x="0" y="${(i+1)*3.02}" class="f" style="animation-delay:${(.25+i*.018).toFixed(3)}s;animation-duration:.35s" font-size="3.6" textLength="114" lengthAdjust="spacing" fill="${INK}" opacity=".78" xml:space="preserve">${esc(row)}</text>`);
  b+='</g></g>';
  return svg(360,163,b,cfg.display_name+" compact animated portrait");
 };
@@ -169,9 +149,9 @@ function mobileHeatmap(days){
    const n=map.get(d.toISOString().slice(0,10)),level=n===undefined||n===0?0:n<=2?1:n<=5?2:n<=10?3:n<=20?4:5;
    cells+=r(14+col*6.2,42+row*8.1,5.3,6.1,colors[level],1.2);
   }
-  b+=`<g class="heat-col" style="animation-delay:${(.25+col*.012).toFixed(3)}s">${cells}</g>`;
+  b+=`<g class="p" style="animation-delay:${(1+col*.03).toFixed(2)}s">${cells}</g>`;
  }
- b+=t(14,106,map.size?"GITHUB  /  LAST 12 MONTHS":"AWAITING DATA SYNC",9,MUTED,FONTS.mono,'class="f" style="animation-delay:.70s"');
+ b+=t(14,106,map.size?"GITHUB  /  LAST 12 MONTHS":"AWAITING DATA SYNC",9,MUTED,FONTS.mono,'class="f" style="animation-delay:2.4s"');
  return svg(360,121,b,"Compact animated GitHub heatmap");
 };
 
@@ -184,14 +164,14 @@ function mobileActivity(data){
  b+=t(196,59,streak+" days",25,INK,FONTS.serif,'class="r" style="animation-delay:.43s"');
  b+=t(198,78,"current streak",11,MUTED,FONTS.sans,'class="f" style="animation-delay:.6s"');
  const max=Math.max(1,...months.map(m=>m.total));
- for(let i=0;i<12;i++){const height=Math.max(2,19*(months[i]?.total||0)/max);b+=r(14+i*27.6,114-height,16,height,BLUE,2,`class="ba" style="animation-delay:${(.38+i*.06).toFixed(2)}s"`)}
+ for(let i=0;i<12;i++){const height=Math.max(2,19*(months[i]?.total||0)/max);b+=r(14+i*27.6,114-height,16,height,BLUE,2,`class="g" style="animation-delay:${(.38+i*.06).toFixed(2)}s"`)}
  b+=t(345,122,"MONTHLY",9,MUTED,FONTS.mono,'text-anchor="end"');
  return svg(360,131,b,"Compact animated GitHub activity "+total);
 };
 
 function mobileTile(p,i){
  const bg=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff";
- let b='<g class="ti" style="animation-delay:'+(.23+i*.14).toFixed(2)+'s">';
+ let b='<g class="ti" style="animation-delay:'+(3.1+i*.25).toFixed(2)+'s">';
  b+=r(0,0,111,64,bg,8);
  b+=t(9,16,p.tag,10,ink,FONTS.mono,'font-weight="600"');
  b+=t(9,41,p.metric,24,ink,FONTS.serif,'font-style="italic"');
@@ -202,7 +182,7 @@ function mobileTile(p,i){
 };
 
 function mobileRepo(p,i=0){
- let b='<g class="repo-reveal" style="animation-delay:'+(.25+i*.15).toFixed(2)+'s">';
+ let b='<g class="r" style="animation-delay:'+(4.6+i*.12).toFixed(2)+'s">';
  b+=r(0,0,111,61,PAPER,8)+r(9,10,7,7,p.color,2);
  b+=t(9,35,p.name,p.name.length>12?10:12,INK,FONTS.sans,'font-weight="600"');
  b+=t(9,52,p.lang,10,MUTED,FONTS.mono);
