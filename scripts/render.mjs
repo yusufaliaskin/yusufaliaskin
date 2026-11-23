@@ -61,7 +61,7 @@ async function fetchContributions(){
 }
 async function fetchPortrait(){try{const res=await fetch("https://avatars.githubusercontent.com/u/223726244?v=4&size=512");if(!res.ok)throw new Error("avatar "+res.status);const buf=Buffer.from(await res.arrayBuffer());const {default:sharp}=await import("sharp");const {data,info}=await sharp(buf).resize(65,53,{fit:"cover",position:"attention"}).grayscale().normalize().raw().toBuffer({resolveWithObject:true});const ramp="@%#*+=-:. ";const rows=[];for(let y=0;y<info.height;y++){let s="";for(let x=0;x<info.width;x++){let v=data[y*info.width+x];s+=ramp[Math.min(ramp.length-1,Math.floor(v*(ramp.length-1)/255))]}rows.push(s)}return rows}catch(e){console.warn("Avatar conversion unavailable:",e.message);return null}}
 async function main(){
- const root=resolve(import.meta.dirname||".");
+ const root=resolve(import.meta.dirname||".","..");
  const live=process.argv.includes("--live");const dataPath=resolve(root,"data/contributions.json");
  let data=null;try{data=JSON.parse(readFileSync(dataPath,"utf8"))}catch{}
  if(live){data=await fetchContributions();mkdirSync(resolve(root,"data"),{recursive:true});writeFileSync(dataPath,JSON.stringify(data,null,2)+"\n");}
