@@ -116,3 +116,28 @@ test("escaping keeps external descriptions from injecting SVG scripts",()=>{
  const s=buildCards(c,null,null)["cards/repo-AIStudio.svg"];
  assert.ok(s.includes("&lt;script&gt;"));assert.ok(!s.includes("<script>"));
 });
+
+test("mobile activity matches reference graph and right stat timing",()=>{
+ const data=summarize([{date:"2026-11-20",count:3},{date:"2026-11-21",count:1},{date:"2026-11-22",count:0}]);
+ const a=buildCards(cfg,data,null),m=a["cards/activity-mobile.svg"];
+ assert.equal((m.match(/class="g" style="animation-delay:/g)||[]).length,12);
+ assert.ok(m.includes("animation-delay:1.9s"));
+ assert.ok(m.includes("animation-delay:2.6s"));
+ assert.ok(a["cards/title-coding-light-mobile.svg"].includes("animation-delay:4.4s"));
+});
+test("entire contact buttons bounce instead of just their labels",()=>{
+ const a=assets();
+ for(const id of ["portfolio","linkedin","projects","contact"]){
+  const x=a["cards/footer-nav-"+id+".svg"];
+  const p=x.indexOf('class="ti"'),background=x.indexOf('fill="#f3f3f1"');
+  assert.ok(p>=0&&background>p,id);
+  assert.ok(x.includes('class="sl"'),id);
+  assert.ok(x.includes('class="ai"'),id);
+  assert.ok(x.includes('class="sh"'),id);
+ }
+ for(const id of ["en","tr","de","ru","zh"]){
+  const x=a["cards/footer-language-"+id+".svg"];
+  const g=x.indexOf('class="p"'),bg=x.indexOf('fill="#f3f3f1"');
+  assert.ok(g>=0&&bg>g,id);
+ }
+});

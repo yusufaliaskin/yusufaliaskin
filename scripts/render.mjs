@@ -88,35 +88,29 @@ const FOOTER_LANGUAGES=[{"key":"en","label":"English","file":"README.md"},{"key"
 function footerNav(link,i,mobile=false){
  const [id,url]=link;
  const label={portfolio:"Portfolio",linkedin:"LinkedIn",projects:"Projects",contact:"Contact"}[id]||id;
- const accent={portfolio:BLUE,linkedin:"#1b1b1c",projects:RED,contact:"#bd9200"}[id]||BLUE;
- const w=mobile?90:220,h=mobile?53:67,inner=mobile?86:215,cardH=mobile?47:60;
- const delay=(5.05+i*.16).toFixed(2);
- const arrowX=mobile?73:190,arrowY=mobile?31:38;
- let b=`<defs><clipPath id="clip"><rect width="${inner}" height="${cardH}" rx="${mobile?8:11}"/></clipPath><linearGradient id="shimmer"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
- b+=r(0,0,inner,cardH,PAPER,mobile?8:11);
- b+=`<rect x=".6" y=".6" width="${inner-1.2}" height="${cardH-1.2}" rx="${mobile?7.4:10.4}" fill="none" stroke="${accent}" stroke-opacity=".35" stroke-width="1.2"/>`;
- b+=r(0,0,inner,3,accent,0,`class="sl" style="animation-delay:${(5.05+i*.16).toFixed(2)}s"`);
- b+=`<g class="ti" style="animation-delay:${delay}s">`;
- b+=t(mobile?8:15,mobile?29:38,label,mobile?11.6:19,INK,FONTS.sans,'font-weight="600"');
- b+=`<circle cx="${arrowX}" cy="${arrowY-(mobile?5:7)}" r="${mobile?8:12}" fill="${accent}" fill-opacity=".10"/>`;
- b+=t(arrowX,arrowY,"↗",mobile?10:16,accent,FONTS.mono,'text-anchor="middle"');
+ const col={portfolio:BLUE,linkedin:INK,projects:RED,contact:"#bb9100"}[id]||BLUE;
+ const width=mobile?90:220,height=mobile?53:67,inner=mobile?86:215,cardH=mobile?47:60;
+ const delay=5.05+i*.16;
+ let b=`<defs><clipPath id="card">${r(0,0,inner,cardH,"#fff",mobile?8:11)}</clipPath><linearGradient id="gl"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
+ b+=`<g class="ti" style="animation-delay:${delay.toFixed(2)}s">`;
+ b+=`<g clip-path="url(#card)">${r(0,0,inner,cardH,PAPER,mobile?8:11)}<rect x=".7" y=".7" width="${inner-1.4}" height="${cardH-1.4}" rx="${mobile?7.3:10.3}" fill="none" stroke="${col}" stroke-opacity=".35"/>${r(0,0,inner,3,col)}${r(0,-4,65,cardH+8,"url(#gl)",0,`class="sh" style="animation-delay:${(delay+1.4).toFixed(2)}s"`)}</g>`;
+ b+=t(mobile?8:15,mobile?29:38,label,mobile?11.6:19,INK,FONTS.sans,`class="sl" style="animation-delay:${(delay+.35).toFixed(2)}s" font-weight="600"`);
+ b+=`<g class="ai" style="animation-delay:${(delay+.5).toFixed(2)}s">${t(mobile?73:190,mobile?31:38,"↗",mobile?10:16,col,FONTS.mono,'class="n" text-anchor="middle"')}</g>`;
  b+='</g>';
- b+=`<g clip-path="url(#clip)">${r(-220,-4,42,cardH+8,"url(#shimmer)",0,`class="sh" style="animation-delay:${(6.45+i*.16).toFixed(2)}s"`)}</g>`;
- return svg(w,h,b,label+" button — "+url);
+ return svg(width,height,b,label+" — "+url);
 };
 
 function footerSpecialties(locale,mobile=false){let sentence=FOOTER_FOCUS[locale]||FOOTER_FOCUS.en;if(mobile){const l={en:["Software engineering · AI","Cybersecurity · Automation"],tr:["Yazılım mühendisliği · Yapay zekâ","Siber güvenlik · Otomasyon"],de:["Softwareentwicklung · KI","Cybersicherheit · Automatisierung"],ru:["Разработка ПО · ИИ","Кибербезопасность · Автоматизация"],zh:["软件工程 · 人工智能","网络安全 · 自动化"]}[locale];let b=r(0,0,360,56,PAPER,8)+r(12,10,5,5,BLUE,2);b+=t(25,17,"FOCUS",10,MUTED,FONTS.mono)+t(12,34,l[0],locale==="ru"?11.5:13,INK,FONTS.sans,'font-weight="600"')+t(12,50,l[1],locale==="ru"?11.5:13,SOFT,FONTS.sans);return svg(360,60,b,sentence)}
 let b=r(0,0,880,62,PAPER,10)+r(22,12,6,6,BLUE,2);b+=t(38,19,"FOCUS",11,MUTED,FONTS.mono)+t(22,46,sentence,locale==="zh"?23:locale==="ru"?19:20,INK,FONTS.sans,'font-weight="600"')+t(844,20,"05 LANGUAGES",10,BLUE,FONTS.mono,'text-anchor="end"');return svg(880,67,b,sentence)};
 
 function footerLanguage(lang,i,mobile=false){
- const w=mobile?72:176,h=mobile?39:50,inner=w-(mobile?3:5);
- let b=r(0,0,inner,h-4,PAPER,mobile?7:9);
- b+=`<rect x=".7" y=".7" width="${inner-1.4}" height="${h-5.4}" rx="${mobile?6.3:8.3}" fill="none" stroke="#d1d2d4" stroke-width="1"/>`;
- b+=`<g class="p" style="animation-delay:${(5.85+i*.12).toFixed(2)}s">`;
+ const w=mobile?72:176,h=mobile?39:50,inner=w-(mobile?3:5),delay=5.85+i*.12;
+ let b=`<g class="p" style="animation-delay:${delay.toFixed(2)}s">`;
+ b+=r(0,0,inner,h-4,PAPER,mobile?7:9);
+ b+=`<rect x=".7" y=".7" width="${inner-1.4}" height="${h-5.4}" rx="${mobile?6.3:8.3}" fill="none" stroke="#d1d2d4"/>`;
  b+=t(inner/2,mobile?24:31,lang.label,mobile?(lang.key==="ru"?10:11.7):(lang.key==="ru"?14:16),INK,FONTS.sans,'text-anchor="middle" font-weight="600"');
- b+='</g>';
- b+=r(mobile?11:24,h-7,inner-(mobile?22:48),2,BLUE,1,`class="sl" style="animation-delay:${(6.04+i*.12).toFixed(2)}s"`);
- return svg(w,h,b,"Language button "+lang.label);
+ b+=r(mobile?11:24,h-7,inner-(mobile?22:48),2,BLUE,1);
+ b+='</g>';return svg(w,h,b,"Language "+lang.label);
 };
 
 function mobileHero(cfg,portrait){
@@ -156,29 +150,26 @@ function mobileHeatmap(days){
 };
 
 function mobileActivity(data){
- let b=r(0,0,360,125,PAPER,8)+t(13,20,"GITHUB ACTIVITY  /  12 MONTHS",10,MUTED,FONTS.mono,'class="f" style="animation-delay:.12s"');
- if(!data?.days?.length){b+=t(13,64,"Syncing activity",29,INK,FONTS.serif,'class="r" style="animation-delay:.35s"');return svg(360,131,b,"Mobile GitHub activity awaiting data")}
- const total=Number(data.total_contributions||0),streak=Number(data.current_streak?.length||0),months=(data.monthly||[]).slice(-12);
- b+=t(13,63,total.toLocaleString("en-US"),43,INK,FONTS.serif,'class="r" style="animation-delay:.28s"');
- b+=t(14,82,"contributions",13,SOFT,FONTS.sans,'class="f" style="animation-delay:.52s"');
- b+=t(196,59,streak+" days",25,INK,FONTS.serif,'class="r" style="animation-delay:.43s"');
- b+=t(198,78,"current streak",11,MUTED,FONTS.sans,'class="f" style="animation-delay:.6s"');
- const max=Math.max(1,...months.map(m=>m.total));
- for(let i=0;i<12;i++){const height=Math.max(2,19*(months[i]?.total||0)/max);b+=r(14+i*27.6,114-height,16,height,BLUE,2,`class="g" style="animation-delay:${(.38+i*.06).toFixed(2)}s"`)}
- b+=t(345,122,"MONTHLY",9,MUTED,FONTS.mono,'text-anchor="end"');
- return svg(360,131,b,"Compact animated GitHub activity "+total);
+ let b=r(0,0,360,125,PAPER,8);
+ b+=t(13,20,"GITHUB ACTIVITY / 12 MONTHS",10,MUTED,FONTS.mono,'class="f" style="animation-delay:1.9s"');
+ if(!data?.days?.length){b+=t(13,63,"Syncing activity",29,INK,FONTS.serif,'class="r" style="animation-delay:2.0s"');return svg(360,131,b,"Mobile GitHub activity pending")}
+ const total=Number(data.total_contributions||0),streak=data.current_streak?.length||0,months=(data.monthly||[]).slice(-12);
+ b+=`<g class="r" style="animation-delay:2.0s">${t(13,63,total.toLocaleString("en-US"),43,INK,FONTS.serif)}${t(14,82,"contributions",13,SOFT,FONTS.sans)}</g>`;
+ b+=`<g class="r" style="animation-delay:2.6s">${t(196,59,streak+" days",25,INK,FONTS.serif)}${t(198,78,"current streak",11,MUTED,FONTS.sans)}</g>`;
+ const top=Math.max(1,...months.map(m=>m.total));
+ for(let i=0;i<12;i++){const height=Math.max(2,19*(months[i]?.total||0)/top);b+=r(14+i*27.6,114-height,16,height,BLUE,2,`class="g" style="animation-delay:${(2.2+i*.07).toFixed(2)}s"`)}
+ b+=t(345,122,"MONTHLY",9,MUTED,FONTS.mono,'class="f" style="animation-delay:2.4s" text-anchor="end"');
+ return svg(360,131,b,"Animated mobile GitHub activity");
 };
 
 function mobileTile(p,i){
- const bg=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff";
- let b='<g class="ti" style="animation-delay:'+(3.1+i*.25).toFixed(2)+'s">';
+ const bg=[BLUE,RED,YELLOW][i],on=i===2?INK:"#fff",delay=3.1+i*.25;
+ let b=`<g class="ti" style="animation-delay:${delay.toFixed(2)}s">`;
  b+=r(0,0,111,64,bg,8);
- b+=t(9,16,p.tag,10,ink,FONTS.mono,'font-weight="600"');
- b+=t(9,41,p.metric,24,ink,FONTS.serif,'font-style="italic"');
- b+=t(9,57,p.unit.slice(0,15),9.5,ink,FONTS.sans);
- b+=t(100,16,"↗",11,ink,FONTS.mono,'text-anchor="end"');
- b+='</g>';
- return svg(116,69,b,"Animated mobile "+p.tag+" card");
+ b+=t(9,16,p.tag,10,on,FONTS.mono,`class="sl" style="animation-delay:${(delay+.35).toFixed(2)}s"`);
+ b+=`<g class="ro" style="animation-delay:${(delay+.45).toFixed(2)}s">${t(9,41,p.metric,24,on,FONTS.serif,'font-style="italic"')}${t(9,57,p.unit.slice(0,14),9.5,on,FONTS.sans)}</g>`;
+ b+=t(100,16,"↗",11,on,FONTS.mono,`class="ai" style="animation-delay:${(delay+.5).toFixed(2)}s" text-anchor="end"`);
+ b+='</g>';return svg(116,69,b,"Mobile "+p.tag+" card");
 };
 
 function mobileRepo(p,i=0){
@@ -193,8 +184,7 @@ function mobileRepo(p,i=0){
 
 function mobileTitle(dark){
  const ink=dark?"#e6edf3":INK;
- const body=t(9,29,"What I'm",23,ink,FONTS.serif,'class="r" style="animation-delay:.15s"')+t(122,29,"coding",23,ink,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.35s"');
- return svg(360,38,body,"Animated mobile coding section");
+ return svg(360,38,`<text class="r" style="animation-delay:4.4s" x="9" y="29" font-family="${esc(FONTS.serif)}" font-size="23" fill="${ink}">What I'm <tspan font-style="italic">coding</tspan></text>`,"What I'm coding");
 };
 
 function buildCards(cfg,data,portrait){
