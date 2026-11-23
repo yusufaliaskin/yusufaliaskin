@@ -60,3 +60,34 @@ test("every footer link remains the user's real URL",()=>{
  for(const [id,url] of cfg.links){assert.ok(a["cards/footer-nav-"+id+".svg"].includes(url));assert.ok(a["cards/footer-nav-"+id+"-mobile.svg"].includes(url))}
  assert.ok(!Object.keys(a).some(s=>s.includes("footer-focus")));
 });
+
+test("README lists every public and private repository without fake private links",()=>{
+ const targets=["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"];
+ for(const filename of targets){
+  const s=readFileSync(new URL("../"+filename,import.meta.url),"utf8");
+  const pictureCount=(s.match(/project-[^"]+\.svg/g)||[]).length;
+  assert.ok(pictureCount>=46,filename+" responsive project images");
+  for(const p of cfg.repositories){
+   assert.ok(s.includes("./cards/project-"+p.name+".svg"),filename+" "+p.name);
+   assert.ok(s.includes("./cards/project-"+p.name+"-mobile.svg"),filename+" mobile "+p.name);
+   const link='href="https://github.com/yusufaliaskin/'+encodeURIComponent(p.name)+'"';
+   if(p.visibility==="public")assert.ok(s.includes(link),filename+" expected public link "+p.name);
+   else assert.ok(!s.includes(link),filename+" must not link private "+p.name);
+  }
+  assert.ok(s.includes("repositories-title-mobile.svg"),filename);
+  assert.ok(s.includes("repositories-public-mobile.svg"),filename);
+  assert.ok(s.includes("repositories-private-mobile.svg"),filename);
+  for(const [id,url] of cfg.links)assert.ok(s.includes('href="'+url+'"'),filename+" "+id);
+  for(const link of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"])assert.ok(s.includes('href="'+link+'"'),filename+" "+link);
+  assert.ok(!s.includes("title-coding-"),filename);
+  assert.ok(!s.includes("footer-focus-"),filename);
+  assert.ok(!s.includes("repo-AIStudio"),filename);
+ }
+});
+test("finite animations and reduced-motion support protect mobile performance",()=>{
+ const a=buildCards(cfg,null,null);
+ assert.ok(!a["cards/hero.svg"].includes('repeatCount="indefinite"'));
+ assert.ok(a["cards/hero.svg"].includes('repeatCount="2"'));
+ assert.ok(a["cards/project-AIStudio-mobile.svg"].includes("prefers-reduced-motion"));
+ assert.ok(a["cards/project-AIStudio-mobile.svg"].length<5000);
+});
