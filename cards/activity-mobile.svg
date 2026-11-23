@@ -1,25 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 131" width="360" height="131" role="img" aria-label="Mobile activity 117 contributions"><title>Mobile activity 117 contributions</title><style><![CDATA[
-@keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}
-@keyframes fade{0%{opacity:0}100%{opacity:1}}
-@keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-11px) scale(1.045) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}100%{opacity:1;transform:none}}
-@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.22}}
-@keyframes nudge{0%,100%{transform:none}50%{transform:translateX(5px)}}
-@keyframes nudgeup{0%,100%{transform:none}50%{transform:translate(3px,-3px)}}
-@keyframes sheen{0%,10%{transform:translateX(-270px) skewX(-18deg)}48%,100%{transform:translateX(450px) skewX(-18deg)}}
-@keyframes ring{0%{opacity:.8;transform:scale(.25)}100%{opacity:0;transform:scale(2.25)}}
-@keyframes rotatein{0%{opacity:0;transform:translateX(-20px) rotate(-4deg)}100%{opacity:1;transform:none}}
-@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-.r{opacity:0;animation:rise .82s cubic-bezier(.18,.8,.23,1) forwards}
-.f{opacity:0;animation:fade .72s ease forwards}
-.ti{opacity:0;animation:tilein 1.1s cubic-bezier(.19,.9,.23,1) forwards;transform-origin:center center}
-.ba{animation:barin .8s cubic-bezier(.18,.9,.27,1) both;transform-box:fill-box;transform-origin:center bottom}
-.nu{animation:nudge 1.2s ease-in-out 1}
-.nup{animation:nudgeup 1.2s ease-in-out 1}
-.li{animation:pulse 1.6s ease-in-out 2}
-.sh{animation:sheen 1.5s ease-out 1.2s 1}
-.rg{animation:ring 1.5s ease-out 1;transform-box:fill-box;transform-origin:center}
-.fl{animation:float 2.5s ease-in-out 2}
+@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes tilein{from{opacity:0;transform:translateY(17px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes barin{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes nudge{from{opacity:.4;transform:translateX(-3px)}to{opacity:1;transform:none}}
+@keyframes nudgeup{from{opacity:.4;transform:translate(-3px,3px)}to{opacity:1;transform:none}}
+@keyframes sheen{from{transform:translateX(-260px) skewX(-18deg)}to{transform:translateX(440px) skewX(-18deg)}}
+@keyframes ring{from{opacity:.55;transform:scale(.7)}to{opacity:0;transform:scale(1.2)}}
+@keyframes draw{from{transform:scaleX(0);opacity:.2}to{transform:scaleX(1);opacity:1}}
+.r{opacity:0;animation:rise .67s cubic-bezier(.22,1,.36,1) forwards}
+.f{opacity:0;animation:fade .55s ease-out forwards}
+.ti{opacity:0;animation:tilein .8s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}
+.ba{animation:barin .7s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}
+.nu{animation:nudge .65s ease-out both}
+.nup{animation:nudgeup .65s ease-out both}
+.li{animation:pulse 1.5s ease-in-out 2}
+.sh{animation:sheen 1.25s ease-out 1s 1 forwards}
+.rg{animation:ring 1.5s ease-out 1s 1 forwards;transform-box:fill-box;transform-origin:center}
+.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .56s cubic-bezier(.22,1,.36,1) forwards}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}
 ]]></style><rect x="0" y="0" width="360" height="125" rx="8" fill="#f3f3f1" /><text x="13" y="20" font-family="Consolas, Menlo, monospace" font-size="10" fill="#6e6e73" >GITHUB ACTIVITY  /  12 MONTHS</text><text x="13" y="63" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="43" fill="#111111" class="r" style="animation-delay:.2s">117</text><text x="14" y="82" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3a3a3c" >contributions</text><text x="196" y="59" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="25" fill="#111111" >1 days</text><text x="198" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6e6e73" >current streak</text><rect x="14" y="108.90243902439025" width="16" height="5.097560975609756" rx="2" fill="#2f55ff" /><rect x="41.6" y="111.21951219512195" width="16" height="2.7804878048780486" rx="2" fill="#2f55ff" /><rect x="69.2" y="110.7560975609756" width="16" height="3.2439024390243905" rx="2" fill="#2f55ff" /><rect x="96.80000000000001" y="110.7560975609756" width="16" height="3.2439024390243905" rx="2" fill="#2f55ff" /><rect x="124.4" y="112" width="16" height="2" rx="2" fill="#2f55ff" /><rect x="152" y="111.21951219512195" width="16" height="2.7804878048780486" rx="2" fill="#2f55ff" /><rect x="179.60000000000002" y="112" width="16" height="2" rx="2" fill="#2f55ff" /><rect x="207.20000000000002" y="112" width="16" height="2" rx="2" fill="#2f55ff" /><rect x="234.8" y="109.36585365853658" width="16" height="4.634146341463414" rx="2" fill="#2f55ff" /><rect x="262.4" y="105.65853658536585" width="16" height="8.341463414634147" rx="2" fill="#2f55ff" /><rect x="290" y="95" width="16" height="19" rx="2" fill="#2f55ff" /><rect x="317.6" y="108.90243902439025" width="16" height="5.097560975609756" rx="2" fill="#2f55ff" /><text x="345" y="122" font-family="Consolas, Menlo, monospace" font-size="9" fill="#6e6e73" text-anchor="end">MONTHLY</text></svg>
