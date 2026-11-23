@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 38" width="72" height="38" role="img" aria-label="Mobile Русский"><title>Mobile Русский</title><style><![CDATA[
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 36" width="72" height="36" role="img" aria-label="Read profile in Русский"><title>Read profile in Русский</title><style><![CDATA[
 @keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}
 @keyframes fade{0%{opacity:0}100%{opacity:1}}
 @keyframes tilein{0%{opacity:0;transform:translateY(90px) scale(.6) rotate(-9deg)}55%{opacity:1;transform:translateY(-11px) scale(1.045) rotate(2deg)}75%{transform:translateY(3px) scale(.98) rotate(-.8deg)}100%{opacity:1;transform:none}}
@@ -22,4 +22,4 @@
 .rg{animation:ring 1.5s ease-out 1;transform-box:fill-box;transform-origin:center}
 .fl{animation:float 2.5s ease-in-out 2}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}
-]]></style><rect x="0" y="0" width="68" height="33" rx="7" fill="#f3f3f1" /><rect x="5" y="4" width="58" height="1.5" rx="0" fill="#2f55ff" /><text x="34" y="23" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111111" text-anchor="middle" font-weight="600">Русский</text></svg>
+]]></style><rect x="0" y="0" width="68" height="32" rx="7" fill="#f3f3f1" /><rect x="7" y="4" width="54" height="1.5" rx="0" fill="#2f55ff" /><text x="34" y="23" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111111" text-anchor="middle" font-weight="600" class="f" style="animation-delay:.2s">Русский</text></svg>
