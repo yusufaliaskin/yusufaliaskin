@@ -15,7 +15,7 @@
       "tag": "BUILD",
       "metric": "23",
       "unit": "repositories",
-      "text": "12 public releases and 11 private projects.",
+      "text": "12 public + 11 private. Three featured projects below.",
       "href": "https://github.com/yusufaliaskin?tab=repositories"
     },
     {
@@ -35,6 +35,29 @@
       "href": "https://www.linkedin.com/in/yusufaliaskin/details/certifications/"
     }
   ],
+  "projects": [
+    {
+      "name": "AIStudio",
+      "description": "A unified workspace for AI models, research and multimodal tools.",
+      "lang": "Python",
+      "url": "https://github.com/yusufaliaskin/AIStudio",
+      "color": "#2F55FF"
+    },
+    {
+      "name": "F.R.I.D.A.Y-AI",
+      "description": "A local Windows AI assistant for everyday workflows.",
+      "lang": "Python",
+      "url": "https://github.com/yusufaliaskin/F.R.I.D.A.Y-AI",
+      "color": "#EF3B2D"
+    },
+    {
+      "name": "afetnet.com",
+      "description": "Emergency communication and earthquake awareness for mobile.",
+      "lang": "JavaScript",
+      "url": "https://github.com/yusufaliaskin/afetnet.com",
+      "color": "#FFC81A"
+    }
+  ],
   "links": [
     [
       "portfolio",
@@ -52,169 +75,5 @@
       "contact",
       "mailto:yusufaliaskin@gmail.com"
     ]
-  ],
-  "repositories": [
-    {
-      "name": "yusufaliaskin",
-      "visibility": "public",
-      "language": "JavaScript",
-      "description": "GitHub profile and personal portfolio",
-      "category": "Profile"
-    },
-    {
-      "name": "BMAPP",
-      "visibility": "public",
-      "language": "TypeScript",
-      "description": "TypeScript application repository",
-      "category": "App"
-    },
-    {
-      "name": "yusufaliaskin.com",
-      "visibility": "public",
-      "language": "JavaScript",
-      "description": "Personal portfolio website",
-      "category": "Web"
-    },
-    {
-      "name": "F.R.I.D.A.Y-AI",
-      "visibility": "public",
-      "language": "Python",
-      "description": "Local AI assistant for Windows",
-      "category": "AI"
-    },
-    {
-      "name": "afetnet.com",
-      "visibility": "public",
-      "language": "JavaScript",
-      "description": "Emergency communication and earthquake updates",
-      "category": "Mobile"
-    },
-    {
-      "name": "AI-System-Dashboard",
-      "visibility": "public",
-      "language": "HTML",
-      "description": "Network scanning, SSH, RDP and device monitoring",
-      "category": "Security"
-    },
-    {
-      "name": "bostanoglu.com.tr",
-      "visibility": "public",
-      "language": "JavaScript",
-      "description": "Website project",
-      "category": "Web"
-    },
-    {
-      "name": "yusufaliaskin.com.tr",
-      "visibility": "public",
-      "language": "CSS",
-      "description": "Cybersecurity-themed personal portfolio",
-      "category": "Web"
-    },
-    {
-      "name": "AIStudio",
-      "visibility": "public",
-      "language": "CSS",
-      "description": "Multimodel AI workspace with research tools",
-      "category": "AI"
-    },
-    {
-      "name": "IT-Toolbox-Global",
-      "visibility": "public",
-      "language": "HTML",
-      "description": "Curated tools and resources for IT teams",
-      "category": "Tools"
-    },
-    {
-      "name": "Swopy-Troi",
-      "visibility": "public",
-      "language": "Python",
-      "description": "Network, DNS and Wi-Fi diagnostics",
-      "category": "Network"
-    },
-    {
-      "name": "Swopy-Network",
-      "visibility": "public",
-      "language": "Python",
-      "description": "Local network scanning and traffic analysis",
-      "category": "Network"
-    },
-    {
-      "name": "SSL-VPN-TURKEY",
-      "visibility": "private",
-      "language": "HTML",
-      "description": "Private repository",
-      "category": "Security"
-    },
-    {
-      "name": "Guacview-Search",
-      "visibility": "private",
-      "language": "JavaScript",
-      "description": "Private repository",
-      "category": "IT"
-    },
-    {
-      "name": "AtlasAI",
-      "visibility": "private",
-      "language": "TypeScript",
-      "description": "Private repository",
-      "category": "AI"
-    },
-    {
-      "name": "BenimHavuzum",
-      "visibility": "private",
-      "language": null,
-      "description": "Private repository",
-      "category": "App"
-    },
-    {
-      "name": "A.R.K-Desktop-APP",
-      "visibility": "private",
-      "language": "Python",
-      "description": "Private repository",
-      "category": "Desktop"
-    },
-    {
-      "name": "ZKBGFILEZILLA",
-      "visibility": "private",
-      "language": "HTML",
-      "description": "Private repository",
-      "category": "IT"
-    },
-    {
-      "name": "Sessions",
-      "visibility": "private",
-      "language": null,
-      "description": "Private repository",
-      "category": "Systems"
-    },
-    {
-      "name": "CS2-SCRIPT",
-      "visibility": "private",
-      "language": "C++",
-      "description": "Private repository",
-      "category": "Utilities"
-    },
-    {
-      "name": "joseph-code-and-bot",
-      "visibility": "private",
-      "language": "TypeScript",
-      "description": "Private repository",
-      "category": "Automation"
-    },
-    {
-      "name": "BEUN-CAMPUS",
-      "visibility": "private",
-      "language": "Python",
-      "description": "Private repository",
-      "category": "Campus"
-    },
-    {
-      "name": "jose-h-dev-muzik",
-      "visibility": "private",
-      "language": "TypeScript",
-      "description": "Private repository",
-      "category": "Media"
-    }
-  ],
-  "repository_snapshot_date": "2026-11-23"
+  ]
 }
