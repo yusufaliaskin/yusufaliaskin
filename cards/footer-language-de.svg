@@ -1,23 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 35" width="176" height="35" role="img" aria-label="Read README in Deutsch"><title>Read README in Deutsch</title><style><![CDATA[
-@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes tilein{from{opacity:0;transform:translateY(17px) scale(.985)}to{opacity:1;transform:none}}
-@keyframes barin{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
-@keyframes nudge{from{opacity:.4;transform:translateX(-3px)}to{opacity:1;transform:none}}
-@keyframes nudgeup{from{opacity:.4;transform:translate(-3px,3px)}to{opacity:1;transform:none}}
-@keyframes sheen{from{transform:translateX(-260px) skewX(-18deg)}to{transform:translateX(440px) skewX(-18deg)}}
-@keyframes ring{from{opacity:.55;transform:scale(.7)}to{opacity:0;transform:scale(1.2)}}
-@keyframes draw{from{transform:scaleX(0);opacity:.2}to{transform:scaleX(1);opacity:1}}
-.r{opacity:0;animation:rise .67s cubic-bezier(.22,1,.36,1) forwards}
-.f{opacity:0;animation:fade .55s ease-out forwards}
-.ti{opacity:0;animation:tilein .8s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}
-.ba{animation:barin .7s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}
-.nu{animation:nudge .65s ease-out both}
-.nup{animation:nudgeup .65s ease-out both}
-.li{animation:pulse 1.5s ease-in-out 2}
-.sh{animation:sheen 1.25s ease-out 1s 1 forwards}
-.rg{animation:ring 1.5s ease-out 1s 1 forwards;transform-box:fill-box;transform-origin:center}
-.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .56s cubic-bezier(.22,1,.36,1) forwards}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 50" width="176" height="50" role="img" aria-label="Language button Deutsch"><title>Language button Deutsch</title><style><![CDATA[
+@keyframes rise{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:none}}
+@keyframes fade{0%{opacity:0}100%{opacity:1}}
+@keyframes tilein{0%{opacity:0;transform:translateY(16px) scale(.985)}100%{opacity:1;transform:none}}
+@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+@keyframes linein{0%{opacity:.25;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}
+@keyframes shine{0%{transform:translateX(-220px) skewX(-18deg)}100%{transform:translateX(270px) skewX(-18deg)}}
+@keyframes glow{0%{opacity:0}35%{opacity:.55}100%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes nudge{0%{opacity:0;transform:translateX(-5px)}100%{opacity:1;transform:none}}
+@keyframes nudgeup{0%{opacity:0;transform:translate(-3px,4px)}100%{opacity:1;transform:none}}
+@keyframes sheen{0%{transform:translateX(-270px) skewX(-18deg)}100%{transform:translateX(460px) skewX(-18deg)}}
+@keyframes ring{0%{opacity:.5;transform:scale(.65)}100%{opacity:0;transform:scale(1.35)}}
+@keyframes draw{0%{transform:scaleX(0);opacity:.3}100%{transform:scaleX(1);opacity:1}}
+.r,.btn-reveal,.repo-reveal,.lang-pill-reveal,.portrait-reveal{opacity:0;animation:rise .72s cubic-bezier(.22,1,.36,1) forwards}
+.f{opacity:0;animation:fade .58s ease-out forwards}
+.ti{opacity:0;animation:tilein .83s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}
+.ba{animation:barin .77s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}
+.heat-col{opacity:0;animation:rise .46s cubic-bezier(.22,1,.36,1) forwards}
+.nav-border-reveal,.line-draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:linein .66s cubic-bezier(.22,1,.36,1) forwards}
+.shine{animation:shine 1.25s ease-in-out 1 forwards}
+.soft-glow{animation:glow 1.2s ease-out 1 forwards}
+.nu{animation:nudge .66s ease-out both}
+.nup{animation:nudgeup .66s ease-out both}
+.li{animation:pulse 1.6s ease-in-out 2}
+.sh{animation:sheen 1.25s ease-out .8s 1 forwards}
+.rg{animation:ring 1.25s ease-out .8s 1 forwards;transform-box:fill-box;transform-origin:center}
+.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .55s cubic-bezier(.22,1,.36,1) forwards}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}
-]]></style><rect x="0" y="0" width="173" height="32" rx="7" fill="#f3f3f1" /><text x="86.5" y="24" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111111" text-anchor="middle" class="r" style="animation-delay:0.95s">Deutsch</text><rect x="29" y="30" width="116" height="1.4" rx="0.7" fill="#b7b8be" class="draw" style="animation-delay:1.14s"/></svg>
+]]></style><rect x="0" y="0" width="171" height="46" rx="9" fill="#f3f3f1" /><rect x=".7" y=".7" width="169.6" height="44.6" rx="8.3" fill="none" stroke="#d1d2d4" stroke-width="1"/><g class="lang-pill-reveal" style="animation-delay:0.67s"><text x="85.5" y="31" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111111" text-anchor="middle" font-weight="600">Deutsch</text></g><rect x="24" y="43" width="123" height="2" rx="1" fill="#2f55ff" class="line-draw" style="animation-delay:0.85s"/></svg>

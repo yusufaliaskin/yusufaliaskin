@@ -1,23 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293.3333333333333 222" width="293.3333333333333" height="222" role="img" aria-label="LEARN — Always learning: AI, cloud, networks and security."><title>LEARN — Always learning: AI, cloud, networks and security.</title><style><![CDATA[
-@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes tilein{from{opacity:0;transform:translateY(17px) scale(.985)}to{opacity:1;transform:none}}
-@keyframes barin{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
-@keyframes nudge{from{opacity:.4;transform:translateX(-3px)}to{opacity:1;transform:none}}
-@keyframes nudgeup{from{opacity:.4;transform:translate(-3px,3px)}to{opacity:1;transform:none}}
-@keyframes sheen{from{transform:translateX(-260px) skewX(-18deg)}to{transform:translateX(440px) skewX(-18deg)}}
-@keyframes ring{from{opacity:.55;transform:scale(.7)}to{opacity:0;transform:scale(1.2)}}
-@keyframes draw{from{transform:scaleX(0);opacity:.2}to{transform:scaleX(1);opacity:1}}
-.r{opacity:0;animation:rise .67s cubic-bezier(.22,1,.36,1) forwards}
-.f{opacity:0;animation:fade .55s ease-out forwards}
-.ti{opacity:0;animation:tilein .8s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}
-.ba{animation:barin .7s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}
-.nu{animation:nudge .65s ease-out both}
-.nup{animation:nudgeup .65s ease-out both}
-.li{animation:pulse 1.5s ease-in-out 2}
-.sh{animation:sheen 1.25s ease-out 1s 1 forwards}
-.rg{animation:ring 1.5s ease-out 1s 1 forwards;transform-box:fill-box;transform-origin:center}
-.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .56s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes rise{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:none}}
+@keyframes fade{0%{opacity:0}100%{opacity:1}}
+@keyframes tilein{0%{opacity:0;transform:translateY(16px) scale(.985)}100%{opacity:1;transform:none}}
+@keyframes barin{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+@keyframes linein{0%{opacity:.25;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}
+@keyframes shine{0%{transform:translateX(-220px) skewX(-18deg)}100%{transform:translateX(270px) skewX(-18deg)}}
+@keyframes glow{0%{opacity:0}35%{opacity:.55}100%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes nudge{0%{opacity:0;transform:translateX(-5px)}100%{opacity:1;transform:none}}
+@keyframes nudgeup{0%{opacity:0;transform:translate(-3px,4px)}100%{opacity:1;transform:none}}
+@keyframes sheen{0%{transform:translateX(-270px) skewX(-18deg)}100%{transform:translateX(460px) skewX(-18deg)}}
+@keyframes ring{0%{opacity:.5;transform:scale(.65)}100%{opacity:0;transform:scale(1.35)}}
+@keyframes draw{0%{transform:scaleX(0);opacity:.3}100%{transform:scaleX(1);opacity:1}}
+.r,.btn-reveal,.repo-reveal,.lang-pill-reveal,.portrait-reveal{opacity:0;animation:rise .72s cubic-bezier(.22,1,.36,1) forwards}
+.f{opacity:0;animation:fade .58s ease-out forwards}
+.ti{opacity:0;animation:tilein .83s cubic-bezier(.22,1,.36,1) forwards;transform-box:fill-box;transform-origin:center}
+.ba{animation:barin .77s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center bottom}
+.heat-col{opacity:0;animation:rise .46s cubic-bezier(.22,1,.36,1) forwards}
+.nav-border-reveal,.line-draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:linein .66s cubic-bezier(.22,1,.36,1) forwards}
+.shine{animation:shine 1.25s ease-in-out 1 forwards}
+.soft-glow{animation:glow 1.2s ease-out 1 forwards}
+.nu{animation:nudge .66s ease-out both}
+.nup{animation:nudgeup .66s ease-out both}
+.li{animation:pulse 1.6s ease-in-out 2}
+.sh{animation:sheen 1.25s ease-out .8s 1 forwards}
+.rg{animation:ring 1.25s ease-out .8s 1 forwards;transform-box:fill-box;transform-origin:center}
+.draw{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;animation:draw .55s cubic-bezier(.22,1,.36,1) forwards}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;opacity:1!important;transform:none!important}}
 ]]></style><defs><clipPath id="card"><rect x="8" y="0" width="285.3333333333333" height="210" rx="14"/></clipPath><linearGradient id="gl"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g class="ti" style="animation-delay:0.54s"><g clip-path="url(#card)"><rect x="8" y="0" width="285.3333333333333" height="210" rx="14" fill="#ffc81a" /><circle class="rg" cx="251" cy="165" r="63" fill="none" stroke="#111111" stroke-opacity=".55" stroke-width="1.5"/><rect x="-242" y="-20" width="85" height="260" rx="0" fill="url(#gl)" class="sh"/></g><text x="31" y="37" font-family="Consolas, Menlo, monospace" font-size="12" fill="#111111" letter-spacing="1.15" class="f" style="animation-delay:.54s">LEARN</text><text x="263" y="37" font-family="Consolas, Menlo, monospace" font-size="16" fill="#111111" class="nu">→</text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">0 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="0.980s"/><set attributeName="opacity" to="0" begin="1.090s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">10 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.090s"/><set attributeName="opacity" to="0" begin="1.200s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">18 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.200s"/><set attributeName="opacity" to="0" begin="1.310s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">23 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.310s"/><set attributeName="opacity" to="0" begin="1.420s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">27 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.420s"/><set attributeName="opacity" to="0" begin="1.530s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">29 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.530s"/><set attributeName="opacity" to="0" begin="1.640s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">31 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.640s"/><set attributeName="opacity" to="0" begin="1.750s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">31 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.750s"/><set attributeName="opacity" to="0" begin="1.860s"/></text><text x="30" y="112" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="46" font-style="italic" fill="#111111" opacity="0">31 <tspan font-size="18">certifications</tspan><set attributeName="opacity" to="1" begin="1.860s"/></text><text x="31" y="153" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111111" class="r" style="animation-delay:1.41s">Always learning: AI, cloud,</text><text x="31" y="173" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111111" class="r" style="animation-delay:1.50s">networks and security.</text></g></svg>
