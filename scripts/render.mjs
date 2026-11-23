@@ -62,15 +62,78 @@ function footerLanguage(lang,i,mobile=false){if(mobile){let b=r(0,0,68,33,PAPER,
 let b=r(0,0,171,45,PAPER,8)+r(9,13,27,20,BLUE,5);b+=t(22.5,27,lang.key.toUpperCase(),9.5,"#fff",FONTS.mono,'text-anchor="middle" font-weight="600"')+t(47,29,lang.label,lang.key==="ru"?14:16,INK,FONTS.sans,'font-weight="600"');return svg(176,50,b,"Choose "+lang.label)};
 
 function mobileFooterHeading(cfg){let b=r(0,0,360,43,PAPER,8)+r(12,9,5,5,BLUE,2);b+=t(25,16,"CONNECT",9,MUTED,FONTS.mono)+t(12,35,"Let's connect.",25,INK,FONTS.serif,'font-style="italic"')+t(347,34,cfg.first.toUpperCase(),10,BLUE,FONTS.mono,'text-anchor="end"');return svg(360,47,b,"Compact contact header")};
+function mobileHero(cfg,portrait){
+ const lines=portrait?.length?portrait:asciiFallback();
+ let b=r(0,0,360,157,PAPER,8)+r(12,12,5,5,BLUE,2);
+ b+=t(24,20,cfg.eyebrow,9,MUTED,FONTS.mono);
+ b+=t(12,69,cfg.first,53,INK,FONTS.serif,'class="r" style="animation-delay:.15s"');
+ b+=t(12,108,cfg.last,39,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.3s"');
+ b+=t(12,131,"AI  ·  CYBERSECURITY  ·  AUTOMATION",9,SOFT,FONTS.mono);
+ b+=t(12,147,cfg.url,10,BLUE,FONTS.mono);
+ b+='<defs><clipPath id="mobileportrait"><rect x="0" y="0" width="115" height="130"/></clipPath></defs>';
+ b+='<g transform="translate(242 18)" clip-path="url(#mobileportrait)" font-family="'+FONTS.mono+'">';
+ lines.slice(6,49).forEach((line,i)=>{b+=`<text x="0" y="${(i+1)*3.02}" font-size="3.6" textLength="114" lengthAdjust="spacing" fill="${INK}" opacity=".72" xml:space="preserve">${esc(line)}</text>`});
+ b+='</g>';
+ return svg(360,163,b,cfg.display_name+" mobile engineer profile");
+};
+function mobileHeatmap(days){
+ const map=new Map((days||[]).map(d=>[d.date,d.count]));
+ const colors=["#e2e2de","#c8d3ff","#94a8ff","#6280ff",BLUE,"#1a3be0"];
+ let b=r(0,0,360,115,PAPER,8)+t(12,24,"Every day,",22,INK,FONTS.serif)+t(117,24,"in blue",22,BLUE,FONTS.serif,'font-style="italic"');
+ const today=new Date(),current=new Date(Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate()));
+ const lastSat=new Date(current);lastSat.setUTCDate(current.getUTCDate()+(6-current.getUTCDay()+7)%7);
+ const first=new Date(lastSat);first.setUTCDate(lastSat.getUTCDate()-370);
+ for(let col=0;col<53;col++)for(let row=0;row<7;row++){
+  const d=new Date(first);d.setUTCDate(first.getUTCDate()+col*7+row);if(d>current)continue;
+  const n=map.get(d.toISOString().slice(0,10)),level=n===undefined||n===0?0:n<=2?1:n<=5?2:n<=10?3:n<=20?4:5;
+  b+=r(14+col*6.2,42+row*8.1,5.3,6.1,colors[level],1.2);
+ }
+ b+=t(14,106,map.size?"GITHUB  /  LAST 12 MONTHS":"AWAITING DATA SYNC",9,MUTED,FONTS.mono);
+ return svg(360,121,b,"Compact real GitHub contribution graph");
+};
+function mobileActivity(data){
+ let b=r(0,0,360,125,PAPER,8)+t(13,20,"GITHUB ACTIVITY  /  12 MONTHS",10,MUTED,FONTS.mono);
+ if(!data?.days?.length){b+=t(13,64,"Syncing activity",29,INK,FONTS.serif);return svg(360,131,b,"GitHub activity awaiting sync")}
+ const total=Number(data.total_contributions||0),streak=Number(data.current_streak?.length||0),months=(data.monthly||[]).slice(-12);
+ b+=t(13,63,total.toLocaleString("en-US"),43,INK,FONTS.serif,'class="r" style="animation-delay:.2s"')+t(14,82,"contributions",13,SOFT,FONTS.sans);
+ b+=t(196,59,streak+" days",25,INK,FONTS.serif)+t(198,78,"current streak",11,MUTED,FONTS.sans);
+ const max=Math.max(1,...months.map(m=>m.total));
+ for(let i=0;i<12;i++){const h=Math.max(2,19*(months[i]?.total||0)/max);b+=r(14+i*27.6,114-h,16,h,BLUE,2)}
+ b+=t(345,122,"MONTHLY",9,MUTED,FONTS.mono,'text-anchor="end"');
+ return svg(360,131,b,"Mobile activity "+total+" contributions");
+};
+function mobileTile(p,i){
+ const background=[BLUE,RED,YELLOW][i],ink=i===2?INK:"#fff";
+ let b=r(0,0,111,64,background,8);
+ b+=t(9,16,p.tag,10,ink,FONTS.mono,'font-weight="600"');
+ b+=t(9,41,p.metric,24,ink,FONTS.serif,'font-style="italic"');
+ b+=t(9,57,p.unit.slice(0,15),9.5,ink,FONTS.sans);
+ b+=t(100,16,"↗",11,ink,FONTS.mono,'text-anchor="end"');
+ return svg(116,69,b,"Mobile "+p.tag+" card");
+};
+function mobileRepo(p){
+ let b=r(0,0,111,61,PAPER,8)+r(9,10,7,7,p.color,2);
+ b+=t(9,35,p.name,p.name.length>12?10:12,INK,FONTS.sans,'font-weight="600"');
+ b+=t(9,52,p.lang,10,MUTED,FONTS.mono)+t(101,52,"↗",12,BLUE,FONTS.mono,'text-anchor="end"');
+ return svg(116,66,b,"Mobile repository "+p.name);
+};
+function mobileTitle(dark){
+ const ink=dark?"#e6edf3":INK;
+ return svg(360,38,t(9,29,"What I'm",23,ink,FONTS.serif)+t(122,29,"coding",23,ink,FONTS.serif,'font-style="italic"'),"Mobile coding section");
+};
 function buildCards(cfg,data,portrait){
-const a={"cards/hero.svg":hero(cfg,portrait),"cards/heatmap.svg":calendar(data?.days),"cards/activity.svg":activity(data),"cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true)};
-cfg.tiles.forEach((p,i)=>a["cards/"+p.id+".svg"]=tile(p,i));
-cfg.projects.forEach((p,i)=>a["cards/repo-"+p.name+".svg"]=repo(p,i));
-a["cards/footer-heading.svg"]=footerHeading(cfg);a["cards/footer-heading-mobile.svg"]=mobileFooterHeading(cfg);
-cfg.links.forEach((p,i)=>{a["cards/footer-nav-"+p[0]+".svg"]=footerNav(p,i);a["cards/footer-nav-"+p[0]+"-mobile.svg"]=footerNav(p,i,true)});
-for(const loc of Object.keys(FOOTER_FOCUS)){a["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);a["cards/footer-focus-"+loc+"-mobile.svg"]=footerSpecialties(loc,true)}
-FOOTER_LANGUAGES.forEach((p,i)=>{a["cards/footer-language-"+p.key+".svg"]=footerLanguage(p,i);a["cards/footer-language-"+p.key+"-mobile.svg"]=footerLanguage(p,i,true)});
-return a;
+ const a={"cards/hero.svg":hero(cfg,portrait),"cards/hero-mobile.svg":mobileHero(cfg,portrait),
+ "cards/heatmap.svg":calendar(data?.days),"cards/heatmap-mobile.svg":mobileHeatmap(data?.days),
+ "cards/activity.svg":activity(data),"cards/activity-mobile.svg":mobileActivity(data),
+ "cards/title-coding-light.svg":titleCard(false),"cards/title-coding-dark.svg":titleCard(true),
+ "cards/title-coding-light-mobile.svg":mobileTitle(false),"cards/title-coding-dark-mobile.svg":mobileTitle(true),
+ "cards/footer-heading.svg":footerHeading(cfg),"cards/footer-heading-mobile.svg":mobileFooterHeading(cfg)};
+ cfg.tiles.forEach((p,i)=>{a["cards/"+p.id+".svg"]=tile(p,i);a["cards/"+p.id+"-mobile.svg"]=mobileTile(p,i)});
+ cfg.projects.forEach((p,i)=>{a["cards/repo-"+p.name+".svg"]=repo(p,i);a["cards/repo-"+p.name+"-mobile.svg"]=mobileRepo(p)});
+ cfg.links.forEach((p,i)=>{a["cards/footer-nav-"+p[0]+".svg"]=footerNav(p,i);a["cards/footer-nav-"+p[0]+"-mobile.svg"]=footerNav(p,i,true)});
+ for(const loc of Object.keys(FOOTER_FOCUS)){a["cards/footer-focus-"+loc+".svg"]=footerSpecialties(loc);a["cards/footer-focus-"+loc+"-mobile.svg"]=footerSpecialties(loc,true)}
+ FOOTER_LANGUAGES.forEach((p,i)=>{a["cards/footer-language-"+p.key+".svg"]=footerLanguage(p,i);a["cards/footer-language-"+p.key+"-mobile.svg"]=footerLanguage(p,i,true)});
+ return a;
 };
 
 function summarize(days){if(!days?.length)throw new Error("Empty contribution series");days=[...days].map(d=>({date:d.date,count:Number(d.count)})).sort((a,b)=>a.date.localeCompare(b.date));if(days.some(d=>!Number.isFinite(d.count)||d.count<0))throw new Error("Invalid contributions");let monthly=new Map(),max={date:"",count:-1},run=0,longest=0;for(const d of days){const m=d.date.slice(0,7);monthly.set(m,(monthly.get(m)||0)+d.count);if(d.count>max.count)max=d;run=d.count>0?run+1:0;longest=Math.max(longest,run)}let idx=days.length-1;const today=new Date().toISOString().slice(0,10);if(days[idx].count===0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))idx--;let current=0;if(idx>=0&&days[idx].date>=new Date(Date.now()-86400000).toISOString().slice(0,10))for(let i=idx;i>=0&&days[i].count>0;i--)current++;return{days,monthly:[...monthly].map(([month,total])=>({month,total})),total_contributions:days.reduce((a,b)=>a+b.count,0),best_day:max,current_streak:{length:current},longest_streak:{length:longest},updated_at:new Date().toISOString()}};
