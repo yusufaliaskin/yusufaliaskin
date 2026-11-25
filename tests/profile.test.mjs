@@ -89,7 +89,7 @@ test("link buttons and all five languages are animated and clickable",()=>{
 test("all languages preserve three projects, mobile art and all user URLs",()=>{
  for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
   const readme=readFileSync(new URL("../"+name,import.meta.url),"utf8");
-  for(const p of cfg.projects)assert.ok(readme.includes("cards/repo-"+p.name+"-mobile.svg"),name+" "+p.name);
+  for(const p of cfg.projects)assert.ok(readme.includes("cards/motion-v4/repo-"+p.name+"-mobile.svg"),name+" "+p.name);
   for(const [key,url] of cfg.links){assert.ok(readme.includes('href="'+url+'"'),name+" "+key);assert.ok(readme.includes("footer-nav-"+key+"-mobile.svg"))}
   assert.ok(!readme.includes("Find me online"));
   assert.ok(!readme.includes("cards/project-"));
@@ -188,5 +188,16 @@ test("gentle easing, bounded repeat effects and LinkedIn variants",()=>{
   assert.ok(s.includes("LinkedIn"));
   assert.ok(s.includes("https://www.linkedin.com/in/yusufaliaskin/"));
   assert.ok(s.includes('class="button-icon"'));
+ }
+});
+
+test("all five READMEs reference the complete versioned responsive asset set",()=>{
+ const expected=new Set(Object.keys(cards()).map(k=>k.replace(/^cards\//,"")));
+ for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
+  const text=readFileSync(new URL("../"+name,import.meta.url),"utf8");
+  const refs=[...text.matchAll(/(?:src|srcset)="\.\/cards\/motion-v4\/([^"]+)"/g)].map(m=>m[1]);
+  assert.deepEqual(new Set(refs),expected,name);
+  assert.equal((text.match(/width="24%"/g)||[]).length,4,name);
+  assert.equal((text.match(/width="19%"/g)||[]).length,5,name);
  }
 });
