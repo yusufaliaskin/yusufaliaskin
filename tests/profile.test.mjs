@@ -156,3 +156,12 @@ test("high-resolution portrait preserves aspect and every row on mobile",()=>{
   assert.equal((x.match(/animation-duration:\.35s/g)||[]).length,60,name);
  }
 });
+
+test("all link buttons have an icon and separate label entry and sheen",()=>{
+ const a=cards();
+ for(const [id] of cfg.links)for(const suffix of ["","-mobile"]){
+  const x=a["cards/footer-nav-"+id+suffix+".svg"];
+  for(const name of ["button-icon","button-label","button-glint"])assert.ok(x.includes('class="'+name+'"'),id+suffix+" "+name);
+ }
+ for(const id of ["en","tr","de","ru","zh"])for(const suffix of ["","-mobile"])assert.ok(a["cards/footer-language-"+id+suffix+".svg"].includes('class="language-label"'));
+});
