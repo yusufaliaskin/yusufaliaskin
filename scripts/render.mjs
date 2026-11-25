@@ -11,6 +11,18 @@ function t(x,y,val,size,color=INK,family=FONTS.sans,extra=""){return `<text x="$
 function r(x,y,w,h,fill,rx=0,extra=""){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" ${extra}/>`};
 function wrapped(str,max=34){const words=String(str).split(" "),rows=[];let line="";for(const w of words){if((line+" "+w).trim().length>max&&line){rows.push(line);line=w}else line=(line+" "+w).trim()}if(line)rows.push(line);return rows};
 function asciiFallback(){const out=[];for(let y=0;y<53;y++){let row="";for(let x=0;x<65;x++){let ax=(x-32)/21.5,ay=(y-23)/21,head=ax*ax+ay*ay<1,shoulder=y>39&&((x-32)/31)**2+((y-57)/18)**2<1;row+=head||shoulder?"@#*+=-:"[(x*11+y*5+x*y)%7]:" "}out.push(row)}return out};
+function portraitArt(portrait,x,y,size,mobile=false){
+ const p=Array.isArray(portrait)?{rows:portrait}:portrait;
+ const rows=p?.rows?.length?p.rows:asciiFallback();
+ const png=mobile?(p?.mobilePng||p?.png):p?.png;
+ const valid=typeof png==="string"&&/^[A-Za-z0-9+/]+={0,2}$/.test(png);
+ const step=size/rows.length;
+ let b=`<g transform="translate(${x} ${y})">`;
+ if(valid)b+=`<g class="f" style="animation-delay:.22s"><image href="data:image/png;base64,${png}" x="0" y="0" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet" opacity="${mobile?.80:.60}"/></g>`;
+ b+=`<g font-family="Consolas, Menlo, monospace" opacity="${valid?(mobile?.30:.55):1}">`;
+ rows.forEach((line,i)=>{b+=`<text class="f" style="animation-delay:${(.25+i*.018).toFixed(3)}s;animation-duration:.35s" x="0" y="${((i+.87)*step).toFixed(3)}" font-size="${(step*1.03).toFixed(3)}" textLength="${size}" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="${INK}">${esc(line)}</text>`});
+ return b+"</g></g>";
+};
 function hero(cfg,lines){
  const rows=lines?.length?lines:asciiFallback();
  let b=`<defs><linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="0"><stop offset="0" stop-color="${INK}"/><stop offset=".42" stop-color="${INK}"/><stop offset=".5" stop-color="${BLUE}"/><stop offset=".58" stop-color="${INK}"/><stop offset="1" stop-color="${INK}"/><animateTransform attributeName="gradientTransform" type="translate" values="-600 0;600 0;600 0" keyTimes="0;.45;1" dur="7s" begin="1.6s" repeatCount="indefinite"/></linearGradient></defs>`;
@@ -22,9 +34,8 @@ function hero(cfg,lines){
  cfg.description.slice(0,2).forEach((line,i)=>b+=t(48,338+i*27,line,17,SOFT,FONTS.sans));
  b+='</g><g class="f" style="animation-delay:.8s">';
  b+=t(48,396,cfg.url,13,INK,FONTS.mono)+t(213,396,"↗",15,BLUE,FONTS.mono,'class="nu"')+'</g>';
- b+=`<g transform="translate(529 43) scale(.96 .99)" font-family="${FONTS.mono}">`;
- rows.slice(0,53).forEach((row,i)=>b+=`<text class="f" style="animation-delay:${(.25+i*.018).toFixed(3)}s;animation-duration:.35s" x="0" y="${(i+1)*6.03}" font-size="8.6" textLength="350" lengthAdjust="spacing" xml:space="preserve" fill="${INK}">${esc(row)}</text>`);
- b+='</g>';return svg(W,432,b,cfg.display_name+" animated hero");
+ b+=portraitArt(lines,540,58,310);
+ return svg(W,432,b,cfg.display_name+" animated hero");
 };
 
 function calendar(days){
@@ -121,10 +132,7 @@ function mobileHero(cfg,portrait){
  b+=t(12,108,cfg.last,39,INK,FONTS.serif,'font-style="italic" class="r" style="animation-delay:.30s"');
  b+=t(12,131,"AI  ·  CYBERSECURITY  ·  AUTOMATION",9,SOFT,FONTS.mono,'class="r" style="animation-delay:.69s"');
  b+=t(12,147,cfg.url,10,BLUE,FONTS.mono,'class="f" style="animation-delay:.87s"');
- b+='<defs><clipPath id="mobileportrait"><rect x="0" y="0" width="115" height="130"/></clipPath></defs>';
- b+='<g transform="translate(242 18)" clip-path="url(#mobileportrait)"><g  font-family="'+FONTS.mono+'">';
- rows.slice(6,49).forEach((row,i)=>b+=`<text x="0" y="${(i+1)*3.02}" class="f" style="animation-delay:${(.25+i*.018).toFixed(3)}s;animation-duration:.35s" font-size="3.6" textLength="114" lengthAdjust="spacing" fill="${INK}" opacity=".78" xml:space="preserve">${esc(row)}</text>`);
- b+='</g></g>';
+ b+=portraitArt(portrait,237,29,116,true);
  return svg(360,163,b,cfg.display_name+" compact animated portrait");
 };
 
@@ -222,7 +230,7 @@ function asciiFromGrayscale(pixels,width,height){
    const at=(xx,yy)=>pixels[Math.max(0,Math.min(height-1,yy))*width+Math.max(0,Math.min(width-1,xx))];
    const light=at(x,y);
    const edge=Math.abs(at(x-1,y)-at(x+1,y))*.43+Math.abs(at(x,y-1)-at(x,y+1))*.43;
-   const detail=Math.min(43,edge*.40);
+   const detail=Math.min(14,edge*.12);
    const adjusted=Math.max(0,Math.min(255,light-detail));
    const idx=Math.max(0,Math.min(ramp.length-1,Math.round(adjusted*(ramp.length-1)/255)));
    row+=ramp[idx];
@@ -232,20 +240,19 @@ function asciiFromGrayscale(pixels,width,height){
  return rows;
 };
 async function fetchPortrait(){
- return (async ()=>{
-  try{
-   const res=await fetch("https://github.com/yusufaliaskin.png?size=768",{headers:{"User-Agent":"yusuf-animated-github-profile"}});
-   if(!res.ok)throw new Error("GitHub avatar status "+res.status);
-   const input=Buffer.from(await res.arrayBuffer());
-   const {default:sharp}=await import("sharp");
-   const {data,info}=await sharp(input).rotate()
-    .resize(65,53,{fit:"cover",position:"attention"})
-    .grayscale().normalize().gamma(1.15).sharpen()
-    .raw().toBuffer({resolveWithObject:true});
-   if(info.channels!==1)throw new Error("Expected grayscale portrait");
-   return asciiFromGrayscale(data,info.width,info.height);
-  }catch(e){console.warn("Avatar refresh failed, preserving existing portrait:",e.message);return null}
- })();
+ try{
+  const res=await fetch("https://github.com/yusufaliaskin.png?size=768",{headers:{"User-Agent":"yusuf-animated-github-profile"},signal:AbortSignal.timeout(15000)});
+  if(!res.ok)throw new Error("Avatar HTTP "+res.status);
+  const {default:sharp}=await import("sharp");
+  const input=Buffer.from(await res.arrayBuffer());
+  const square=await sharp(input).rotate().flatten({background:"#f3f3f1"}).resize(320,320,{fit:"contain",background:"#f3f3f1"}).greyscale().toColourspace("b-w").png().toBuffer();
+  const {data,info}=await sharp(square).resize(120,60,{fit:"fill"}).toColourspace("b-w").raw().toBuffer({resolveWithObject:true});
+  if(info.channels!==1)throw Error("Expected one grayscale channel");
+  const png=await sharp(square).png({palette:true,colours:64}).toBuffer();
+  const mobile=await sharp(square).resize(144,144).png({palette:true,colours:48}).toBuffer();
+  console.log("Portrait v2: 120 x 60, preserved source proportions");
+  return {rows:asciiFromGrayscale(data,120,60),png:png.toString("base64"),mobilePng:mobile.toString("base64"),version:2};
+ }catch(e){console.warn("Avatar refresh failed, preserving existing portrait:",e.message);return null}
 };
 
 async function main(){

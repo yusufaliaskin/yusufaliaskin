@@ -141,3 +141,18 @@ test("entire contact buttons bounce instead of just their labels",()=>{
   assert.ok(g>=0&&bg>g,id);
  }
 });
+
+test("certification count is 52 on both layouts",()=>{
+ const a=cards();
+ assert.equal(cfg.tiles.find(p=>p.id==="learn").metric,"52");
+ for(const name of ["learn","learn-mobile"]){assert.ok(a["cards/"+name+".svg"].includes(">52"));assert.ok(a["cards/"+name+".svg"].includes("certifications"))}
+});
+test("high-resolution portrait preserves aspect and every row on mobile",()=>{
+ const a=buildCards(cfg,null,{rows:Array.from({length:60},()=>"#".repeat(120)),png:"iVBORw0KGgo=",mobilePng:"iVBORw0KGgo="});
+ for(const name of ["hero","hero-mobile"]){
+  const x=a["cards/"+name+".svg"];
+  assert.ok(x.includes('preserveAspectRatio="xMidYMid meet"'),name);
+  assert.ok(x.includes("data:image/png;base64,iVBORw0KGgo="),name);
+  assert.equal((x.match(/animation-duration:\.35s/g)||[]).length,60,name);
+ }
+});
