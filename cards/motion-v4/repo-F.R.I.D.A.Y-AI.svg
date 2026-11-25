@@ -27,7 +27,7 @@
 @media(prefers-reduced-motion:reduce){.r,.f,.g,.p,.live,.n,.nu,.ti,.sl,.ai,.ro,.sh,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none!important}}
 
 @keyframes buttonIn{0%{opacity:0;transform:translateY(18px) scale(.87)}65%{opacity:1;transform:translateY(-1px) scale(1.025)}100%{opacity:1;transform:none}}
-@media(max-width:400px){.sh,.n,.nu,.live{animation-iteration-count:2!important}}
+@media(max-width:400px){.sh,.n,.nu,.live{animation-iteration-count:infinite!important}}
 
 @keyframes sectionEntry{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 .section-entry{animation:sectionEntry .46s cubic-bezier(.22,1,.36,1) both;transform-box:fill-box;transform-origin:center}
@@ -40,6 +40,10 @@
 .r{animation-duration:.64s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
 .f{animation-duration:.55s}
 .ai{animation-name:smoothArrow;animation-duration:.5s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
-.sh,.n,.nu,.live{animation-iteration-count:2}
+.sh,.n,.nu,.live{animation-iteration-count:infinite}
 @media(prefers-reduced-motion:reduce){.section-entry{animation:none!important;opacity:1!important;transform:none!important}}
-]]></style><g class="section-entry" data-stage="4.72" style="animation-delay:4.72s"><rect x="4" y="0" width="285.3333333333333" height="190" rx="14" fill="#f3f3f1" /><g class="r" style="animation-delay:4.72s"><rect x="28" y="29" width="8" height="8" rx="2" fill="#EF3B2D" /><text x="43" y="39" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#111111" font-weight="bold">F.R.I.D.A.Y-AI</text><text x="28" y="75" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3a3a3c" >A local Windows AI assistant</text><text x="28" y="95" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3a3a3c" >for everyday workflows.</text><text x="28" y="167" font-family="Consolas, Menlo, monospace" font-size="11" fill="#6e6e73" >Python   ·   OPEN SOURCE</text></g></g></svg>
+
+@keyframes idleAccent{0%,100%{opacity:.12;transform:scaleX(.35)}50%{opacity:.65;transform:scaleX(1)}}
+.idle-accent{transform-box:fill-box;transform-origin:center;animation:idleAccent 7s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.idle-accent{display:none!important}}
+]]></style><g class="section-entry" data-stage="4.72" style="animation-delay:4.72s"><rect x="4" y="0" width="285.3333333333333" height="190" rx="14" fill="#f3f3f1" /><g class="r" style="animation-delay:4.72s"><rect x="28" y="29" width="8" height="8" rx="2" fill="#EF3B2D" /><text x="43" y="39" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#111111" font-weight="bold">F.R.I.D.A.Y-AI</text><text x="28" y="75" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3a3a3c" >A local Windows AI assistant</text><text x="28" y="95" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3a3a3c" >for everyday workflows.</text><text x="28" y="167" font-family="Consolas, Menlo, monospace" font-size="11" fill="#6e6e73" >Python   ·   OPEN SOURCE</text></g><rect class="idle-accent" x="111.47" y="200.00" width="70.40" height="1.3" rx=".65" fill="#6280ff" style="animation-delay:5.92s"/></g></svg>
