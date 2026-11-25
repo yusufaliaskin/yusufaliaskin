@@ -2,7 +2,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 root=Path("cards/motion-v4")
 files=sorted(root.glob("*.svg"))
-assert len(files)==40, f"Expected 40 SVGs, got {len(files)}"
+assert len(files)==42, f"Expected 42 SVGs, got {len(files)}"
 for file in files:
     tree=ET.parse(file)
     svg=tree.getroot()
@@ -18,7 +18,7 @@ for readme in Path(".").glob("README*.md"):
     refs=re.findall(r'(?:src|srcset)="\./cards/motion-v4/([^"]+)"',content)
     assert set(refs)=={f.name for f in files}, f"Incomplete image references: {readme}"
     assert content.count('width="24%"')==4,readme
-    assert content.count('width="19%"')==5,readme
+    assert content.count('width="16%"')==6,readme
 print("Validated all README image references and compact footer dimensions")
 
 # Browser image decoding: SVGs are loaded through img, as on GitHub.

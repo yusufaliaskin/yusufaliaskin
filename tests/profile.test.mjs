@@ -4,9 +4,9 @@ import {readFileSync} from "node:fs";
 import {buildCards,summarize,asciiFromGrayscale} from "../scripts/render.mjs";
 const cfg=JSON.parse(readFileSync(new URL("../profile.json",import.meta.url),"utf8"));
 const cards=(data=null)=>buildCards(cfg,data,null);
-test("only three featured projects and forty responsive SVG assets",()=>{
+test("only three featured projects and forty-two responsive SVG assets",()=>{
  assert.equal(cfg.projects.length,3);
- const v=cards();assert.equal(Object.keys(v).length,40);
+ const v=cards();assert.equal(Object.keys(v).length,42);
  assert.equal(Object.keys(v).filter(k=>k.startsWith("cards/repo-")).length,6);
  assert.ok(!Object.keys(v).some(k=>k.startsWith("cards/project-")||k.includes("footer-heading")));
 });
@@ -72,7 +72,7 @@ test("section title and repositories follow reference delays",()=>{
   assert.ok(a["cards/repo-"+p.name+"-mobile.svg"].includes("animation-delay:"+(4.6+i*.12).toFixed(2)+"s"));
  }
 });
-test("link buttons and all five languages are animated and clickable",()=>{
+test("link buttons and all six languages are animated and clickable",()=>{
  const a=cards();
  for(const [i,[key,url]] of cfg.links.entries()){
   const p=a["cards/footer-nav-"+key+".svg"],m=a["cards/footer-nav-"+key+"-mobile.svg"];
@@ -80,14 +80,14 @@ test("link buttons and all five languages are animated and clickable",()=>{
   assert.ok(p.includes('class="ti"'),key);
   assert.ok(p.includes("animation-delay:"+(5.05+i*.16).toFixed(2)+"s"),key);
  }
- for(const [i,id] of ["en","tr","de","ru","zh"].entries()){
+ for(const [i,id] of ["en","tr","de","ru","zh","es"].entries()){
   const s=a["cards/footer-language-"+id+".svg"];
   assert.ok(s.includes('class="p"'),id);
   assert.ok(s.includes("animation-delay:"+(5.85+i*.12).toFixed(2)+"s"),id);
  }
 });
 test("all languages preserve three projects, mobile art and all user URLs",()=>{
- for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
+ for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md","README_ES.md"]){
   const readme=readFileSync(new URL("../"+name,import.meta.url),"utf8");
   for(const p of cfg.projects)assert.ok(readme.includes("cards/motion-v4/repo-"+p.name+"-mobile.svg"),name+" "+p.name);
   for(const [key,url] of cfg.links){assert.ok(readme.includes('href="'+url+'"'),name+" "+key);assert.ok(readme.includes("footer-nav-"+key+"-mobile.svg"))}
@@ -135,7 +135,7 @@ test("entire contact buttons bounce instead of just their labels",()=>{
   assert.ok(x.includes('class="ai"'),id);
   assert.ok(x.includes('class="sh"'),id);
  }
- for(const id of ["en","tr","de","ru","zh"]){
+ for(const id of ["en","tr","de","ru","zh","es"]){
   const x=a["cards/footer-language-"+id+".svg"];
   const g=x.indexOf('class="p"'),bg=x.indexOf('fill="#f3f3f1"');
   assert.ok(g>=0&&bg>g,id);
@@ -163,12 +163,12 @@ test("all link buttons have an icon and separate label entry and sheen",()=>{
   const x=a["cards/footer-nav-"+id+suffix+".svg"];
   for(const name of ["button-icon","button-label","button-glint"])assert.ok(x.includes('class="'+name+'"'),id+suffix+" "+name);
  }
- for(const id of ["en","tr","de","ru","zh"])for(const suffix of ["","-mobile"])assert.ok(a["cards/footer-language-"+id+suffix+".svg"].includes('class="language-label"'));
+ for(const id of ["en","tr","de","ru","zh","es"])for(const suffix of ["","-mobile"])assert.ok(a["cards/footer-language-"+id+suffix+".svg"].includes('class="language-label"'));
 });
 
 test("all section backgrounds and content share ordered stage entrance",()=>{
  const a=cards();
- const expected={"hero":"0.00","heatmap":"0.80","activity":"1.90","build":"3.10","secure":"3.35","learn":"3.60","title-coding-light":"4.40","repo-AIStudio":"4.60","repo-F.R.I.D.A.Y-AI":"4.72","repo-afetnet.com":"4.84","footer-nav-portfolio":"5.05","footer-nav-linkedin":"5.21","footer-nav-projects":"5.37","footer-nav-contact":"5.53","footer-language-en":"5.85","footer-language-tr":"5.97","footer-language-de":"6.09","footer-language-ru":"6.21","footer-language-zh":"6.33"};
+ const expected={"hero":"0.00","heatmap":"0.80","activity":"1.90","build":"3.10","secure":"3.35","learn":"3.60","title-coding-light":"4.40","repo-AIStudio":"4.60","repo-F.R.I.D.A.Y-AI":"4.72","repo-afetnet.com":"4.84","footer-nav-portfolio":"5.05","footer-nav-linkedin":"5.21","footer-nav-projects":"5.37","footer-nav-contact":"5.53","footer-language-en":"5.85","footer-language-tr":"5.97","footer-language-de":"6.09","footer-language-ru":"6.21","footer-language-zh":"6.33","footer-language-es":"6.45"};
  for(const [id,delay] of Object.entries(expected))for(const suffix of ["","-mobile"]){
   const svg=a["cards/"+id+suffix+".svg"];
   assert.ok(svg.includes('</style><g class="section-entry" data-stage="'+delay+'" style="animation-delay:'+delay+'s">'),id+suffix);
@@ -176,12 +176,12 @@ test("all section backgrounds and content share ordered stage entrance",()=>{
   assert.ok(svg.endsWith("</g></svg>"),id+suffix);
  }
 });
-test("gentle easing, bounded repeat effects and LinkedIn variants",()=>{
+test("gentle easing, continuous repeat effects and LinkedIn variants",()=>{
  const a=cards();
  for(const [name,s] of Object.entries(a)){
   assert.ok(s.includes("animation-name:smoothTile"),name);
   assert.ok(s.includes("animation-name:smoothPop"),name);
-  assert.ok(s.includes(".sh,.n,.nu,.live{animation-iteration-count:2}"),name);
+  assert.ok(s.includes(".sh,.n,.nu,.live{animation-iteration-count:infinite}"),name);
  }
  for(const suffix of ["","-mobile"]){
   const s=a["cards/footer-nav-linkedin"+suffix+".svg"];
@@ -191,13 +191,21 @@ test("gentle easing, bounded repeat effects and LinkedIn variants",()=>{
  }
 });
 
-test("all five READMEs reference the complete versioned responsive asset set",()=>{
+test("all six READMEs reference the complete versioned responsive asset set",()=>{
  const expected=new Set(Object.keys(cards()).map(k=>k.replace(/^cards\//,"")));
- for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md"]){
+ for(const name of ["README.md","README_TR.md","README_DE.md","README_RU.md","README_ZH.md","README_ES.md"]){
   const text=readFileSync(new URL("../"+name,import.meta.url),"utf8");
   const refs=[...text.matchAll(/(?:src|srcset)="\.\/cards\/motion-v4\/([^"]+)"/g)].map(m=>m[1]);
   assert.deepEqual(new Set(refs),expected,name);
   assert.equal((text.match(/width="24%"/g)||[]).length,4,name);
-  assert.equal((text.match(/width="19%"/g)||[]).length,5,name);
+  assert.equal((text.match(/width="16%"/g)||[]).length,6,name);
+ }
+});
+
+test("all 42 SVG assets retain a visible low-amplitude idle loop after entrance",()=>{
+ for(const [name,svg] of Object.entries(cards())){
+  assert.ok(svg.includes('class="idle-accent"'),name);
+  assert.ok(svg.includes("animation:idleAccent 7s ease-in-out infinite"),name);
+  assert.ok(svg.includes(".idle-accent{display:none!important}"),name);
  }
 });
