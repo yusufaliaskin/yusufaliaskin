@@ -32,6 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: npm run refresh
+      - name: Parse every generated SVG and verify LinkedIn
+        run: python3 scripts/validate_svg.py
       - name: Commit refreshed cards
         run: |
           git config user.name "github-actions[bot]"

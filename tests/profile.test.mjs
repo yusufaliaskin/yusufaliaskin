@@ -165,3 +165,28 @@ test("all link buttons have an icon and separate label entry and sheen",()=>{
  }
  for(const id of ["en","tr","de","ru","zh"])for(const suffix of ["","-mobile"])assert.ok(a["cards/footer-language-"+id+suffix+".svg"].includes('class="language-label"'));
 });
+
+test("all section backgrounds and content share ordered stage entrance",()=>{
+ const a=cards();
+ const expected={"hero":"0.00","heatmap":"0.80","activity":"1.90","build":"3.10","secure":"3.35","learn":"3.60","title-coding-light":"4.40","repo-AIStudio":"4.60","repo-F.R.I.D.A.Y-AI":"4.72","repo-afetnet.com":"4.84","footer-nav-portfolio":"5.05","footer-nav-linkedin":"5.21","footer-nav-projects":"5.37","footer-nav-contact":"5.53","footer-language-en":"5.85","footer-language-tr":"5.97","footer-language-de":"6.09","footer-language-ru":"6.21","footer-language-zh":"6.33"};
+ for(const [id,delay] of Object.entries(expected))for(const suffix of ["","-mobile"]){
+  const svg=a["cards/"+id+suffix+".svg"];
+  assert.ok(svg.includes('</style><g class="section-entry" data-stage="'+delay+'" style="animation-delay:'+delay+'s">'),id+suffix);
+  assert.ok(svg.includes("@keyframes sectionEntry"),id+suffix);
+  assert.ok(svg.endsWith("</g></svg>"),id+suffix);
+ }
+});
+test("gentle easing, bounded repeat effects and LinkedIn variants",()=>{
+ const a=cards();
+ for(const [name,s] of Object.entries(a)){
+  assert.ok(s.includes("animation-name:smoothTile"),name);
+  assert.ok(s.includes("animation-name:smoothPop"),name);
+  assert.ok(s.includes(".sh,.n,.nu,.live{animation-iteration-count:2}"),name);
+ }
+ for(const suffix of ["","-mobile"]){
+  const s=a["cards/footer-nav-linkedin"+suffix+".svg"];
+  assert.ok(s.includes("LinkedIn"));
+  assert.ok(s.includes("https://www.linkedin.com/in/yusufaliaskin/"));
+  assert.ok(s.includes('class="button-icon"'));
+ }
+});
