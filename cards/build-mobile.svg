@@ -25,4 +25,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media(prefers-reduced-motion:reduce){.r,.f,.g,.p,.live,.n,.nu,.ti,.sl,.ai,.ro,.sh,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none!important}}
+
+@keyframes buttonIn{0%{opacity:0;transform:translateY(18px) scale(.87)}65%{opacity:1;transform:translateY(-1px) scale(1.025)}100%{opacity:1;transform:none}}
+@media(max-width:400px){.sh,.n,.nu,.live{animation-iteration-count:2!important}}
 ]]></style><g class="ti" style="animation-delay:3.10s"><rect x="0" y="0" width="111" height="64" rx="8" fill="#2f55ff" /><text x="9" y="16" font-family="Consolas, Menlo, monospace" font-size="10" fill="#fff" class="sl" style="animation-delay:3.45s">BUILD</text><g class="ro" style="animation-delay:3.55s"><text x="9" y="41" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="24" fill="#fff" font-style="italic">23</text><text x="9" y="57" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#fff" >repositories</text></g><text x="100" y="16" font-family="Consolas, Menlo, monospace" font-size="11" fill="#fff" class="ai" style="animation-delay:3.60s" text-anchor="end">↗</text></g></svg>

@@ -25,4 +25,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media(prefers-reduced-motion:reduce){.r,.f,.g,.p,.live,.n,.nu,.ti,.sl,.ai,.ro,.sh,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none!important}}
+
+@keyframes buttonIn{0%{opacity:0;transform:translateY(18px) scale(.87)}65%{opacity:1;transform:translateY(-1px) scale(1.025)}100%{opacity:1;transform:none}}
+@media(max-width:400px){.sh,.n,.nu,.live{animation-iteration-count:2!important}}
 ]]></style><g class="r" style="animation-delay:4.72s"><rect x="0" y="0" width="111" height="61" rx="8" fill="#f3f3f1" /><rect x="9" y="10" width="7" height="7" rx="2" fill="#EF3B2D" /><text x="9" y="35" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111111" font-weight="600">F.R.I.D.A.Y-AI</text><text x="9" y="52" font-family="Consolas, Menlo, monospace" font-size="10" fill="#6e6e73" >Python</text><text x="101" y="52" font-family="Consolas, Menlo, monospace" font-size="12" fill="#2f55ff" text-anchor="end">↗</text></g></svg>

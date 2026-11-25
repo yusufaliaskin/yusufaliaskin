@@ -25,4 +25,7 @@
 .sh{animation:sheen 5s ease-in-out infinite}
 .rg{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 1s ease-out both}
 @media(prefers-reduced-motion:reduce){.r,.f,.g,.p,.live,.n,.nu,.ti,.sl,.ai,.ro,.sh,.rg{animation:none!important;opacity:1!important;transform:none!important}.sh,.rg{display:none!important}}
+
+@keyframes buttonIn{0%{opacity:0;transform:translateY(18px) scale(.87)}65%{opacity:1;transform:translateY(-1px) scale(1.025)}100%{opacity:1;transform:none}}
+@media(max-width:400px){.sh,.n,.nu,.live{animation-iteration-count:2!important}}
 ]]></style><text x="2" y="47" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="35" fill="#e6edf3" class="r" style="animation-delay:4.4s">What I&apos;m</text><text x="184" y="47" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="35" fill="#e6edf3" font-style="italic" class="r" style="animation-delay:4.4s">coding</text></svg>
